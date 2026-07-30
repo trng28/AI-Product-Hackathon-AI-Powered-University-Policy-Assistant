@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import {
   Bot,
   CheckCircle2,
+  ExternalLink,
   FileText,
   GraduationCap,
   LoaderCircle,
@@ -61,13 +62,29 @@ function AssistantAnswer({ answer }: { answer: Answer }) {
               <article key={`${citation.chunk_id}-${index}`}>
                 <FileText size={17} />
                 <div>
-                  <b>
-                    {citation.article}
-                    {citation.clause ? ` · ${citation.clause}` : ""}
-                  </b>
+                  {citation.source_url ? (
+                    <a
+                      className="source-link"
+                      href={citation.source_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <b>
+                        {citation.article}
+                        {citation.clause ? ` · ${citation.clause}` : ""}
+                      </b>
+                      <ExternalLink size={13} />
+                    </a>
+                  ) : (
+                    <b>
+                      {citation.article}
+                      {citation.clause ? ` · ${citation.clause}` : ""}
+                    </b>
+                  )}
                   {citation.support && <p>{citation.support}</p>}
                   <small>
-                    {citation.document} · Trang {citation.page}
+                    {citation.source_url ? "Mở tài liệu nguồn" : citation.document}
+                    {citation.page > 0 ? ` · Trang ${citation.page}` : ""}
                   </small>
                 </div>
                 <CheckCircle2 className="source-check" size={16} />

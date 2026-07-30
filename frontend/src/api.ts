@@ -12,6 +12,7 @@ export type Citation = {
   clause: string;
   page: number;
   document: string;
+  source_url: string;
   support: string;
 };
 
