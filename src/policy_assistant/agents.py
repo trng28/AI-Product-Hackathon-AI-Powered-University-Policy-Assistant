@@ -64,7 +64,9 @@ class PolicyAnalysisAgent:
     def run(self, question: str, results: list[SearchResult]) -> dict[str, Any]:
         evidence = "\n\n".join(
             f"[{r.chunk.id}] {r.chunk.document}, {r.chunk.article}, "
-            f"{r.chunk.clause}, trang {r.chunk.page}\n{r.chunk.text}"
+            f"{r.chunk.clause}"
+            f"{f', trang {r.chunk.page}' if r.chunk.page > 0 else ''}\n"
+            f"{r.chunk.text}"
             for r in results
         )
         result = self.model.invoke(
@@ -97,6 +99,11 @@ class CitationValidationAgent:
             chunk_id = str(citation.get("chunk_id", ""))
             if chunk_id in available:
                 result = available[chunk_id]
+                source_url = (
+                    result.chunk.document
+                    if result.chunk.document.startswith(("https://", "http://"))
+                    else ""
+                )
                 valid.append(
                     {
                         "chunk_id": chunk_id,
@@ -104,6 +111,7 @@ class CitationValidationAgent:
                         "clause": result.chunk.clause,
                         "page": result.chunk.page,
                         "document": result.chunk.document,
+                        "source_url": source_url,
                         "support": str(citation.get("support", "")),
                     }
                 )

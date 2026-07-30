@@ -8,6 +8,10 @@ from .config import PROJECT_ROOT, Settings
 from .indexing import build_index
 from .service import PolicyAssistant
 
+PUBLIC_CHUNKS = (
+    PROJECT_ROOT / "src" / "data" / "vinuni-policies" / "processed" / "chunks.jsonl"
+)
+
 
 def _print_answer(answer) -> None:
     print()
@@ -27,7 +31,11 @@ def _print_answer(answer) -> None:
                 for part in (
                     citation.get("article", ""),
                     citation.get("clause", ""),
-                    f"Trang {citation.get('page')}",
+                    (
+                        f"Trang {citation.get('page')}"
+                        if int(citation.get("page") or 0) > 0
+                        else ""
+                    ),
                 )
                 if part
             )
@@ -65,14 +73,15 @@ def _chat() -> None:
                 "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-"
                 "theo-he-thong-tin-chi.pdf"
             )
-            if not pdf_path.is_file():
+            source_path = PUBLIC_CHUNKS if PUBLIC_CHUNKS.is_file() else pdf_path
+            if not source_path.is_file():
                 raise FileNotFoundError(
-                    "Knowledge index is missing and the bundled policy PDF was not found. "
-                    "Run the `index` command with a PDF path."
+                    "Knowledge index is missing and no processed public policy "
+                    "data was found. Run the crawler and processor first."
                 )
             print("Knowledge index chưa có hoặc dùng model cũ. Đang lập chỉ mục PDF mẫu...")
             count = build_index(
-                [pdf_path], settings.index_dir, settings.embedding_model
+                [source_path], settings.index_dir, settings.embedding_model
             )
             print(f"Đã lập chỉ mục {count} legal chunks.\n")
         assistant = PolicyAssistant()
@@ -112,7 +121,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="VinUni Policy Assistant")
     commands = parser.add_subparsers(dest="command", required=True)
     index = commands.add_parser("index", help="Build the legal document index")
-    index.add_argument("pdf", nargs="+", type=Path)
+    index.add_argument(
+        "sources",
+        nargs="*",
+        type=Path,
+        default=[PUBLIC_CHUNKS],
+        help="PDF, chunks.jsonl, or processed directory",
+    )
     index.add_argument(
         "--output", type=Path, default=PROJECT_ROOT / "data" / "policy-index"
     )
@@ -125,7 +140,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.command == "index":
-        count = build_index(args.pdf, args.output, args.embedding_model)
+        count = build_index(args.sources, args.output, args.embedding_model)
         print(f"Indexed {count} legal chunks into {args.output}")
     elif args.command == "ask":
         answer = PolicyAssistant().ask(args.question)

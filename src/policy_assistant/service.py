@@ -20,9 +20,9 @@ class PolicyAssistant:
 
     @staticmethod
     def index(
-        pdf_paths: list[Path], index_dir: Path, embedding_model: str
+        source_paths: list[Path], index_dir: Path, embedding_model: str
     ) -> int:
-        return build_index(pdf_paths, index_dir, embedding_model)
+        return build_index(source_paths, index_dir, embedding_model)
 
     def ask(self, question: str) -> Answer:
         if not question.strip():

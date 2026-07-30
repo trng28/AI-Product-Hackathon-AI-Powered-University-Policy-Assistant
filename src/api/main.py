@@ -19,6 +19,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_PDF = PROJECT_ROOT / "src" / "data" / (
     "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf"
 )
+DEFAULT_PUBLIC_CHUNKS = (
+    PROJECT_ROOT / "src" / "data" / "vinuni-policies"
+    / "processed" / "chunks.jsonl"
+)
 
 
 class AskRequest(BaseModel):
@@ -31,6 +35,7 @@ class CitationResponse(BaseModel):
     clause: str
     page: int
     document: str
+    source_url: str = ""
     support: str
 
 
@@ -43,6 +48,8 @@ class AskResponse(BaseModel):
 
 
 class IndexRequest(BaseModel):
+    source_paths: list[str] = Field(default_factory=list)
+    # Kept for compatibility with the existing frontend/API clients.
     pdf_paths: list[str] = Field(default_factory=list)
     force: bool = False
 
@@ -144,13 +151,23 @@ async def create_index(request: IndexRequest) -> IndexResponse:
         settings = Settings.from_env()
     except ValueError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
-    raw_paths = request.pdf_paths or [str(DEFAULT_PDF)]
+    default_source = (
+        DEFAULT_PUBLIC_CHUNKS if DEFAULT_PUBLIC_CHUNKS.is_file() else DEFAULT_PDF
+    )
+    raw_paths = request.source_paths or request.pdf_paths or [str(default_source)]
     paths = [Path(path).expanduser().resolve() for path in raw_paths]
-    missing = [str(path) for path in paths if not path.is_file()]
+    missing = [str(path) for path in paths if not path.exists()]
     if missing:
-        raise HTTPException(status_code=404, detail=f"PDF not found: {missing}")
-    if not all(path.suffix.lower() == ".pdf" for path in paths):
-        raise HTTPException(status_code=400, detail="Only PDF documents are supported")
+        raise HTTPException(status_code=404, detail=f"Index source not found: {missing}")
+    supported = all(
+        path.is_dir() or path.suffix.lower() in {".pdf", ".jsonl"}
+        for path in paths
+    )
+    if not supported:
+        raise HTTPException(
+            status_code=400,
+            detail="Only PDF, JSONL, or processed directories are supported",
+        )
     if (
         not request.force
         and _index_ready(settings)
@@ -166,7 +183,7 @@ async def create_index(request: IndexRequest) -> IndexResponse:
         return IndexResponse(
             chunks=chunks,
             index_dir=str(settings.index_dir),
-            documents=[path.name for path in paths],
+            documents=[str(path) for path in paths],
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Indexing failed: {exc}") from exc

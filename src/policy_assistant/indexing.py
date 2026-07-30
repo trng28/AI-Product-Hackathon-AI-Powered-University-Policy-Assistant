@@ -70,12 +70,56 @@ def parse_pdf(pdf_path: Path) -> list[LegalChunk]:
     return chunks
 
 
-def build_index(pdf_paths: list[Path], index_dir: Path, model_name: str) -> int:
+def parse_jsonl(jsonl_path: Path) -> list[LegalChunk]:
+    chunks: list[LegalChunk] = []
+    for line_number, line in enumerate(
+        jsonl_path.read_text(encoding="utf-8").splitlines(), start=1
+    ):
+        if not line.strip():
+            continue
+        try:
+            record = json.loads(line)
+            text = str(record["text"]).strip()
+        except (json.JSONDecodeError, KeyError, TypeError) as exc:
+            raise ValueError(
+                f"Invalid processed chunk at {jsonl_path}:{line_number}: {exc}"
+            ) from exc
+        if not text:
+            continue
+        chunk_id = str(record.get("id") or "").strip() or hashlib.sha1(
+            f"{jsonl_path}:{line_number}:{text}".encode("utf-8")
+        ).hexdigest()[:12]
+        chunks.append(
+            LegalChunk(
+                id=chunk_id,
+                document=str(record.get("url") or record.get("title") or jsonl_path.name),
+                page=0,
+                article=str(record.get("title") or "VinUni Policy"),
+                clause=str(record.get("reference_number") or ""),
+                text=text,
+            )
+        )
+    return chunks
+
+
+def _source_chunks(path: Path) -> list[LegalChunk]:
+    if path.is_dir():
+        path = path / "chunks.jsonl"
+    if not path.is_file():
+        raise FileNotFoundError(f"Index source not found: {path}")
+    if path.suffix.lower() == ".pdf":
+        return parse_pdf(path)
+    if path.suffix.lower() == ".jsonl":
+        return parse_jsonl(path)
+    raise ValueError(f"Unsupported index source: {path}; expected PDF or JSONL")
+
+
+def build_index(source_paths: list[Path], index_dir: Path, model_name: str) -> int:
     import faiss
 
-    chunks = [chunk for path in pdf_paths for chunk in parse_pdf(path)]
+    chunks = [chunk for path in source_paths for chunk in _source_chunks(path)]
     if not chunks:
-        raise ValueError("No extractable text found in the supplied PDFs")
+        raise ValueError("No extractable text found in the supplied sources")
     model = SentenceTransformer(model_name)
     texts = [f"passage: {chunk.article}\n{chunk.text}" for chunk in chunks]
     vectors = model.encode(texts, normalize_embeddings=True, show_progress_bar=True)
@@ -89,6 +133,14 @@ def build_index(pdf_paths: list[Path], index_dir: Path, model_name: str) -> int:
         encoding="utf-8",
     )
     (index_dir / "config.json").write_text(
-        json.dumps({"embedding_model": model_name}, indent=2), encoding="utf-8"
+        json.dumps(
+            {
+                "embedding_model": model_name,
+                "sources": [str(path.resolve()) for path in source_paths],
+                "chunk_count": len(chunks),
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
     )
     return len(chunks)
