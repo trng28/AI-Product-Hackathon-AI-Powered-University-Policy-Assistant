@@ -1,20 +1,18 @@
-"""Download public policy documents from https://policy.vinuni.edu.vn.
+"""Archive rendered HTML, then process VinUni policy documents separately.
 
-The crawler discovers policy pages from WordPress sitemaps, extracts public
-attachments (PDF, Word, and Excel), and keeps a manifest so reruns do not
-download unchanged files. Documents that redirect to authentication systems
-such as SharePoint are intentionally skipped.
+The default mode follows internal links with Playwright and stores the rendered
+HTML as immutable raw input. Processing is a separate mode that reads only the
+local HTML, extracts public attachments, and downloads them.
 
 Examples:
-    python src/crawl/vinuni_policy_crawler.py
-    python src/crawl/vinuni_policy_crawler.py --output data/vinuni-policies
-    python src/crawl/vinuni_policy_crawler.py --dry-run --max-pages 20
+    python src/crawl/crawl_vinuni_policies.py
+    python src/crawl/crawl_vinuni_policies.py --max-pages 20
+    python src/crawl/crawl_vinuni_policies.py --process-raw
 """
 
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import hashlib
 import json
 import logging
@@ -33,6 +31,15 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Iterable
 
+from playwright.sync_api import (
+    Browser,
+    BrowserContext,
+    Error as PlaywrightError,
+    Page,
+    TimeoutError as PlaywrightTimeoutError,
+    sync_playwright,
+)
+
 
 BASE_URL = "https://policy.vinuni.edu.vn"
 DEFAULT_OUTPUT = Path("data") / "vinuni-policies"
@@ -49,6 +56,12 @@ DOCUMENT_EXTENSIONS = {
     ".rtf",
     ".csv",
     ".zip",
+}
+NON_HTML_EXTENSIONS = DOCUMENT_EXTENSIONS | {
+    ".7z", ".avi", ".bmp", ".css", ".eot", ".gif", ".gz", ".ico", ".jpeg",
+    ".jpg", ".js", ".json", ".map", ".mkv", ".mov", ".mp3", ".mp4", ".png",
+    ".rar", ".svg", ".tar", ".tgz", ".tif", ".tiff", ".ttf", ".txt", ".wav",
+    ".webm", ".webp", ".woff", ".woff2", ".xml",
 }
 DOCUMENT_CONTENT_TYPES = {
     "application/pdf": ".pdf",
@@ -102,6 +115,18 @@ class ManifestEntry:
     downloaded_at: str
 
 
+@dataclass
+class RawPageEntry:
+    url: str
+    final_url: str
+    local_path: str
+    content_type: str
+    size: int
+    sha256: str
+    links: list[str]
+    crawled_at: str
+
+
 class CrawlerError(RuntimeError):
     pass
 
@@ -122,6 +147,9 @@ class VinUniPolicyCrawler:
         self.output_dir = output_dir.resolve()
         self.documents_dir = self.output_dir / "documents"
         self.manifest_path = self.output_dir / "manifest.json"
+        self.raw_dir = self.output_dir / "raw"
+        self.raw_pages_dir = self.raw_dir / "pages"
+        self.raw_manifest_path = self.raw_dir / "manifest.json"
         self.workers = max(1, workers)
         self.timeout = timeout
         self.delay = max(0, delay)
@@ -134,9 +162,23 @@ class VinUniPolicyCrawler:
             ("Accept-Language", "en-US,en;q=0.9"),
         ]
         self.manifest = self._load_manifest()
+        self.raw_manifest = self._load_raw_manifest()
+        self._rendered_links: dict[str, list[str]] = {}
 
     def _load_manifest(self) -> dict[str, dict]:
         if not self.manifest_path.exists():
+            return {}
+
+    def _load_raw_manifest(self) -> dict[str, dict]:
+        if not self.raw_manifest_path.exists():
+            return {}
+        try:
+            content = json.loads(self.raw_manifest_path.read_text(encoding="utf-8"))
+            return {item["url"]: item for item in content.get("pages", [])}
+        except (OSError, json.JSONDecodeError, KeyError) as exc:
+            logging.warning(
+                "Ignoring invalid raw manifest %s: %s", self.raw_manifest_path, exc
+            )
             return {}
         try:
             content = json.loads(self.manifest_path.read_text(encoding="utf-8"))
@@ -204,30 +246,235 @@ class VinUniPolicyCrawler:
                 pages.update(url for url in locations if self._is_internal_page(url))
 
         if not found_sitemap:
-            logging.warning("No sitemap available; falling back to link crawling.")
+            logging.info(
+                "No sitemap available; falling back to Playwright link crawling."
+            )
             return self._crawl_page_urls()
         return sorted(pages)
 
     def _crawl_page_urls(self) -> list[str]:
+        # Kept as a public discovery boundary for callers/tests. The browser
+        # lifecycle is owned here when this method is called independently.
+        with sync_playwright() as playwright:
+            browser = self._launch_browser(playwright.chromium)
+            try:
+                context = browser.new_context(user_agent=USER_AGENT)
+                return self._crawl_page_urls_with_context(context)
+            finally:
+                browser.close()
+
+    def _raw_page_path(self, url: str) -> Path:
+        parsed = urllib.parse.urlsplit(url)
+        slug = re.sub(r"[^a-zA-Z0-9._-]+", "-", parsed.path.strip("/"))
+        slug = (slug or "home")[:100].strip("-")
+        digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:12]
+        return self.raw_pages_dir / f"{slug}-{digest}.html"
+
+    def _save_raw_manifest(self) -> None:
+        self.raw_dir.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "base_url": self.base_url,
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "pages": sorted(self.raw_manifest.values(), key=lambda item: item["url"]),
+        }
+        temp_path = self.raw_manifest_path.with_suffix(".json.tmp")
+        temp_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        os.replace(temp_path, self.raw_manifest_path)
+
+    def _is_crawlable_page(self, url: str) -> bool:
+        parsed = urllib.parse.urlsplit(url)
+        if parsed.scheme not in {"http", "https"}:
+            return False
+        if parsed.netloc.lower() != self.base_host:
+            return False
+        if Path(parsed.path).suffix.lower() in NON_HTML_EXTENSIONS:
+            return False
+        return not any(
+            marker in parsed.path.lower()
+            for marker in ("/wp-admin", "/wp-login", "/wp-json/", "/feed/")
+        )
+
+    def crawl_raw(self) -> int:
+        queue = [self.base_url + "/", f"{self.base_url}/all-policies/"]
+        queued = set(queue)
+        visited: set[str] = set()
+        failures = 0
+
+        with sync_playwright() as playwright:
+            browser = self._launch_browser(playwright.chromium)
+            try:
+                context = browser.new_context(user_agent=USER_AGENT)
+                context.route(
+                    "**/*",
+                    lambda route: route.abort()
+                    if route.request.resource_type in {"image", "media", "font"}
+                    else route.continue_(),
+                )
+                page = context.new_page()
+                while queue and (
+                    self.max_pages is None or len(visited) < self.max_pages
+                ):
+                    url = queue.pop(0)
+                    if url in visited:
+                        continue
+                    visited.add(url)
+
+                    existing = self.raw_manifest.get(url)
+                    existing_path = (
+                        self.output_dir / existing["local_path"] if existing else None
+                    )
+                    if existing and existing_path and existing_path.exists():
+                        links = existing.get("links", [])
+                        logging.info(
+                            "Cached %d%s: %s",
+                            len(visited),
+                            f"/{self.max_pages}" if self.max_pages else "",
+                            url,
+                        )
+                    else:
+                        try:
+                            final_url, links = self._rendered_page_links(page, url)
+                            html = page.content()
+                        except CrawlerError as exc:
+                            failures += 1
+                            logging.warning("%s", exc)
+                            continue
+
+                        target = self._raw_page_path(url)
+                        encoded = html.encode("utf-8")
+                        if not self.dry_run:
+                            target.parent.mkdir(parents=True, exist_ok=True)
+                            target.write_bytes(encoded)
+                            entry = RawPageEntry(
+                                url=url,
+                                final_url=final_url,
+                                local_path=target.relative_to(
+                                    self.output_dir
+                                ).as_posix(),
+                                content_type="text/html",
+                                size=len(encoded),
+                                sha256=hashlib.sha256(encoded).hexdigest(),
+                                links=links,
+                                crawled_at=datetime.now(timezone.utc).isoformat(),
+                            )
+                            self.raw_manifest[url] = asdict(entry)
+                            self._save_raw_manifest()
+                        logging.info(
+                            "%s %d%s: %s (%d links)",
+                            "[dry-run]" if self.dry_run else "Saved",
+                            len(visited),
+                            f"/{self.max_pages}" if self.max_pages else "",
+                            url,
+                            len(links),
+                        )
+                        if self.delay:
+                            time.sleep(self.delay)
+
+                    for link in links:
+                        if not self._is_crawlable_page(link):
+                            continue
+                        parsed = urllib.parse.urlsplit(link)
+                        normalized = urllib.parse.urlunsplit(
+                            parsed._replace(fragment="", query="")
+                        )
+                        if normalized not in visited and normalized not in queued:
+                            queue.append(normalized)
+                            queued.add(normalized)
+                page.close()
+            finally:
+                browser.close()
+
+        logging.info(
+            "Raw crawl finished: %d pages visited, %d pages stored, %d failures",
+            len(visited),
+            len(self.raw_manifest),
+            failures,
+        )
+        return 1 if failures and not self.raw_manifest else 0
+
+    def _launch_browser(self, chromium) -> Browser:
+        try:
+            return chromium.launch(headless=True)
+        except PlaywrightError as exc:
+            if "Executable doesn't exist" in str(exc):
+                raise CrawlerError(
+                    "Playwright Chromium is not installed. Run: "
+                    "python -m playwright install chromium"
+                ) from exc
+            raise CrawlerError(f"Unable to launch Playwright Chromium: {exc}") from exc
+
+    def _crawl_page_urls_with_context(self, context: BrowserContext) -> list[str]:
         queue = [self.base_url + "/", f"{self.base_url}/all-policies/"]
         visited: set[str] = set()
+        queued = set(queue)
+        page = context.new_page()
         while queue and (self.max_pages is None or len(visited) < self.max_pages):
             url = queue.pop(0)
             if url in visited:
                 continue
-            visited.add(url)
             try:
-                body, content_type, final_url = self._read_url(url)
-            except (CrawlerError, urllib.error.HTTPError) as exc:
+                final_url, links = self._rendered_page_links(page, url)
+            except CrawlerError as exc:
                 logging.warning("%s", exc)
                 continue
-            if content_type != "text/html":
-                continue
-            for link in self._extract_links(body, final_url):
-                if self._is_internal_page(link) and link not in visited:
+            visited.add(url)
+            self._rendered_links[url] = links
+            self._rendered_links[final_url] = links
+            for link in links:
+                if (
+                    self._is_internal_page(link)
+                    and link not in visited
+                    and link not in queued
+                ):
                     queue.append(link)
+                    queued.add(link)
             time.sleep(self.delay)
+        page.close()
         return sorted(visited)
+
+    def _rendered_page_links(self, page: Page, url: str) -> tuple[str, list[str]]:
+        try:
+            response = page.goto(
+                url,
+                wait_until="domcontentloaded",
+                timeout=int(self.timeout * 1000),
+            )
+            if response is None:
+                raise CrawlerError(f"No browser response for {url}")
+            if response.status >= 400:
+                raise CrawlerError(f"HTTP {response.status} for {url}")
+            try:
+                page.wait_for_load_state("networkidle", timeout=5_000)
+            except PlaywrightTimeoutError:
+                # Analytics and other long-lived requests should not block crawling.
+                pass
+            raw_links = page.locator(
+                "a[href], iframe[src], embed[src], object[data]"
+            ).evaluate_all(
+                """elements => elements.map(element =>
+                    element.href || element.src || element.data
+                ).filter(Boolean)"""
+            )
+        except PlaywrightTimeoutError as exc:
+            raise CrawlerError(f"Browser timeout for {url}") from exc
+        except PlaywrightError as exc:
+            raise CrawlerError(f"Browser failed to load {url}: {exc}") from exc
+
+        links: list[str] = []
+        for raw_link in raw_links:
+            parsed = urllib.parse.urlsplit(str(raw_link))
+            if parsed.scheme in {"http", "https"}:
+                normalized = urllib.parse.urlunsplit(parsed._replace(fragment=""))
+                # Tracking, search, and pagination parameters otherwise make
+                # fallback discovery revisit the same rendered page indefinitely.
+                if self._is_internal_page(normalized):
+                    normalized = urllib.parse.urlunsplit(
+                        parsed._replace(fragment="", query="")
+                    )
+                links.append(normalized)
+        return page.url, list(dict.fromkeys(links))
 
     def _is_internal_page(self, url: str) -> bool:
         parsed = urllib.parse.urlsplit(url)
@@ -264,26 +511,33 @@ class VinUniPolicyCrawler:
         logging.info("Inspecting %d pages", len(policy_pages))
         documents: dict[str, str] = {}
 
-        def inspect(page_url: str) -> tuple[str, list[str]]:
+        with sync_playwright() as playwright:
+            browser = self._launch_browser(playwright.chromium)
             try:
-                body, content_type, final_url = self._read_url(page_url)
-                if content_type != "text/html":
-                    return page_url, []
-                return page_url, [
-                    link
-                    for link in self._extract_links(body, final_url)
-                    if self._looks_like_document(link)
-                ]
-            except (CrawlerError, urllib.error.HTTPError) as exc:
-                logging.warning("%s", exc)
-                return page_url, []
-
-        with concurrent.futures.ThreadPoolExecutor(max_workers=self.workers) as pool:
-            for source_page, links in pool.map(inspect, policy_pages):
-                for link in links:
-                    documents.setdefault(link, source_page)
-                if self.delay:
-                    time.sleep(self.delay)
+                context = browser.new_context(user_agent=USER_AGENT)
+                page = context.new_page()
+                for index, source_page in enumerate(policy_pages, start=1):
+                    links = self._rendered_links.get(source_page)
+                    if links is None:
+                        try:
+                            _, links = self._rendered_page_links(page, source_page)
+                        except CrawlerError as exc:
+                            logging.warning("%s", exc)
+                            continue
+                    for link in links:
+                        if self._looks_like_document(link):
+                            documents.setdefault(link, source_page)
+                    logging.info(
+                        "Inspected %d/%d pages; found %d documents",
+                        index,
+                        len(policy_pages),
+                        len(documents),
+                    )
+                    if self.delay:
+                        time.sleep(self.delay)
+                page.close()
+            finally:
+                browser.close()
         return documents
 
     @staticmethod
@@ -404,15 +658,34 @@ class VinUniPolicyCrawler:
         )
         os.replace(temp_path, self.manifest_path)
 
-    def run(self) -> int:
-        documents = self.discover_documents()
+    def process_raw(self) -> int:
+        if not self.raw_manifest:
+            raise CrawlerError(
+                f"No raw pages found in {self.raw_manifest_path}. Run the crawler first."
+            )
+
+        documents: dict[str, str] = {}
+        missing_pages = 0
+        for item in self.raw_manifest.values():
+            source_page = item["url"]
+            path = self.output_dir / item["local_path"]
+            try:
+                body = path.read_bytes()
+            except OSError as exc:
+                missing_pages += 1
+                logging.warning("Cannot read raw page %s: %s", path, exc)
+                continue
+            for link in self._extract_links(body, item.get("final_url", source_page)):
+                if self._looks_like_document(link):
+                    documents.setdefault(link, source_page)
+
         logging.info("Found %d public document links", len(documents))
         if self.dry_run:
             for url in sorted(documents):
                 logging.info("[dry-run] %s", url)
             return 0
 
-        failures = 0
+        failures = missing_pages
         for url, source_page in sorted(documents.items()):
             try:
                 entry = self.download_document(url, source_page)
@@ -432,10 +705,16 @@ class VinUniPolicyCrawler:
         )
         return 1 if failures and not self.manifest else 0
 
+    def run(self) -> int:
+        return self.crawl_raw()
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Download public documents from the VinUni policy website."
+        description=(
+            "Archive rendered VinUni policy HTML as raw data, or process an "
+            "existing raw archive."
+        )
     )
     parser.add_argument("--base-url", default=BASE_URL)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
@@ -444,6 +723,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--delay", type=float, default=0.25)
     parser.add_argument("--max-pages", type=int)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--process-raw",
+        action="store_true",
+        help="Read stored raw HTML and download linked documents; do not crawl.",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     return parser
 
@@ -464,7 +748,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         max_pages=args.max_pages,
     )
     try:
-        return crawler.run()
+        return crawler.process_raw() if args.process_raw else crawler.run()
     except KeyboardInterrupt:
         logging.warning("Interrupted")
         return 130
