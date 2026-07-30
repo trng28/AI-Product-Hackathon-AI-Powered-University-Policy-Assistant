@@ -1,0 +1,13 @@
+.git
+.gitignore
+.venv
+.env
+.firecrawl
+__pycache__
+*.py[cod]
+/data
+frontend
+node_modules
+tests
+tham-khao
+*.md

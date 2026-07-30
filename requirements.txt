@@ -1,0 +1,11 @@
+faiss-cpu>=1.8.0
+langchain>=1.0
+langgraph>=1.0
+langchain-openai>=1.0
+langchain-groq>=1.0
+langchain-google-genai>=4.0
+numpy>=1.26
+pypdf>=5.0
+sentence-transformers>=3.0
+fastapi>=0.115
+uvicorn[standard]>=0.34

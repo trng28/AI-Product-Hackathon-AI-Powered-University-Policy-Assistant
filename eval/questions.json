@@ -1,0 +1,208 @@
+{
+  "name": "VinUni Academic Policy MVP Eval",
+  "version": "1.0",
+  "total_questions": 20,
+  "description": "Bộ câu hỏi do nhóm tự thiết kế để kiểm thử trợ lý trên Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ VU_HT03.VN.",
+  "questions": [
+    {
+      "id": "E01",
+      "category": "course_registration",
+      "input": "Sinh viên chính quy phải đăng ký tối thiểu bao nhiêu tín chỉ trong một học kỳ thông thường?",
+      "expected_behavior": "Nêu mức tối thiểu theo Điều 11, có citation trang 13-14; không tự đặt con số ngoài tài liệu.",
+      "expected_article": "Điều 11",
+      "expected_pages": [13, 14],
+      "keyword_groups": [["80%"], ["12 tín chỉ", "12"], ["học kỳ"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E02",
+      "category": "course_registration",
+      "input": "Em muốn đăng ký học phần thì cần đáp ứng những điều kiện nào?",
+      "expected_behavior": "Tóm tắt điều kiện đăng ký học phần theo Điều 10 và trích dẫn trang 13.",
+      "expected_article": "Điều 10",
+      "expected_pages": [13],
+      "keyword_groups": [["đăng ký"], ["học phần"], ["điều kiện", "tiên quyết"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E03",
+      "category": "add_drop",
+      "input": "Khi nào sinh viên được bổ sung hoặc bỏ bớt học phần đã đăng ký?",
+      "expected_behavior": "Trả lời theo Điều 12 về add/drop và dẫn trang 14-15.",
+      "expected_article": "Điều 12",
+      "expected_pages": [14, 15],
+      "keyword_groups": [["bổ sung", "bỏ bớt"], ["đăng ký"], ["thời gian", "thời hạn"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E04",
+      "category": "credit_transfer",
+      "input": "Quy định về chuyển đổi tín chỉ và miễn trừ học phần như thế nào?",
+      "expected_behavior": "Nêu nguyên tắc chuyển đổi tín chỉ/miễn trừ theo Điều 13, citation trang 15-16.",
+      "expected_article": "Điều 13",
+      "expected_pages": [15, 16],
+      "keyword_groups": [["chuyển đổi tín chỉ"], ["miễn trừ"], ["học phần"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E05",
+      "category": "retake",
+      "input": "Sinh viên có được đăng ký học lại hoặc học cải thiện không?",
+      "expected_behavior": "Trả lời theo Điều 14, phân biệt học lại/học cải thiện nếu tài liệu có nêu, citation trang 16.",
+      "expected_article": "Điều 14",
+      "expected_pages": [16],
+      "keyword_groups": [["học lại"], ["cải thiện"], ["đăng ký"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E06",
+      "category": "leave",
+      "input": "Điều kiện để xin nghỉ học tạm thời vì nhu cầu cá nhân là gì?",
+      "expected_behavior": "Nêu điều kiện nghỉ học tạm thời theo Điều 15 và trích dẫn trang 16-17.",
+      "expected_article": "Điều 15",
+      "expected_pages": [16, 17],
+      "keyword_groups": [["nghỉ học tạm thời"], ["nhu cầu cá nhân"], ["điều kiện", "thời gian"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E07",
+      "category": "classification",
+      "input": "Nhà trường xếp hạng năm đào tạo của sinh viên dựa trên tiêu chí nào?",
+      "expected_behavior": "Trả lời đúng Điều 16 về xếp hạng năm đào tạo, citation trang 17-18.",
+      "expected_article": "Điều 16",
+      "expected_pages": [17, 18],
+      "keyword_groups": [["xếp hạng"], ["năm đào tạo"], ["tín chỉ", "khối lượng"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E08",
+      "category": "academic_warning",
+      "input": "Điều kiện bị cảnh báo kết quả học tập tại VinUni là gì?",
+      "expected_behavior": "Nêu các ngưỡng GPA/học kỳ theo Điều 17, không bỏ sót khác biệt theo năm học, citation trang 18-19.",
+      "expected_article": "Điều 17",
+      "expected_pages": [18, 19],
+      "keyword_groups": [["cảnh báo"], ["điểm trung bình", "GPA"], ["1.20", "1,20"], ["0.80", "0,80"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E09",
+      "category": "academic_warning",
+      "input": "Bị cảnh báo học tập hai lần liên tiếp thì sinh viên sẽ chịu hậu quả gì?",
+      "expected_behavior": "Nêu tình trạng quản chế học tập theo Điều 17 và yêu cầu liên quan, citation trang 19.",
+      "expected_article": "Điều 17",
+      "expected_pages": [19],
+      "keyword_groups": [["hai lần", "2 lần"], ["quản chế"], ["cố vấn", "đăng ký"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E10",
+      "category": "dismissal",
+      "input": "Trong trường hợp nào sinh viên có thể bị buộc thôi học vì kết quả học tập?",
+      "expected_behavior": "Nêu điều kiện buộc thôi học theo Điều 17, gồm cách tính lần cảnh báo/quản chế nếu có, citation trang 18-19.",
+      "expected_article": "Điều 17",
+      "expected_pages": [18, 19],
+      "keyword_groups": [["buộc thôi học"], ["ba lần", "3 lần"], ["cảnh báo", "quản chế"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E11",
+      "category": "dual_program",
+      "input": "Sinh viên muốn học cùng lúc hai chương trình cần đáp ứng điều kiện gì?",
+      "expected_behavior": "Trả lời theo Điều 19, nêu điều kiện và giới hạn áp dụng, citation trang 20-21.",
+      "expected_article": "Điều 19",
+      "expected_pages": [20, 21],
+      "keyword_groups": [["hai chương trình"], ["điều kiện"], ["học lực", "điểm trung bình"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E12",
+      "category": "transfer",
+      "input": "Điều kiện để sinh viên chuyển trường hoặc chuyển chương trình học là gì?",
+      "expected_behavior": "Trả lời theo Điều 20 và citation trang 21-23.",
+      "expected_article": "Điều 20",
+      "expected_pages": [21, 22, 23],
+      "keyword_groups": [["chuyển trường", "chuyển chương trình"], ["điều kiện"], ["công nhận", "tín chỉ"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E13",
+      "category": "assessment",
+      "input": "Một học phần được đánh giá bằng những hình thức nào?",
+      "expected_behavior": "Tóm tắt hình thức đánh giá học phần theo Điều 21, citation trang 23-25.",
+      "expected_article": "Điều 21",
+      "expected_pages": [23, 24, 25],
+      "keyword_groups": [["đánh giá"], ["học phần"], ["điểm", "thi", "bài tập"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E14",
+      "category": "exam",
+      "input": "Lịch thi kết thúc học phần phải được thông báo cho sinh viên như thế nào?",
+      "expected_behavior": "Trả lời theo Điều 22 về hình thức/lịch thi, citation trang 25-26.",
+      "expected_article": "Điều 22",
+      "expected_pages": [25, 26],
+      "keyword_groups": [["lịch thi"], ["thông báo"], ["kết thúc học phần"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E15",
+      "category": "exam",
+      "input": "Sinh viên được dự thi kết thúc học phần bao nhiêu lần?",
+      "expected_behavior": "Trả lời số lần dự thi theo Điều 23, citation trang 26-27.",
+      "expected_article": "Điều 23",
+      "expected_pages": [26, 27],
+      "keyword_groups": [["dự thi"], ["lần"], ["kết thúc học phần"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E16",
+      "category": "grading",
+      "input": "Hệ thống điểm chữ và điểm số của VinUni được quy định ra sao?",
+      "expected_behavior": "Trình bày hệ thống điểm theo Điều 25, citation trang 27-30.",
+      "expected_article": "Điều 25",
+      "expected_pages": [27, 28, 29, 30],
+      "keyword_groups": [["điểm chữ"], ["điểm số", "thang điểm"], ["A", "B"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E17",
+      "category": "appeal",
+      "input": "Sinh viên muốn phúc tra điểm thì thực hiện theo quy định nào?",
+      "expected_behavior": "Nêu quy trình hoặc nguyên tắc phúc tra theo Điều 27, citation trang 31.",
+      "expected_article": "Điều 27",
+      "expected_pages": [31],
+      "keyword_groups": [["phúc tra"], ["điểm"], ["đề nghị", "đơn", "thời hạn"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E18",
+      "category": "graduation",
+      "input": "Điều kiện để được công nhận tốt nghiệp là gì?",
+      "expected_behavior": "Nêu điều kiện công nhận tốt nghiệp theo Điều 28, citation trang 32.",
+      "expected_article": "Điều 28",
+      "expected_pages": [32],
+      "keyword_groups": [["công nhận tốt nghiệp"], ["điều kiện"], ["tín chỉ", "chương trình"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E19",
+      "category": "graduation",
+      "input": "Bằng tốt nghiệp được phân loại như thế nào và khi nào bị hạ một mức?",
+      "expected_behavior": "Trả lời theo Điều 29, gồm phân loại và trường hợp hạ hạng nếu tài liệu quy định, citation trang 32-34.",
+      "expected_article": "Điều 29",
+      "expected_pages": [32, 33, 34],
+      "keyword_groups": [["phân loại"], ["tốt nghiệp"], ["hạ", "giảm"], ["kỷ luật", "học lại"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "E20",
+      "category": "out_of_scope",
+      "input": "Hôm nay căng tin VinUni bán món gì và giá bao nhiêu?",
+      "expected_behavior": "Từ chối trả lời hoặc nói không đủ căn cứ vì tài liệu chỉ là quy chế đào tạo; không tạo citation giả.",
+      "expected_article": "",
+      "expected_pages": [],
+      "keyword_groups": [["không đủ", "không có", "chưa tìm thấy", "ngoài phạm vi"]],
+      "expect_evidence": false
+    }
+  ]
+}

@@ -1,3 +1,9 @@
 .DS_Store
 node_modules/
 *.env
+data/vinuni-policies/
+.firecrawl/
+__pycache__/
+*.pyc
+data/policy-index/
+frontend/dist/

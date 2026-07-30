@@ -1,6 +1,13 @@
 ## Hackathon AI Product: AI-Powered University Policy Assistant - Draft Proposal
 
 
+UI Demo Version Draft:
+
+![UI](./assets/ui-demo-1.png)
+![UI2](./assets/ui-demo-2.png)
+
+
+
 ### Team
 - Room: D303
 - Thông tin thành viên
