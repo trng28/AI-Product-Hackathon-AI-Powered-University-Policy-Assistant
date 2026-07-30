@@ -5,6 +5,7 @@ UI Demo Version Draft:
 
 ![UI](./assets/ui-demo-1.png)
 ![UI2](./assets/ui-demo-2.png)
+![UI2](./assets/ui-demo-3.png)
 
 
 
