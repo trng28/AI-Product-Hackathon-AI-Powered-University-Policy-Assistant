@@ -1,6 +1,6 @@
 {
   "name": "VinUni Academic Policy MVP Eval",
-  "version": "1.0",
+  "version": "1.1",
   "total_questions": 20,
   "description": "Bộ câu hỏi do nhóm tự thiết kế để kiểm thử trợ lý trên Quy chế đào tạo đại học hệ chính quy theo hệ thống tín chỉ VU_HT03.VN.",
   "questions": [
@@ -8,10 +8,10 @@
       "id": "E01",
       "category": "course_registration",
       "input": "Sinh viên chính quy phải đăng ký tối thiểu bao nhiêu tín chỉ trong một học kỳ thông thường?",
-      "expected_behavior": "Nêu mức tối thiểu theo Điều 11, có citation trang 13-14; không tự đặt con số ngoài tài liệu.",
+      "expected_behavior": "Nêu mức tối thiểu 14 tín chỉ; 10 tín chỉ với sinh viên đang bị xếp hạng học lực yếu, theo Điều 11 và citation trang 13-14.",
       "expected_article": "Điều 11",
       "expected_pages": [13, 14],
-      "keyword_groups": [["80%"], ["12 tín chỉ", "12"], ["học kỳ"]],
+      "keyword_groups": [["14 tín chỉ", "14"], ["10 tín chỉ", "10"], ["học kỳ"]],
       "expect_evidence": true
     },
     {

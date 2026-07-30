@@ -1,0 +1,1065 @@
+{
+  "dataset": "VinUni Academic Policy MVP Eval",
+  "dataset_version": "1.0",
+  "run_at": "2026-07-30T08:57:11.753442+00:00",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "summary": {
+    "total": 20,
+    "completed": 20,
+    "passed": 17,
+    "pass_rate": 0.85,
+    "average_score": 0.94,
+    "citation_accuracy": 0.9,
+    "evidence_accuracy": 1,
+    "average_latency_seconds": 10.87865
+  },
+  "results": [
+    {
+      "id": "E01",
+      "category": "course_registration",
+      "input": "Sinh viên chính quy phải đăng ký tối thiểu bao nhiêu tín chỉ trong một học kỳ thông thường?",
+      "expected_behavior": "Nêu mức tối thiểu theo Điều 11, có citation trang 13-14; không tự đặt con số ngoài tài liệu.",
+      "output": {
+        "answer": "Sinh viên chính quy phải đăng ký tối thiểu 14 tín chỉ trong một học kỳ thông thường, áp dụng cho sinh viên năm đầu hoặc những sinh viên có kết quả kỳ trước đạt học lực khá trở lên. Đối với những sinh viên đang trong thời gian bị xếp hạng học lực yếu, mức tối thiểu là 10 tín chỉ.",
+        "citations": [
+          {
+            "chunk_id": "d4b129f399d7",
+            "article": "Điều 11. Khối lượng học tập",
+            "clause": "",
+            "page": 13,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Ít nhất 14 tín chỉ cho mỗi học kỳ (áp dụng cho sinh viên năm đầu hoặc những sinh viên có kết quả kỳ trước đạt học lực khá trở lên; không áp dụng cho học kỳ cuối khóa học)."
+          },
+          {
+            "chunk_id": "d4b129f399d7",
+            "article": "Điều 11. Khối lượng học tập",
+            "clause": "",
+            "page": 13,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Ít nhất 10 tín chỉ cho mỗi học kỳ, áp dụng đối với những sinh viên đang trong thời gian bị xếp hạng học lực yếu."
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "tín chỉ học kỳ",
+          "keywords": [
+            "sinh viên chính quy",
+            "đăng ký tín chỉ",
+            "học kỳ"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Sinh viên chính quy cần đăng ký tối thiểu bao nhiêu tín chỉ trong một học kỳ?"
+        }
+      },
+      "grading": {
+        "keyword_score": 0.333,
+        "keyword_group_hits": [
+          false,
+          false,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 0.7,
+        "passed": false
+      },
+      "latency_seconds": 11.362
+    },
+    {
+      "id": "E02",
+      "category": "course_registration",
+      "input": "Em muốn đăng ký học phần thì cần đáp ứng những điều kiện nào?",
+      "expected_behavior": "Tóm tắt điều kiện đăng ký học phần theo Điều 10 và trích dẫn trang 13.",
+      "output": {
+        "answer": "Để đăng ký học phần, sinh viên cần đáp ứng các điều kiện sau:\n\n1. **Đăng ký theo lịch học**: Sinh viên phải đăng ký các học phần sẽ học trong một học kỳ với Phòng Quản lý Đào tạo, dựa trên khả năng học tập và các điều kiện tiên quyết của khóa học (chunk_id: 0469272ba201).\n\n2. **Điều kiện tiên quyết**: Việc đăng ký các học phần phải đảm bảo các điều kiện tiên quyết của từng học phần và trình tự học tập của chương trình (chunk_id: 0469272ba201).\n\n3. **Chấp thuận của Giám đốc chương trình**: Đăng ký học phần chỉ được chấp nhận nếu có sự đồng ý của Giám đốc chương trình hoặc tuân thủ các quy định hiện hành của Trường (chunk_id: 0469272ba201).\n\n4. **Trách nhiệm học tập**: Sinh viên phải chịu trách nhiệm cho việc học tại Trường và hiểu các yêu cầu của chương trình để lên kế hoạch hoàn thành chương trình đào tạo trong thời gian cho phép (chunk_id: 0469272ba201).\n\n5. **Quản chế học tập**: Nếu sinh viên đang bị quản chế học tập, họ cần có sự chấp thuận của cố vấn học tập để đăng ký học phần (chunk_id: 6ad5ac5562c5).\n\n6. **Khối lượng học tập**: Sinh viên phải đề xuất xin đăng ký khối lượng học vượt ngưỡng nếu muốn học nhiều hơn số tín chỉ quy định (chunk_id: 0469272ba201).",
+        "citations": [
+          {
+            "chunk_id": "0469272ba201",
+            "article": "Điều 10. Đăng ký h ọc phần",
+            "clause": "",
+            "page": 13,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 10. Đăng ký học phần"
+          },
+          {
+            "chunk_id": "6ad5ac5562c5",
+            "article": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học",
+            "clause": "",
+            "page": 19,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học"
+          },
+          {
+            "chunk_id": "0469272ba201",
+            "article": "Điều 10. Đăng ký h ọc phần",
+            "clause": "",
+            "page": 13,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 10. Đăng ký học phần"
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "đăng ký học phần",
+          "keywords": [
+            "đăng ký học phần",
+            "điều kiện",
+            "quy chế đại học"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Điều kiện để đăng ký học phần trong quy chế đại học là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 12.538
+    },
+    {
+      "id": "E03",
+      "category": "add_drop",
+      "input": "Khi nào sinh viên được bổ sung hoặc bỏ bớt học phần đã đăng ký?",
+      "expected_behavior": "Trả lời theo Điều 12 về add/drop và dẫn trang 14-15.",
+      "output": {
+        "answer": "Sinh viên được phép bổ sung hoặc bỏ bớt học phần đã đăng ký trong các khoảng thời gian sau:\n\n1. **Bổ sung học phần**: Trong vòng 10 ngày học đầu tiên của học kỳ thông thường và trong vòng 5 ngày học đầu tiên của học kỳ phụ (kỳ học mùa Thu A/B hoặc kỳ học mùa Xuân A/B) (chunk_id: ec4b84d3b9cd).\n\n2. **Bỏ bớt học phần**: Sinh viên có thể rút bớt học phần trong khối lượng học tập đã đăng ký trong thời hạn được công bố trong lịch học của học kỳ đó, với hạn cuối là ngày học thứ 15 của học kỳ chính hoặc ngày học thứ 10 của các học kỳ Hè. Những thay đổi trong giai đoạn này sẽ không được ghi vào hồ sơ học tập của sinh viên (chunk_id: ec4b84d3b9cd).",
+        "citations": [
+          {
+            "chunk_id": "ec4b84d3b9cd",
+            "article": "Điều 12. Bổ sung/bỏ bớt và rút bớt học phần đã đăng ký",
+            "clause": "",
+            "page": 14,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 12. Bổ sung/bỏ bớt và rút bớt học phần đã đăng ký, trang 14"
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "học phần",
+          "keywords": [
+            "bổ sung",
+            "bỏ bớt",
+            "học phần",
+            "đăng ký"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Khi nào sinh viên có thể bổ sung hoặc bỏ bớt học phần đã đăng ký?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 9.351
+    },
+    {
+      "id": "E04",
+      "category": "credit_transfer",
+      "input": "Quy định về chuyển đổi tín chỉ và miễn trừ học phần như thế nào?",
+      "expected_behavior": "Nêu nguyên tắc chuyển đổi tín chỉ/miễn trừ theo Điều 13, citation trang 15-16.",
+      "output": {
+        "answer": "Quy định về chuyển đổi tín chỉ và miễn trừ học phần tại VinUni được quy định như sau:\n\n1. **Chuyển đổi tín chỉ**: \n   - Sinh viên đã hoàn thành việc học tại một trường đại học khác không phải VinUni ở trình độ tương đương có thể xin chuyển đổi tín chỉ. Việc này áp dụng cho các chương trình như trao đổi quốc tế, trao đổi trong nước, hoặc du học hè (chunk_id: [afac3a3103a5]).\n   - Tín chỉ chuyển đổi sẽ không được tính vào điểm trung bình chung, trừ khi có thỏa thuận từ trước. Chúng sẽ được thể hiện dưới dạng “T-Chuyển đổi” trong bảng điểm (chunk_id: [afac3a3103a5]).\n   - Số tín chỉ tối đa có thể chuyển đổi không được vượt quá 50% khối lượng học tập tối thiểu của chương trình đào tạo (chunk_id: [afac3a3103a5]).\n\n2. **Miễn trừ học phần**: \n   - Sinh viên có thể được miễn học phần dựa trên việc học ở trình độ tương ứng tại trường khác mà không cần chuyển đổi tín chỉ. Nếu học phần được miễn là điều kiện tiên quyết của học phần khác, sinh viên sẽ được coi là đáp ứng yêu cầu đó (chunk_id: [bcaedd714e74]).\n   - Việc miễn trừ các môn Giáo dục quốc phòng và Giáo dục thể chất phải tuân theo quy định của Bộ Giáo dục và Đào tạo (chunk_id: [bcaedd714e74]).\n\n3. **Quy trình gửi yêu cầu**: \n   - Sinh viên có thể nộp đơn xin chuyển đổi tín chỉ hoặc miễn học phần trước khi nhập học hoặc trong quá trình đăng ký nhập học. Đơn yêu cầu phải được gửi đến Phòng Quản lý Đào tạo (chunk_id: [10e641601c7c]).",
+        "citations": [
+          {
+            "chunk_id": "bcaedd714e74",
+            "article": "Điều 13. Chuyển đổi tín chỉ và miễn trừ học phần",
+            "clause": "Khoản 2",
+            "page": 15,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Miễn trừ học phần căn cứ vào việc học ở trình độ tương ứng tại trường khác."
+          },
+          {
+            "chunk_id": "afac3a3103a5",
+            "article": "Điều 13. Chuyển đổi tín chỉ và miễn trừ học phần",
+            "clause": "Khoản 1",
+            "page": 15,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Sinh viên có thể xin chuyển đổi tín chỉ nếu đã hoàn thành việc học tại trường khác."
+          },
+          {
+            "chunk_id": "10e641601c7c",
+            "article": "Điều 13. Chuyển đổi tín chỉ và miễn trừ học phần",
+            "clause": "",
+            "page": 16,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Quy trình gửi yêu cầu chuyển đổi tín chỉ hoặc miễn học phần."
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "chuyển đổi tín chỉ và miễn trừ học phần",
+          "keywords": [
+            "chuyển đổi tín chỉ",
+            "miễn trừ học phần",
+            "quy định đại học"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Quy định về chuyển đổi tín chỉ và miễn trừ học phần trong đại học là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 12.599
+    },
+    {
+      "id": "E05",
+      "category": "retake",
+      "input": "Sinh viên có được đăng ký học lại hoặc học cải thiện không?",
+      "expected_behavior": "Trả lời theo Điều 14, phân biệt học lại/học cải thiện nếu tài liệu có nêu, citation trang 16.",
+      "output": {
+        "answer": "Có, sinh viên được phép đăng ký học lại hoặc học cải thiện theo quy định tại Điều 14 của quy chế đào tạo. Cụ thể, sinh viên có học phần bắt buộc bị điểm F sẽ phải học lại học phần đó hoặc tham gia một học phần tương đương. Đối với học phần tự chọn, nếu trượt, sinh viên cũng phải học lại hoặc tham gia một học phần tự chọn tương đương. Ngoài ra, sinh viên có quyền đăng ký học lại để cải thiện điểm trung bình tích lũy, nhưng chỉ được học lại không quá 2 lần cho mỗi học phần.",
+        "citations": [
+          {
+            "chunk_id": "8d56851fe5cf",
+            "article": "Điều 14. Đăng ký học lại / học cải thiện",
+            "clause": "",
+            "page": 16,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 14. Đăng ký học lại / học cải thiện, trang 16"
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "procedure",
+          "topic": "đăng ký học lại hoặc học cải thiện",
+          "keywords": [
+            "sinh viên",
+            "đăng ký",
+            "học lại",
+            "học cải thiện"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Sinh viên có quyền đăng ký học lại hoặc học cải thiện không?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 4.741
+    },
+    {
+      "id": "E06",
+      "category": "leave",
+      "input": "Điều kiện để xin nghỉ học tạm thời vì nhu cầu cá nhân là gì?",
+      "expected_behavior": "Nêu điều kiện nghỉ học tạm thời theo Điều 15 và trích dẫn trang 16-17.",
+      "output": {
+        "answer": "Để xin nghỉ học tạm thời vì nhu cầu cá nhân, sinh viên cần đáp ứng các điều kiện sau:\n\n1. **Thời gian học**: Sinh viên phải học ít nhất một học kỳ tại trường trước khi xin nghỉ tạm thời (chunk_id: [e94b09784887]).\n2. **Đơn xin**: Sinh viên cần chuẩn bị đơn xin nghỉ học tạm thời và các giấy tờ minh chứng cần thiết, đồng thời được sự cho phép của cố vấn học tập (chunk_id: [3e514879806a]).\n3. **Thời gian hiệu lực**: Đơn xin nghỉ học tạm thời sẽ có hiệu lực từ ngày nộp đơn hoặc từ ngày cuối cùng của học kỳ đang học, tùy thuộc vào thời điểm nộp đơn (chunk_id: [3e514879806a]).\n4. **Lý do**: Lý do nghỉ học có thể bao gồm các vấn đề cá nhân hoặc gia cảnh khó khăn (chunk_id: [e94b09784887]).\n5. **Quy trình trở lại học**: Nếu sinh viên muốn trở lại học sau thời gian nghỉ, cần nộp đơn ít nhất một tháng trước khi bắt đầu học kỳ mới và kèm theo tài liệu giải trình các hoạt động đã diễn ra trong thời gian nghỉ (chunk_id: [3e514879806a]).",
+        "citations": [
+          {
+            "chunk_id": "e94b09784887",
+            "article": "Điều 15. Nghỉ học tạm thời hoặc nghỉ ốm",
+            "clause": "",
+            "page": 16,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Sinh viên được xin nghỉ học tạm thời và bảo lưu kết quả học tập trong các trường hợp cá nhân hoặc gia cảnh khó khăn."
+          },
+          {
+            "chunk_id": "3e514879806a",
+            "article": "Điều 15 của Quy chế này . Thời gian nghỉ học tạm thời vì nhu cầu cá nhân phải được",
+            "clause": "",
+            "page": 17,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Đơn xin nghỉ học tạm thời phải được sự cho phép của cố vấn học tập."
+          },
+          {
+            "chunk_id": "3e514879806a",
+            "article": "Điều 15 của Quy chế này . Thời gian nghỉ học tạm thời vì nhu cầu cá nhân phải được",
+            "clause": "",
+            "page": 17,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Thời gian nghỉ học tạm thời sẽ có hiệu lực từ ngày nộp đơn."
+          },
+          {
+            "chunk_id": "3e514879806a",
+            "article": "Điều 15 của Quy chế này . Thời gian nghỉ học tạm thời vì nhu cầu cá nhân phải được",
+            "clause": "",
+            "page": 17,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Sinh viên phải học ít nhất một học kỳ ở trường trước khi xin nghỉ."
+          },
+          {
+            "chunk_id": "3e514879806a",
+            "article": "Điều 15 của Quy chế này . Thời gian nghỉ học tạm thời vì nhu cầu cá nhân phải được",
+            "clause": "",
+            "page": 17,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Nếu muốn trở lại học, sinh viên phải nộp đơn ít nhất một tháng trước khi bắt đầu học kỳ mới."
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "nghỉ học tạm thời",
+          "keywords": [
+            "điều kiện",
+            "xin nghỉ học",
+            "tạm thời",
+            "nhu cầu cá nhân"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Điều kiện để xin nghỉ học tạm thời vì nhu cầu cá nhân là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 11.636
+    },
+    {
+      "id": "E07",
+      "category": "classification",
+      "input": "Nhà trường xếp hạng năm đào tạo của sinh viên dựa trên tiêu chí nào?",
+      "expected_behavior": "Trả lời đúng Điều 16 về xếp hạng năm đào tạo, citation trang 17-18.",
+      "output": {
+        "answer": "Nhà trường xếp hạng năm đào tạo của sinh viên dựa trên số tín chỉ tích lũy. Cụ thể, sinh viên được phân loại theo năm đào tạo dựa trên khối lượng kiến thức tích lũy như sau:\n- Sinh viên năm thứ nhất: Dưới 30 tín chỉ\n- Sinh viên năm thứ hai: Từ 30 tín chỉ đến dưới 59 tín chỉ\n- Sinh viên năm thứ ba: Từ 60 tín chỉ đến dưới 89 tín chỉ\n- Sinh viên năm thứ tư: Từ 90 tín chỉ trở lên (đối với Viện Kinh doanh và Quản trị, Viện Kỹ thuật và Khoa học Máy tính, Viện Giáo dục Khai phóng) và các tiêu chí tương tự cho Viện Khoa học Sức khỏe với số tín chỉ khác nhau.",
+        "citations": [
+          {
+            "chunk_id": "21c37943397d",
+            "article": "Điều 16. Xếp hạng năm đào tạo và xếp hạng học lực",
+            "clause": "",
+            "page": 17,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 16. Xếp hạng năm đào tạo và xếp hạng học lực, trang 17."
+          },
+          {
+            "chunk_id": "c7a7a9540626",
+            "article": "Điều 16. Xếp hạng năm đào tạo và xếp hạng học lực",
+            "clause": "",
+            "page": 18,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 16. Xếp hạng năm đào tạo và xếp hạng học lực, trang 18."
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "xếp hạng sinh viên",
+          "keywords": [
+            "xếp hạng",
+            "tiêu chí",
+            "năm đào tạo",
+            "sinh viên"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Nhà trường xếp hạng năm đào tạo của sinh viên dựa trên tiêu chí nào?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 11.637
+    },
+    {
+      "id": "E08",
+      "category": "academic_warning",
+      "input": "Điều kiện bị cảnh báo kết quả học tập tại VinUni là gì?",
+      "expected_behavior": "Nêu các ngưỡng GPA/học kỳ theo Điều 17, không bỏ sót khác biệt theo năm học, citation trang 18-19.",
+      "output": {
+        "answer": "Điều kiện bị cảnh báo kết quả học tập tại VinUni được quy định như sau:\n\n1. **Cảnh báo học tập**: \n   - Điểm trung bình tích lũy dưới 1,20 đối với sinh viên năm nhất; dưới 1,40 đối với sinh viên năm thứ 2; dưới 1,60 đối với sinh viên năm thứ 3; hoặc dưới 1,80 đối với sinh viên các năm tiếp theo và cuối khóa.\n   - Điểm trung bình học kỳ dưới 0,80 đối với học kỳ đầu của khóa học, dưới 1,00 đối với các học kỳ tiếp theo.\n   - Tổng số tín chỉ không đạt trong học kỳ vượt quá 50% khối lượng đã đăng ký học trong học kỳ hoặc tổng số tín chỉ nợ đọng từ đầu khóa học vượt quá 24.\n\n2. **Quản chế học tập**: Sinh viên bị cảnh báo học tập hai lần liên tiếp sẽ bị quản chế học tập và cần có sự chấp thuận của cố vấn học tập để đăng ký học phần.\n\n3. **Buộc thôi học**: \n   - Thời gian học vượt quá thời gian tối đa được phép học tại trường.\n   - Sinh viên có tổng 3 lần bị cảnh báo học tập (một lần quản chế học tập được coi là hai lần bị cảnh báo học tập).\n\nCác quy định này được nêu rõ trong tài liệu quy chế đào tạo của VinUni (chunk_id: [92739cfe877b], trang 18-19).",
+        "citations": [
+          {
+            "chunk_id": "92739cfe877b",
+            "article": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học",
+            "clause": "",
+            "page": 18,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học, trang 18-19"
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "cảnh báo kết quả học tập",
+          "keywords": [
+            "cảnh báo",
+            "kết quả học tập",
+            "VinUni",
+            "điều kiện"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Điều kiện để bị cảnh báo kết quả học tập tại VinUni là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 16.567
+    },
+    {
+      "id": "E09",
+      "category": "academic_warning",
+      "input": "Bị cảnh báo học tập hai lần liên tiếp thì sinh viên sẽ chịu hậu quả gì?",
+      "expected_behavior": "Nêu tình trạng quản chế học tập theo Điều 17 và yêu cầu liên quan, citation trang 19.",
+      "output": {
+        "answer": "Khi sinh viên bị cảnh báo học tập hai lần liên tiếp, họ sẽ bị quản chế học tập. Trong thời gian này, sinh viên cần có sự chấp thuận của cố vấn học tập để đăng ký học phần. Họ sẽ tiếp tục bị quản chế cho đến khi đạt được điểm trung bình tích lũy tối thiểu là 1.40/4.0 đối với năm thứ hai, 1.60/4.0 đối với năm thứ ba, hoặc 1.80/4.0 đối với các năm học tiếp theo. Nếu sinh viên có tổng cộng ba lần bị cảnh báo học tập, họ có thể bị buộc thôi học từ một kỳ trở lên. Quyết định thôi học sẽ được báo cáo cho Viện trưởng và quyết định cuối cùng thuộc về Hiệu trưởng.",
+        "citations": [
+          {
+            "chunk_id": "6ad5ac5562c5",
+            "article": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học",
+            "clause": "",
+            "page": 19,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Sinh viên bị cảnh cáo học tập hai lần liên tiếp sẽ bị quản chế học tập."
+          },
+          {
+            "chunk_id": "92739cfe877b",
+            "article": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học",
+            "clause": "",
+            "page": 18,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Sinh viên có tổng 3 lần bị cảnh báo học tập có thể bị thôi học."
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "học tập",
+          "keywords": [
+            "cảnh báo học tập",
+            "hậu quả",
+            "sinh viên"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Hậu quả của việc bị cảnh báo học tập hai lần liên tiếp đối với sinh viên là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 7.992
+    },
+    {
+      "id": "E10",
+      "category": "dismissal",
+      "input": "Trong trường hợp nào sinh viên có thể bị buộc thôi học vì kết quả học tập?",
+      "expected_behavior": "Nêu điều kiện buộc thôi học theo Điều 17, gồm cách tính lần cảnh báo/quản chế nếu có, citation trang 18-19.",
+      "output": {
+        "answer": "Sinh viên có thể bị buộc thôi học trong các trường hợp sau:\n1. **Thời gian học vượt quá thời gian tối đa được phép học tại Trường**.\n2. **Có tổng 3 lần bị cảnh báo học tập** (trong đó một lần quản chế học tập được coi là hai lần cảnh báo học tập).\n\nCụ thể, nếu sinh viên không đủ điều kiện đăng ký học cho kỳ học sắp tới, họ có thể bị thôi học từ một kỳ trở lên. Quyết định thôi học sẽ được báo cáo cho Viện trưởng và sinh viên có quyền bảo lưu kết quả học tập đã tích lũy khi thuộc diện buộc thôi học (chunk_id: [6ad5ac5562c5]).",
+        "citations": [
+          {
+            "chunk_id": "6ad5ac5562c5",
+            "article": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học",
+            "clause": "",
+            "page": 19,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 17. Cảnh báo kết quả học tập, buộc thôi học, trang 19."
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "quy chế đại học",
+          "keywords": [
+            "buộc thôi học",
+            "kết quả học tập",
+            "quy chế",
+            "sinh viên"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Trong trường hợp nào sinh viên có thể bị buộc thôi học do kết quả học tập không đạt yêu cầu?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 18.379
+    },
+    {
+      "id": "E11",
+      "category": "dual_program",
+      "input": "Sinh viên muốn học cùng lúc hai chương trình cần đáp ứng điều kiện gì?",
+      "expected_behavior": "Trả lời theo Điều 19, nêu điều kiện và giới hạn áp dụng, citation trang 20-21.",
+      "output": {
+        "answer": "Để học cùng lúc hai chương trình, sinh viên cần đáp ứng các điều kiện sau:\n\n1. Ngành đào tạo chính ở chương trình thứ hai phải khác với ngành đào tạo chính ở chương trình thứ nhất.\n2. Sinh viên phải được xếp trình độ năm thứ hai của chương trình thứ nhất.\n3. Tại thời điểm đăng ký, sinh viên phải có:\n   - Học lực tính theo điểm trung bình tích lũy (CGPA) từ 2.5 trở lên.\n   - Đáp ứng tiêu chí xét đầu vào của chương trình thứ hai trong năm tuyển sinh.\n   - Không đang trong thời gian bị kỷ luật tương đương mức cảnh cáo trở lên.\n4. Sinh viên cần đăng ký chương trình thứ hai tối thiểu 2 năm trước thời hạn dự kiến tốt nghiệp của chương trình thứ hai.\n5. Nếu trong quá trình học, điểm trung bình tích lũy của chương trình thứ nhất đạt dưới mức trung bình hoặc thuộc diện cảnh báo kết quả học tập, sinh viên phải dừng học chương trình thứ hai ở học kỳ tiếp theo.",
+        "citations": [
+          {
+            "chunk_id": "558c99b52303",
+            "article": "Điều 19. Học cùng lúc hai chương trình",
+            "clause": "Khoản 2",
+            "page": 20,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 19. Học cùng lúc hai chương trình, Khoản 2, trang 20"
+          },
+          {
+            "chunk_id": "e02bb7231f22",
+            "article": "Điều 19. Học cùng lúc hai chương trình",
+            "clause": "Khoản 3",
+            "page": 20,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 19. Học cùng lúc hai chương trình, Khoản 3, trang 20"
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "học cùng lúc hai chương trình",
+          "keywords": [
+            "sinh viên",
+            "học hai chương trình",
+            "điều kiện"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Điều kiện để sinh viên học cùng lúc hai chương trình là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 8.579
+    },
+    {
+      "id": "E12",
+      "category": "transfer",
+      "input": "Điều kiện để sinh viên chuyển trường hoặc chuyển chương trình học là gì?",
+      "expected_behavior": "Trả lời theo Điều 20 và citation trang 21-23.",
+      "output": {
+        "answer": "Điều kiện để sinh viên chuyển trường hoặc chuyển chương trình học tại VinUni được quy định như sau:\n\n### Chuyển trường:\n1. **Điều kiện cho phép chuyển trường:**\n   - Sinh viên chuyển sang trường đại học khác cung cấp ngành hoặc nhóm ngành giống như cơ sở đào tạo trước đó.\n   - Việc chuyển trường phải được Hiệu trưởng của VinUni và Hiệu trưởng trường chuyển đến chấp thuận.\n   - Sinh viên không thuộc các trường hợp bị cấm chuyển trường.\n\n2. **Trường hợp không được phép chuyển trường:**\n   - Không đáp ứng điều kiện trúng tuyển của ngành học hoặc chương trình đào tạo tại trường xin chuyển đến.\n   - Là sinh viên năm thứ nhất hoặc năm cuối khóa.\n   - Đang trong thời gian bị kỷ luật từ cảnh cáo trở lên.\n\n3. **Thủ tục chuyển trường:**\n   - Sinh viên phải làm hồ sơ xin chuyển trường theo quy định và được Phòng Quản lý Đào tạo tham vấn trước khi gửi đề nghị cho Hiệu trưởng quyết định (chunk_id: [6ff2f982f221]).\n\n### Chuyển đổi chương trình học:\n1. **Điều kiện để chuyển đổi chương trình học:**\n   - Sinh viên phải đáp ứng yêu cầu nhập học và đủ điều kiện để nhập học vào chương trình/chuyên ngành mới.\n   - Không phải là sinh viên năm thứ nhất hoặc năm cuối.\n   - Không thuộc diện xem xét đình chỉ học tập.\n   - Chỉ được phép thay đổi chương trình một lần trong năm học và sẽ có hiệu lực từ đầu học kỳ tiếp theo (chunk_id: [475cfa161b7c]).",
+        "citations": [
+          {
+            "chunk_id": "6ff2f982f221",
+            "article": "Điều 20. Chuyển đổi chương trình h ọc và Chuyển trường",
+            "clause": "",
+            "page": 22,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều kiện chuyển trường và thủ tục chuyển trường."
+          },
+          {
+            "chunk_id": "475cfa161b7c",
+            "article": "Điều 20. Chuyển đổi chương trình h ọc và Chuyển trường",
+            "clause": "",
+            "page": 21,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều kiện chuyển đổi chương trình học."
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "Điều kiện chuyển trường hoặc chuyển chương trình học",
+          "keywords": [
+            "chuyển trường",
+            "chuyển chương trình học",
+            "điều kiện",
+            "sinh viên"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Điều kiện để sinh viên chuyển trường hoặc chuyển chương trình học là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 0.667,
+        "keyword_group_hits": [
+          true,
+          true,
+          false
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 0.85,
+        "passed": true
+      },
+      "latency_seconds": 15.714
+    },
+    {
+      "id": "E13",
+      "category": "assessment",
+      "input": "Một học phần được đánh giá bằng những hình thức nào?",
+      "expected_behavior": "Tóm tắt hình thức đánh giá học phần theo Điều 21, citation trang 23-25.",
+      "output": {
+        "answer": "Một học phần tại VinUni được đánh giá thông qua các hình thức như sau:\n\n1. **Điểm đánh giá bộ phận**: Đây là tổng điểm của tất cả các điểm đánh giá bộ phận của học phần, nhân với trọng số tương ứng. Điểm này được làm tròn và chuyển đổi sang điểm chữ cuối cùng (chunk_id: [43363aa73247]).\n\n2. **Điểm thi kết thúc học phần**: Điểm thi này cũng được xếp theo thang điểm 100 và được làm tròn tương tự như điểm đánh giá bộ phận (chunk_id: [15638790d44e]).\n\n3. **Kế hoạch đánh giá**: Phương pháp, hình thức, nhiệm vụ và tỷ trọng các cấu phần đánh giá phải được quy định trong đề cương chi tiết học phần và cung cấp cho sinh viên trước khi đến lớp. Đánh giá trực tuyến có thể được thực hiện nhưng không quá 50% vào tổng điểm trọng số của học phần (chunk_id: [b9c7bddea293]).\n\n4. **Các học phần đặc biệt**: Kết quả của các học phần như Giáo dục quốc phòng và Giáo dục thể chất không được tính vào điểm trung bình học tập, và quy định về đánh giá cho các học phần này theo quy định của Bộ Giáo dục và Đào tạo (chunk_id: [44b739c9956b]).",
+        "citations": [
+          {
+            "chunk_id": "43363aa73247",
+            "article": "Điều 26. Điểm đánh giá bộ phận, Điểm học phần và cách tính đi ểm trung",
+            "clause": "Khoản 3",
+            "page": 30,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điểm học phần là tổng điểm của tất cả các điểm đánh giá bộ phận của học phần nhân với trọng số tương ứng."
+          },
+          {
+            "chunk_id": "15638790d44e",
+            "article": "Điều 26. Điểm đánh giá bộ phận, Điểm học phần và cách tính đi ểm trung",
+            "clause": "Khoản 1",
+            "page": 30,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điểm đánh giá bộ phận và điểm thi kết thúc học phần được xếp theo thang điểm 100."
+          },
+          {
+            "chunk_id": "b9c7bddea293",
+            "article": "Điều 21. Đánh giá h ọc phần",
+            "clause": "Khoản 2",
+            "page": 23,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Kế hoạch đánh giá (phương pháp, hình thức, nhiệm vụ và tỷ trọng các cấu phần đánh giá) cho một học phần phải được quy định trong đề cương chi tiết học phần."
+          },
+          {
+            "chunk_id": "44b739c9956b",
+            "article": "Điều 26. Điểm đánh giá bộ phận, Điểm học phần và cách tính đi ểm trung",
+            "clause": "",
+            "page": 31,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Kết quả của các học phần như Giáo dục quốc phòng và Giáo dục thể chất không được tính vào điểm trung bình học tập."
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "hình thức đánh giá học phần",
+          "keywords": [
+            "học phần",
+            "đánh giá",
+            "hình thức",
+            "quy chế đại học"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Học phần được đánh giá bằng những hình thức nào trong quy chế đại học?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 8.326
+    },
+    {
+      "id": "E14",
+      "category": "exam",
+      "input": "Lịch thi kết thúc học phần phải được thông báo cho sinh viên như thế nào?",
+      "expected_behavior": "Trả lời theo Điều 22 về hình thức/lịch thi, citation trang 25-26.",
+      "output": {
+        "answer": "Lịch thi kết thúc học phần sẽ được thông báo cho sinh viên thông qua việc sắp xếp của Phòng Quản lý Đào tạo để tránh xung đột về lịch. Sau khi kết thúc học tập không quá 2 tuần, Trường sẽ tổ chức một kỳ thi chính để thi kết thúc học phần. Ngoài ra, Trường có thể tổ chức thêm một kỳ thi phụ cho những sinh viên không tham dự kỳ thi chính hoặc có nhiều hơn hai học phần thi liên tục trong vòng 24 giờ hoặc có học phần bị điểm F ở kỳ thi chính. Thông tin về lịch thi sẽ được phổ biến cho các giảng viên liên quan và sinh viên có trách nhiệm thông báo tình trạng của bản thân nếu có vấn đề về sức khỏe để được hỗ trợ.",
+        "citations": [
+          {
+            "chunk_id": "2a58dcc19750",
+            "article": "Điều 22. Hình thức thi và lịch thi kết thúc học phần",
+            "clause": "",
+            "page": 26,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Lịch thi kết thúc học phần của các môn học có thi cuối kỳ sẽ được Phòng Quản lý Đào tạo sắp xếp để tránh các xung đột về lịch. Sau khi kết thúc học tập không quá 2 tuần, Trường sẽ tổ chức một kỳ thi chính để thi kết thúc học phần."
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "Lịch thi kết thúc học phần",
+          "keywords": [
+            "thông báo",
+            "sinh viên",
+            "lịch thi"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Cách thức thông báo lịch thi kết thúc học phần cho sinh viên."
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 10.008
+    },
+    {
+      "id": "E15",
+      "category": "exam",
+      "input": "Sinh viên được dự thi kết thúc học phần bao nhiêu lần?",
+      "expected_behavior": "Trả lời số lần dự thi theo Điều 23, citation trang 26-27.",
+      "output": {
+        "answer": "Sinh viên được dự thi kết thúc học phần tối đa hai lần. Lần thi đầu tiên là kỳ thi chính, và nếu sinh viên vắng mặt có lý do chính đáng, họ có thể được dự thi một lần ở kỳ thi phụ ngay sau đó. Nếu không có kỳ thi phụ, sinh viên sẽ phải dự thi tại các kỳ thi kết thúc học phần ở các học kỳ sau hoặc học kỳ phụ.",
+        "citations": [
+          {
+            "chunk_id": "b50305939dd4",
+            "article": "Điều 23. Chấm thi và số lần được dự thi kết thúc học phần",
+            "clause": "",
+            "page": 26,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 23. Chấm thi và số lần được dự thi kết thúc học phần, trang 26"
+          },
+          {
+            "chunk_id": "c1514b6446a7",
+            "article": "Điều 23. Chấm thi và số lần được dự thi kết thúc học phần",
+            "clause": "",
+            "page": 27,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Sinh viên vắng mặt có lý do chính đáng ở kỳ thi chính, nếu được Giám đốc Chương trình cho phép, được dự thi ở kỳ thi phụ ngay sau đó."
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "thi kết thúc học phần",
+          "keywords": [
+            "sinh viên",
+            "dự thi",
+            "kết thúc học phần",
+            "số lần"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Sinh viên có thể dự thi kết thúc học phần bao nhiêu lần?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 5.659
+    },
+    {
+      "id": "E16",
+      "category": "grading",
+      "input": "Hệ thống điểm chữ và điểm số của VinUni được quy định ra sao?",
+      "expected_behavior": "Trình bày hệ thống điểm theo Điều 25, citation trang 27-30.",
+      "output": {
+        "answer": "Hệ thống điểm chữ và điểm số của VinUni được quy định như sau:\n\n1. **Điểm học phần**: Là tổng điểm của tất cả các điểm đánh giá bộ phận của học phần nhân với trọng số tương ứng. Điểm học phần sẽ được làm tròn đến một chữ số thập phân và sau đó được chuyển thành điểm chữ. Mức điểm chữ của mỗi học phần phải được quy đổi qua điểm số thang điểm 4. Giảng viên dạy học phần có trách nhiệm chuyển đổi đánh giá định lượng sang điểm chữ cuối cùng. Chính sách chấm điểm cần được mô tả rõ ràng trong đề cương chi tiết môn học (chunk_id: [26]).\n\n2. **Chuyển đổi điểm**: Điểm chữ cuối cùng sẽ được thể hiện trong bảng điểm của sinh viên. Các Viện có thể xây dựng quy trình chấm điểm cụ thể hơn dựa trên hướng dẫn này và do Viện trưởng phê duyệt (chunk_id: [26]).\n\n3. **Liêm chính trong học thuật**: Sinh viên phải tuân theo các quy định liên quan đến điểm số và không vi phạm các quy định này. Mọi hành vi sai trái sẽ bị xử phạt (chunk_id: [5f09eb65ef31]).\n\nTóm lại, hệ thống điểm chữ và điểm số tại VinUni được xây dựng dựa trên việc tính toán điểm học phần và quy đổi sang điểm chữ, đồng thời yêu cầu sinh viên tuân thủ các quy định về liêm chính trong học thuật.",
+        "citations": [
+          {
+            "chunk_id": "5f09eb65ef31",
+            "article": "Điều 29. Phân lo ại tốt nghiệp",
+            "clause": "",
+            "page": 34,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Liêm chính trong học thuật là một phần quan trọng của giáo dục đại học để sinh viên học hỏi, trải nghiệm và áp dụng các tiêu chuẩn đạo đức cao nhất."
+          }
+        ],
+        "confidence": 0.68,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "Hệ thống điểm chữ và điểm số",
+          "keywords": [
+            "VinUni",
+            "điểm chữ",
+            "điểm số",
+            "quy định"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Hệ thống điểm chữ và điểm số của VinUni được quy định như thế nào?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": false,
+        "evidence_ok": true,
+        "score": 0.7,
+        "passed": false
+      },
+      "latency_seconds": 13.907
+    },
+    {
+      "id": "E17",
+      "category": "appeal",
+      "input": "Sinh viên muốn phúc tra điểm thì thực hiện theo quy định nào?",
+      "expected_behavior": "Nêu quy trình hoặc nguyên tắc phúc tra theo Điều 27, citation trang 31.",
+      "output": {
+        "answer": "Sinh viên muốn phúc tra điểm cần thực hiện theo quy định tại Điều 14 của Quy chế Đào tạo, trong đó quy định rằng sinh viên có quyền đăng ký học lại để cải thiện điểm trung bình tích lũy. Tuy nhiên, sinh viên phải tự chịu trách nhiệm nếu phải học lại/học cải thiện và nhà trường không có nghĩa vụ tổ chức các học phần riêng cho các trường hợp này. Nếu sinh viên có học phần bắt buộc bị điểm F, họ sẽ phải học lại học phần đó hoặc tham gia một học phần tương đương theo quy định trong chương trình giảng dạy cho đến khi đạt điểm đạt. Điều này cho thấy rằng việc phúc tra điểm có thể liên quan đến việc học lại các học phần mà sinh viên không đạt yêu cầu.",
+        "citations": [
+          {
+            "chunk_id": "8bdb217bd915",
+            "article": "Điều 28. Công nhận tốt nghiệp",
+            "clause": "",
+            "page": 32,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 14. Đăng ký học lại / học cải thiện, VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf, trang 16."
+          }
+        ],
+        "confidence": 0.9,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "phúc tra điểm",
+          "keywords": [
+            "phúc tra điểm",
+            "quy định",
+            "sinh viên"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Sinh viên cần làm gì để phúc tra điểm theo quy định?"
+        }
+      },
+      "grading": {
+        "keyword_score": 0.667,
+        "keyword_group_hits": [
+          true,
+          true,
+          false
+        ],
+        "citation_ok": false,
+        "evidence_ok": true,
+        "score": 0.55,
+        "passed": false
+      },
+      "latency_seconds": 17.29
+    },
+    {
+      "id": "E18",
+      "category": "graduation",
+      "input": "Điều kiện để được công nhận tốt nghiệp là gì?",
+      "expected_behavior": "Nêu điều kiện công nhận tốt nghiệp theo Điều 28, citation trang 32.",
+      "output": {
+        "answer": "Điều kiện để được công nhận tốt nghiệp tại VinUni bao gồm các yêu cầu sau:\n1. Sinh viên phải đăng ký tốt nghiệp trong học kỳ tốt nghiệp dự kiến theo hướng dẫn của Nhà trường.\n2. Sinh viên đã đăng ký tốt nghiệp nhưng không hoàn thành tất cả các yêu cầu đào tạo vào cuối học kỳ/kỳ tốt nghiệp dự kiến phải đăng ký lại để tốt nghiệp.\n3. Sinh viên phải đáp ứng đủ các điều kiện sau:\n   a) Tích lũy đủ số học phần, khối lượng của chương trình đào tạo trong thời gian quy định.\n   b) Hoàn thành các yêu cầu về Giáo dục đại cương và năng lực tiếng Anh.\n   c) Hoàn thành các yêu cầu đối với chuyên ngành do các Viện đào tạo quy định.\n   d) Hoàn thành các học phần bắt buộc đang bị điểm “I - Chưa hoàn thành” trong bảng điểm.\n   e) Điểm trung bình tích lũy của toàn khóa học đạt tối thiểu từ 2,00/4,00 trở lên.\n   f) Không bị truy cứu trách nhiệm hình sự đến thời điểm xét tốt nghiệp.\n   g) Hoàn thành nghĩa vụ khác theo quy định của Nhà trường.\n4. Căn cứ đề nghị của Hội đồng xét tốt nghiệp, Hiệu trưởng sẽ ký quyết định công nhận tốt nghiệp cho các sinh viên đủ điều kiện.",
+        "citations": [
+          {
+            "chunk_id": "8bdb217bd915",
+            "article": "Điều 28. Công nhận tốt nghiệp",
+            "clause": "",
+            "page": 32,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 28. Công nhận tốt nghiệp, trang 32"
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "Điều kiện tốt nghiệp đại học",
+          "keywords": [
+            "điều kiện tốt nghiệp",
+            "công nhận tốt nghiệp",
+            "quy chế đại học"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Điều kiện để được công nhận tốt nghiệp đại học là gì?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 7.657
+    },
+    {
+      "id": "E19",
+      "category": "graduation",
+      "input": "Bằng tốt nghiệp được phân loại như thế nào và khi nào bị hạ một mức?",
+      "expected_behavior": "Trả lời theo Điều 29, gồm phân loại và trường hợp hạ hạng nếu tài liệu quy định, citation trang 32-34.",
+      "output": {
+        "answer": "Bằng tốt nghiệp được phân loại thành các hạng: Xuất sắc, Giỏi, Khá, và Trung bình, dựa trên điểm trung bình chung tích lũy của toàn khóa học. Cụ thể:\n- Xuất sắc: Từ 3,60 đến 4,00\n- Giỏi: Từ 3,20 đến 3,59\n- Khá: Từ 2,50 đến 3,19\n- Trung bình: Từ 2,00 đến 2,49.\n\nHạng tốt nghiệp của sinh viên có kết quả học tập loại xuất sắc và giỏi sẽ bị giảm đi một mức nếu có khối lượng học phần phải học lại, thi lại vượt quá 5% tổng số tín chỉ, hoặc đã bị kỷ luật từ mức cảnh cáo trở lên trong thời gian học.",
+        "citations": [
+          {
+            "chunk_id": "00bdbfd6e50e",
+            "article": "Điều 29. Phân lo ại tốt nghiệp",
+            "clause": "",
+            "page": 32,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Điều 29. Phân loại tốt nghiệp, trang 32."
+          },
+          {
+            "chunk_id": "00bdbfd6e50e",
+            "article": "Điều 29. Phân lo ại tốt nghiệp",
+            "clause": "",
+            "page": 32,
+            "document": "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf",
+            "support": "Hạng tốt nghiệp sẽ bị giảm đi một mức nếu có khối lượng học phần phải học lại, thi lại vượt quá 5% hoặc đã bị kỷ luật từ mức cảnh cáo trở lên, trang 33."
+          }
+        ],
+        "confidence": 0.95,
+        "evidence_sufficient": true,
+        "query_understanding": {
+          "intent": "policy_lookup",
+          "topic": "Bằng tốt nghiệp",
+          "keywords": [
+            "phân loại",
+            "hạ mức",
+            "bằng tốt nghiệp"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Bằng tốt nghiệp được phân loại ra sao và trong trường hợp nào thì bị hạ một mức?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 9.638
+    },
+    {
+      "id": "E20",
+      "category": "out_of_scope",
+      "input": "Hôm nay căng tin VinUni bán món gì và giá bao nhiêu?",
+      "expected_behavior": "Từ chối trả lời hoặc nói không đủ căn cứ vì tài liệu chỉ là quy chế đào tạo; không tạo citation giả.",
+      "output": {
+        "answer": "Chưa tìm thấy đủ căn cứ trong tài liệu được lập chỉ mục để trả lời chính xác. Vui lòng cung cấp thêm ngữ cảnh hoặc liên hệ đơn vị phụ trách.",
+        "citations": [],
+        "confidence": 0.0,
+        "evidence_sufficient": false,
+        "query_understanding": {
+          "intent": "out_of_scope",
+          "topic": "Căng tin VinUni",
+          "keywords": [
+            "căng tin",
+            "VinUni",
+            "món ăn",
+            "giá cả"
+          ],
+          "target_articles": [],
+          "rewritten_query": "Hôm nay căng tin VinUni bán món gì và giá bao nhiêu?"
+        }
+      },
+      "grading": {
+        "keyword_score": 1.0,
+        "keyword_group_hits": [
+          true
+        ],
+        "citation_ok": true,
+        "evidence_ok": true,
+        "score": 1.0,
+        "passed": true
+      },
+      "latency_seconds": 3.993
+    }
+  ]
+}

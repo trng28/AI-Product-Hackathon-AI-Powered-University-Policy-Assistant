@@ -114,14 +114,53 @@ def write_report(payload: dict, path: Path) -> None:
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
+def summarize(results: list[dict]) -> dict:
+    return {
+        "total": len(results),
+        "completed": sum(not item.get("error") for item in results),
+        "passed": sum(item["grading"]["passed"] for item in results),
+        "pass_rate": mean(item["grading"]["passed"] for item in results),
+        "average_score": mean(item["grading"]["score"] for item in results),
+        "citation_accuracy": mean(item["grading"]["citation_ok"] for item in results),
+        "evidence_accuracy": mean(item["grading"]["evidence_ok"] for item in results),
+        "average_latency_seconds": mean(item["latency_seconds"] for item in results),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=Path, default=Path(__file__).with_name("questions.json"))
     parser.add_argument("--limit", type=int)
+    parser.add_argument(
+        "--regrade",
+        type=Path,
+        help="Regrade a prior raw result without calling the agent again.",
+    )
     args = parser.parse_args()
 
     dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
     cases = dataset["questions"][: args.limit]
+    output_dir = Path(__file__).parent / "results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.regrade:
+        payload = json.loads(args.regrade.read_text(encoding="utf-8"))
+        cases_by_id = {case["id"]: case for case in cases}
+        for item in payload["results"]:
+            case = cases_by_id[item["id"]]
+            item["expected_behavior"] = case["expected_behavior"]
+            item["grading"] = score_result(case, item.get("output", {}))
+        payload["dataset_version"] = dataset["version"]
+        payload["regraded_at"] = datetime.now(timezone.utc).isoformat()
+        payload["summary"] = summarize(payload["results"])
+        latest_json = output_dir / "latest.json"
+        latest_json.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        write_report(payload, output_dir / "latest.md")
+        print(f"Regraded: {latest_json}")
+        return 0 if payload["summary"]["passed"] == payload["summary"]["total"] else 1
+
     assistant = PolicyAssistant()
     results = []
 
@@ -152,17 +191,7 @@ def main() -> int:
             flush=True,
         )
 
-    completed = sum(not item.get("error") for item in results)
-    summary = {
-        "total": len(results),
-        "completed": completed,
-        "passed": sum(item["grading"]["passed"] for item in results),
-        "pass_rate": mean(item["grading"]["passed"] for item in results),
-        "average_score": mean(item["grading"]["score"] for item in results),
-        "citation_accuracy": mean(item["grading"]["citation_ok"] for item in results),
-        "evidence_accuracy": mean(item["grading"]["evidence_ok"] for item in results),
-        "average_latency_seconds": mean(item["latency_seconds"] for item in results),
-    }
+    summary = summarize(results)
     settings = assistant.settings
     payload = {
         "dataset": dataset["name"],
@@ -173,8 +202,6 @@ def main() -> int:
         "summary": summary,
         "results": results,
     }
-    output_dir = Path(__file__).parent / "results"
-    output_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     raw_path = output_dir / f"eval-{stamp}.json"
     report_path = output_dir / f"eval-{stamp}.md"
