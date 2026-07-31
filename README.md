@@ -9,8 +9,8 @@ UI Demo Version Draft:
 ![UI2](./assets/ui-demo-3.png)
 
 
-
 ### Team
+- Teamname: PARIS
 - Room: D303
 - Thông tin thành viên
   
