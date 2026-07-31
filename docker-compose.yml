@@ -12,6 +12,7 @@ services:
         required: false
     environment:
       INDEX_DIR: /app/data/policy-index
+      RETRIEVAL_MODE: lexical
       HF_HOME: /home/app/.cache/huggingface
       CORS_ORIGINS: http://localhost:8080
     volumes:

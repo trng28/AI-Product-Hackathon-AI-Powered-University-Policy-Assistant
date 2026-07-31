@@ -13,7 +13,6 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from src.policy_assistant.config import Settings
-from src.policy_assistant.indexing import build_index
 from src.policy_assistant.service import PolicyAssistant
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -93,6 +92,8 @@ def _cors_origins() -> list[str]:
 
 
 def _index_ready(settings: Settings) -> bool:
+    if settings.retrieval_mode == "lexical":
+        return (settings.index_dir / "chunks.json").is_file()
     required = (
         settings.index_dir / "vectors.faiss",
         settings.index_dir / "chunks.json",
@@ -137,6 +138,7 @@ def health() -> dict:
             "status": "ready" if index_ready else "index_required",
             "provider": settings.provider,
             "model": settings.model,
+            "retrieval_mode": settings.retrieval_mode,
             "index_ready": index_ready,
         }
     except ValueError as exc:
@@ -149,6 +151,8 @@ def health() -> dict:
 
 @app.post("/api/index", response_model=IndexResponse)
 async def create_index(request: IndexRequest) -> IndexResponse:
+    from src.policy_assistant.indexing import build_index
+
     try:
         settings = Settings.from_env()
     except ValueError as exc:

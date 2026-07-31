@@ -1,25 +1,47 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import unicodedata
+from collections import Counter
 from pathlib import Path
-
-import numpy as np
-from sentence_transformers import SentenceTransformer
 
 from .models import LegalChunk, SearchResult
 
 
 class HybridRetriever:
-    def __init__(self, index_dir: Path) -> None:
-        import faiss
-
+    def __init__(self, index_dir: Path, mode: str = "semantic") -> None:
         config = json.loads((index_dir / "config.json").read_text(encoding="utf-8"))
         raw = json.loads((index_dir / "chunks.json").read_text(encoding="utf-8"))
         self.chunks = [LegalChunk(**item) for item in raw]
-        self.index = faiss.read_index(str(index_dir / "vectors.faiss"))
-        self.model = SentenceTransformer(config["embedding_model"])
+        self.mode = mode
+        self.index = None
+        self.model = None
+        self._normalized_chunks = [
+            self._normalize(f"{chunk.article} {chunk.clause} {chunk.text}")
+            for chunk in self.chunks
+        ]
+        self._chunk_tokens = [
+            set(re.findall(r"[\w.-]+", text)) for text in self._normalized_chunks
+        ]
+        self._document_frequency = Counter(
+            token for tokens in self._chunk_tokens for token in tokens
+        )
+        if mode == "semantic":
+            import faiss
+            from sentence_transformers import SentenceTransformer
+
+            self.index = faiss.read_index(str(index_dir / "vectors.faiss"))
+            self.model = SentenceTransformer(config["embedding_model"])
+
+    @staticmethod
+    def _normalize(value: str) -> str:
+        value = unicodedata.normalize("NFKD", value.casefold())
+        value = "".join(
+            char for char in value if not unicodedata.combining(char)
+        )
+        return re.sub(r"\s+", " ", value).strip()
 
     def search(
         self,
@@ -29,13 +51,7 @@ class HybridRetriever:
         top_k: int,
         original_query: str = "",
     ) -> list[SearchResult]:
-        def normalize(value: str) -> str:
-            value = unicodedata.normalize("NFKD", value.casefold())
-            value = "".join(
-                char for char in value if not unicodedata.combining(char)
-            )
-            return re.sub(r"\s+", " ", value).strip()
-
+        normalize = self._normalize
         normalized_query = normalize(f"{original_query} {query}")
         domain_expansions = {
             "chuyen doi tin chi credit transfer recognition": (
@@ -105,12 +121,6 @@ class HybridRetriever:
                 if item.strip()
             )
         )
-        vectors = self.model.encode(
-            [f"query: {item}" for item in queries], normalize_embeddings=True
-        ).astype("float32")
-        limit = min(max(top_k * 4, 20), len(self.chunks))
-        scores, ids = self.index.search(np.asarray(vectors), limit)
-
         terms = {
             normalize(term)
             for term in keywords
@@ -132,24 +142,35 @@ class HybridRetriever:
             if len(token) > 2
         }
         candidates: dict[int, tuple[float, float]] = {}
-        for query_scores, query_ids in zip(scores, ids):
-            for rank, (semantic, idx) in enumerate(
-                zip(query_scores, query_ids), start=1
-            ):
-                if idx < 0:
-                    continue
-                old_semantic, old_rrf = candidates.get(int(idx), (-1.0, 0.0))
-                candidates[int(idx)] = (
-                    max(old_semantic, float(semantic)),
-                    old_rrf + 1.0 / (60 + rank),
-                )
+        if self.mode == "semantic":
+            import numpy as np
+
+            assert self.model is not None and self.index is not None
+            vectors = self.model.encode(
+                [f"query: {item}" for item in queries], normalize_embeddings=True
+            ).astype("float32")
+            limit = min(max(top_k * 4, 20), len(self.chunks))
+            scores, ids = self.index.search(np.asarray(vectors), limit)
+            for query_scores, query_ids in zip(scores, ids):
+                for rank, (semantic, idx) in enumerate(
+                    zip(query_scores, query_ids), start=1
+                ):
+                    if idx < 0:
+                        continue
+                    old_semantic, old_rrf = candidates.get(int(idx), (-1.0, 0.0))
+                    candidates[int(idx)] = (
+                        max(old_semantic, float(semantic)),
+                        old_rrf + 1.0 / (60 + rank),
+                    )
+        else:
+            candidates = {idx: (0.0, 0.0) for idx in range(len(self.chunks))}
 
         ranked: list[SearchResult] = []
         for idx, (semantic, rrf) in candidates.items():
             chunk = self.chunks[idx]
             article = normalize(chunk.article)
             reference = normalize(chunk.clause)
-            haystack = normalize(f"{chunk.article} {chunk.clause} {chunk.text}")
+            haystack = self._normalized_chunks[idx]
             keyword_score = sum(term in haystack for term in terms) / max(len(terms), 1)
             article_bonus = (
                 0.15
@@ -158,12 +179,34 @@ class HybridRetriever:
             )
             title_tokens = set(re.findall(r"[\w.-]+", article))
             title_overlap = len(query_tokens & title_tokens) / max(len(query_tokens), 1)
-            score = (
-                0.68 * semantic
-                + 0.20 * keyword_score
-                + 0.07 * title_overlap
-                + 0.05 * min(rrf * 30, 1.0)
-                + article_bonus
-            )
+            if self.mode == "semantic":
+                score = (
+                    0.68 * semantic
+                    + 0.20 * keyword_score
+                    + 0.07 * title_overlap
+                    + 0.05 * min(rrf * 30, 1.0)
+                    + article_bonus
+                )
+            else:
+                chunk_tokens = self._chunk_tokens[idx]
+                token_weights = {
+                    token: math.log(
+                        (len(self.chunks) + 1)
+                        / (self._document_frequency.get(token, 0) + 1)
+                    ) + 1
+                    for token in query_tokens
+                }
+                matched_weight = sum(
+                    weight
+                    for token, weight in token_weights.items()
+                    if token in chunk_tokens
+                )
+                lexical_score = matched_weight / max(sum(token_weights.values()), 1)
+                score = (
+                    0.58 * lexical_score
+                    + 0.27 * keyword_score
+                    + 0.15 * title_overlap
+                    + article_bonus
+                )
             ranked.append(SearchResult(chunk=chunk, score=score))
         return sorted(ranked, key=lambda item: item.score, reverse=True)[:top_k]

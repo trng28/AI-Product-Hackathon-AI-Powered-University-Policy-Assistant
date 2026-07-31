@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import Any
 
-from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import HumanMessage, SystemMessage
 from langgraph.graph import END, START, StateGraph
 from typing_extensions import TypedDict
@@ -27,7 +26,7 @@ class AgentState(TypedDict, total=False):
 
 
 class QueryUnderstandingAgent:
-    def __init__(self, model: BaseChatModel) -> None:
+    def __init__(self, model: Any) -> None:
         self.model = model.with_structured_output(QuerySchema)
 
     def run(self, question: str) -> QueryUnderstanding:
@@ -71,7 +70,7 @@ class RetrievalAgent:
 
 
 class PolicyAnalysisAgent:
-    def __init__(self, model: BaseChatModel) -> None:
+    def __init__(self, model: Any) -> None:
         self.model = model.with_structured_output(AnalysisSchema)
 
     def run(self, question: str, results: list[SearchResult]) -> dict[str, Any]:
@@ -181,7 +180,7 @@ class OrchestratorAgent:
     """LangGraph multi-agent orchestrator."""
 
     def __init__(
-        self, model: BaseChatModel, retriever: HybridRetriever, top_k: int
+        self, model: Any, retriever: HybridRetriever, top_k: int
     ) -> None:
         self.query_agent = QueryUnderstandingAgent(model)
         self.retrieval_agent = RetrievalAgent(retriever, top_k)

@@ -4,7 +4,6 @@ from pathlib import Path
 
 from .agents import OrchestratorAgent
 from .config import Settings
-from .indexing import build_index
 from .llm import create_chat_model
 from .models import Answer
 from .retrieval import HybridRetriever
@@ -13,7 +12,9 @@ from .retrieval import HybridRetriever
 class PolicyAssistant:
     def __init__(self, settings: Settings | None = None) -> None:
         self.settings = settings or Settings.from_env()
-        retriever = HybridRetriever(self.settings.index_dir)
+        retriever = HybridRetriever(
+            self.settings.index_dir, mode=self.settings.retrieval_mode
+        )
         self.orchestrator = OrchestratorAgent(
             create_chat_model(self.settings), retriever, self.settings.top_k
         )
@@ -22,6 +23,8 @@ class PolicyAssistant:
     def index(
         source_paths: list[Path], index_dir: Path, embedding_model: str
     ) -> int:
+        from .indexing import build_index
+
         return build_index(source_paths, index_dir, embedding_model)
 
     def ask(self, question: str) -> Answer:

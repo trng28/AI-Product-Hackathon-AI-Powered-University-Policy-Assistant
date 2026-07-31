@@ -28,6 +28,7 @@ class Settings:
     provider: str
     model: str
     embedding_model: str
+    retrieval_mode: str
     index_dir: Path
     top_k: int
     api_key: str
@@ -43,6 +44,9 @@ class Settings:
         }
         if provider not in defaults:
             raise ValueError("LLM_PROVIDER must be openai, groq, or gemini")
+        retrieval_mode = os.getenv("RETRIEVAL_MODE", "semantic").lower()
+        if retrieval_mode not in {"semantic", "lexical"}:
+            raise ValueError("RETRIEVAL_MODE must be semantic or lexical")
         key_name, default_model = defaults[provider]
         api_key = os.getenv(key_name, "")
         if not api_key:
@@ -56,6 +60,7 @@ class Settings:
             embedding_model=os.getenv(
                 "EMBEDDING_MODEL", "intfloat/multilingual-e5-small"
             ),
+            retrieval_mode=retrieval_mode,
             index_dir=index_dir.resolve(),
             top_k=int(os.getenv("TOP_K", "6")),
             api_key=api_key,
