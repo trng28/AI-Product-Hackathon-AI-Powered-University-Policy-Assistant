@@ -1,6 +1,6 @@
 ## Hackathon AI Product: AI-Powered University Policy Assistant - Draft Proposal
 
-[Xem demo trên Google Drive](https://drive.google.com/drive/u/1/folders/1SJ0-nDbiZpVBz1jGmINKJI85yHVT6vOz)
+[Xem video demo trên Google Drive](https://drive.google.com/file/d/1GaneUmruVLcnmG1NKZFmineR38W0XrOF/view?usp=sharing)
 
 UI Demo Version Draft:
 
