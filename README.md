@@ -1,5 +1,6 @@
 ## Hackathon AI Product: AI-Powered University Policy Assistant - Draft Proposal
 
+[Xem demo trên Google Drive](https://drive.google.com/drive/u/1/folders/1SJ0-nDbiZpVBz1jGmINKJI85yHVT6vOz)
 
 UI Demo Version Draft:
 
@@ -25,12 +26,12 @@ Hệ thống được xây dựng nhằm giải quyết bài toán **Legal Retri
 
 Giải pháp kết hợp **Retrieval-Augmented Generation (RAG)** và kiến trúc **Multi-Agent** để tăng khả năng truy xuất chính xác, phân tích ngữ cảnh và kiểm chứng câu trả lời trước khi phản hồi cho người dùng.
 
-### 6. Kết quả đầu ra
+### Kết quả đầu ra
 
 Hệ thống cung cấp:
 
 * Câu trả lời dựa trên tài liệu chính thức.
-* Trích dẫn chính xác đến điều khoản liên quan.
+* Trích dẫn chính xác đến điều khoản liên quan, tham chiếu đến nguồn chính thống.
 * Hướng dẫn thực hiện thủ tục theo từng bước.
 * Danh sách tài liệu hoặc biểu mẫu cần chuẩn bị.
 * Mức độ tin cậy của câu trả lời.
