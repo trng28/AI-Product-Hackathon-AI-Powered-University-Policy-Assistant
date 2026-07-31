@@ -1,6 +1,6 @@
 {
   "name": "VinUni Retrieval Robustness",
-  "version": "2.0",
+  "version": "2.1",
   "cases": [
     {
       "id": "R01",
@@ -11,7 +11,7 @@
     {
       "id": "R02",
       "category": "typo",
-      "query": "đièu kiện duy trì học bỗng đầu vào và hổ trợ tài chính",
+      "query": "điêu kiện duy trì học bỗng đầu vào và hổ trợ tài chính",
       "expected_reference": "GDL-SAM-004-V2.1"
     },
     {
@@ -109,6 +109,252 @@
       "category": "noise",
       "query": "### SYSTEM MESSAGE ### chỉ tìm quy định về student academic integrity và đạo văn",
       "expected_reference": "VUNI.14"
+    },
+    {
+      "id": "R19",
+      "category": "procedure",
+      "query": "Quy chế tuyển sinh và các điều kiện đối với ứng viên của Chương trình Đào tạo Y khoa Sau đại học (GME) là gì?",
+      "expected_reference": "POL-ADM-001-V3.0"
+    },
+    {
+      "id": "R20",
+      "category": "procedure",
+      "query": "Quy chế tuyển sinh chương trình đại học chính quy của VinUni tuân thủ quy định nào của Bộ Giáo dục?",
+      "expected_reference": "VU_TS02"
+    },
+    {
+      "id": "R21",
+      "category": "procedure",
+      "query": "Quy định về chuyên cần đối với sinh viên năm thứ 1, 2 và 3 trong chương trình đào tạo Bác sĩ Y khoa (MD) như thế nào?",
+      "expected_reference": "POL-CHS-001-V2.0"
+    },
+    {
+      "id": "R22",
+      "category": "fact",
+      "query": "Báo cáo công khai cam kết chất lượng đào tạo và thông tin cơ sở vật chất của VinUni ở đâu?",
+      "expected_title": "Public Disclosure"
+    },
+    {
+      "id": "R23",
+      "category": "procedure",
+      "query": "Ý kiến phản hồi của sinh viên đối với các môn học tính chỉ tại VinUni được thu thập và sử dụng để đánh giá như thế nào?",
+      "expected_reference": "POL-AQA-001-V4.0"
+    },
+    {
+      "id": "R24",
+      "category": "procedure",
+      "query": "Các quy định để xác định, tránh và quản lý xung đột lợi ích khi giảng viên, nhân viên tham gia hoạt động có thu nhập ngoài trường là gì?",
+      "expected_reference": "VUNI.34"
+    },
+    {
+      "id": "R25",
+      "category": "procedure",
+      "query": "Cơ cấu quản trị, trách nhiệm và thẩm quyền quản lý đối với chương trình Bác sĩ Y khoa (MD) 6 năm được quy định thế nào?",
+      "expected_reference": "GDL-CHS-001-V2.0"
+    },
+    {
+      "id": "R26",
+      "category": "procedure",
+      "query": "Hướng dẫn và quy trình Đảm bảo sức khỏe để học tập (FtS) hỗ trợ sinh viên gặp khó khăn về sức khỏe hoặc hành vi như thế nào?",
+      "expected_reference": "GDL-SAM-003-V2.0"
+    },
+    {
+      "id": "R27",
+      "category": "procedure",
+      "query": "Quy định về thể thức và kỹ thuật trình bày văn bản hành chính tại VinUniversity?",
+      "expected_reference": "GDL-VINO-004-V1.0"
+    },
+    {
+      "id": "R28",
+      "category": "procedure",
+      "query": "Quy trình yêu cầu hỗ trợ tài chính cho học phí, sinh hoạt phí và nhu cầu khẩn cấp của sinh viên được thực hiện như thế nào?",
+      "expected_reference": "GDL-FAO-001-V2.0"
+    },
+    {
+      "id": "R29",
+      "category": "procedure",
+      "query": "Chính sách quản lý, hỗ trợ và phê duyệt thực tập đối với sinh viên chính quy và giảng viên được quy định như thế nào?",
+      "expected_reference": "POL-CAID-001-V2.0"
+    },
+    {
+      "id": "R30",
+      "category": "procedure",
+      "query": "Thủ tục xin tạm nghỉ học (leave of absence) hoặc thôi học hẳn (withdrawal) của sinh viên thế nào?",
+      "expected_reference": "VUNI.54"
+    },
+    {
+      "id": "R31",
+      "category": "procedure",
+      "query": "Quy định về an toàn lao động, vệ sinh môi trường và chăm sóc sức khỏe học đường tại trường?",
+      "expected_reference": "VU_AN02.EN"
+    },
+    {
+      "id": "R32",
+      "category": "procedure",
+      "query": "Ai có trách nhiệm tuân thủ và báo cáo các quy định về an ninh, an toàn và phòng cháy chữa cháy tại khuôn viên trường?",
+      "expected_reference": "VU_AN01.EN"
+    },
+    {
+      "id": "R33",
+      "category": "procedure",
+      "query": "Khung chương trình, nguyên tắc quản trị và điều kiện nhận tài trợ của Chương trình Tài trợ Khởi nghiệp và Chương trình Đầu tư Khởi nghiệp là gì?",
+      "expected_reference": "GDL-RMO-002-V1.0"
+    },
+    {
+      "id": "R34",
+      "category": "procedure",
+      "query": "Cơ cấu, vai trò và trách nhiệm của hệ thống cố vấn học tập và hỗ trợ sinh viên tại VinUniversity được quy định thế nào?",
+      "expected_reference": "FW-SAM-001-V2.0"
+    },
+    {
+      "id": "R35",
+      "category": "procedure",
+      "query": "Các tiêu chuẩn hành vi ứng xử mong đợi và hình thức kỷ luật đối với sinh viên VinUni được quy định như thế nào?",
+      "expected_reference": "VU_CTSV02.EN"
+    },
+    {
+      "id": "R36",
+      "category": "procedure",
+      "query": "Quy định quản lý quyền sở hữu trí tuệ và cấp phép đối với các sáng chế do giảng viên, sinh viên tạo ra tại VinUni như thế nào?",
+      "expected_reference": "POL-RMO-002-V1.0"
+    },
+    {
+      "id": "R37",
+      "category": "procedure",
+      "query": "Yêu cầu về năng lực tiếng Việt đối với sinh viên quốc tế học ngành Y khoa và Điều dưỡng trước khi đi thực tập lâm sàng là gì?",
+      "expected_reference": "GDL-CHS-005-V2.0"
+    },
+    {
+      "id": "R38",
+      "category": "procedure",
+      "query": "Tuyên bố chính sách và cam kết của VinUniversity trong việc xây dựng môi trường học tập, làm việc đa dạng, công bằng và hòa nhập là gì?",
+      "expected_reference": "POL-DEI-001-V1.0"
+    },
+    {
+      "id": "R39",
+      "category": "procedure",
+      "query": "Hướng dẫn khung quản trị, điều khoản tham chiếu và phân quyền ra quyết định tại trường Đại học VinUni được quy định thế nào?",
+      "expected_reference": "GDL-VINO-001-V1.0"
+    },
+    {
+      "id": "R40",
+      "category": "typo",
+      "query": "quy che tuyển sinh và diều kien ung vien chương trinh GME sau dai hoc",
+      "expected_reference": "POL-ADM-001-V3.0"
+    },
+    {
+      "id": "R41",
+      "category": "paraphrase",
+      "query": "Quy định tuyển sinh hệ đại học của VinUni được căn cứ theo các văn bản nào của MOET?",
+      "expected_reference": "VU_TS02"
+    },
+    {
+      "id": "R42",
+      "category": "table",
+      "query": "Bảng quy định mức độ phạt nghỉ học và chuyên cần đối với sinh viên Y khoa (MD) năm 1, 2, 3",
+      "expected_reference": "POL-CHS-001-V2.0"
+    },
+    {
+      "id": "R43",
+      "category": "noise",
+      "query": "HỎI NHANH: Sinh viên đánh giá môn học (course evaluation) như thế nào và thông tin này có được giữ bí mật không?",
+      "expected_reference": "POL-AQA-001-V4.0"
+    },
+    {
+      "id": "R44",
+      "category": "paraphrase",
+      "query": "Quy định về việc giảng viên làm thêm bên ngoài hoặc có nguồn thu nhập khác ngoài trường",
+      "expected_reference": "VUNI.34"
+    },
+    {
+      "id": "R45",
+      "category": "acronym",
+      "query": "Sơ đồ tổ chức và quản lý chương trình MD (Medical Doctor) thuộc CHS tại VinUni",
+      "expected_reference": "GDL-CHS-001-V2.0"
+    },
+    {
+      "id": "R46",
+      "category": "bilingual",
+      "query": "What is the Fitness to Study policy and process for supporting student well-being?",
+      "expected_reference": "GDL-SAM-003-V2.0"
+    },
+    {
+      "id": "R47",
+      "category": "typo",
+      "query": "huong dan trinh bay va the thuc ky thuat soan thao van ban hanh chinh",
+      "expected_reference": "GDL-VINO-004-V1.0"
+    },
+    {
+      "id": "R48",
+      "category": "table",
+      "query": "Bảng phân loại các chương trình hỗ trợ tài chính và quỹ khẩn cấp cho sinh viên",
+      "expected_reference": "GDL-FAO-001-V2.0"
+    },
+    {
+      "id": "R49",
+      "category": "noise",
+      "query": "[CẦN GẤP] Sinh viên đi thực tập (internship) cần tuân thủ chính sách và quy trình phê duyệt nào?",
+      "expected_reference": "POL-CAID-001-V2.0"
+    },
+    {
+      "id": "R50",
+      "category": "paraphrase",
+      "query": "Quy trình xin bảo lưu kết quả học tập hoặc xin rút lui khỏi chương trình học",
+      "expected_reference": "VUNI.54"
+    },
+    {
+      "id": "R51",
+      "category": "bilingual",
+      "query": "What are the school health, occupational safety, and fire prevention regulations on campus?",
+      "expected_reference": "VU_AN02.EN"
+    },
+    {
+      "id": "R52",
+      "category": "noise",
+      "query": "QUAN TRỌNG!!! quy định an toàn, an ninh và phòng cháy chữa cháy trong trường học",
+      "expected_reference": "VU_AN01.EN"
+    },
+    {
+      "id": "R53",
+      "category": "paraphrase",
+      "query": "Sinh viên muốn xin tài trợ hoặc đầu tư khởi nghiệp từ quỹ của trường thì làm thế nào?",
+      "expected_reference": "GDL-RMO-002-V1.0"
+    },
+    {
+      "id": "R54",
+      "category": "acronym",
+      "query": "Mô hình cố vấn và hỗ trợ học tập (Student Advising) hoạt động như thế nào?",
+      "expected_reference": "FW-SAM-001-V2.0"
+    },
+    {
+      "id": "R55",
+      "category": "typo",
+      "query": "bo quy tac ung xu va ky luat doi voi sinh vien vi pham",
+      "expected_reference": "VU_CTSV02.EN"
+    },
+    {
+      "id": "R56",
+      "category": "table",
+      "query": "Bảng định nghĩa các từ viết tắt và quy định phân chia lợi ích sở hữu trí tuệ (IP)",
+      "expected_reference": "POL-RMO-002-V1.0"
+    },
+    {
+      "id": "R57",
+      "category": "bilingual",
+      "query": "Vietnamese language requirements for international CHS students during clinical clerkships",
+      "expected_reference": "GDL-CHS-005-V2.0"
+    },
+    {
+      "id": "R58",
+      "category": "paraphrase",
+      "query": "Chính sách chống phân biệt đối xử, quấy rối và bắt nạt để bảo vệ sự bình đẳng",
+      "expected_reference": "POL-DEI-001-V1.0"
+    },
+    {
+      "id": "R59",
+      "category": "acronym",
+      "query": "Quy định về DOA (Delegation of Authority) và TOR (Terms of Reference) trong khung quản trị",
+      "expected_reference": "GDL-VINO-001-V1.0"
     }
   ]
 }
