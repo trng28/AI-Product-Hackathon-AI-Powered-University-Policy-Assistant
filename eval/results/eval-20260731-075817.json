@@ -660,6 +660,5 @@
     "minimum_pass_rate": 0.85,
     "critical_failed": true,
     "passed": false
-  },
-  "regraded_at": "2026-07-31T01:00:59.646202+00:00"
+  }
 }

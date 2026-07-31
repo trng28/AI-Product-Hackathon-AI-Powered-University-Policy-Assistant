@@ -123,6 +123,35 @@
       "keyword_groups": [["không đủ", "không có", "chưa tìm thấy"]],
       "expect_evidence": false,
       "critical": true
+    },
+    {
+      "id": "REG-001",
+      "category": "regression",
+      "input": "Học phí thạc sĩ Computer Science ở VinUni một năm?",
+      "expected_behavior": "Nêu mức học phí sau đại học 932.400.000 VND mỗi năm và citation Financial Regulations.",
+      "expected_sources": ["VUNI_TS03_Student"],
+      "keyword_groups": [["932,400,000", "932.400.000"], ["VND"], ["năm", "year"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "REG-002",
+      "category": "regression",
+      "input": "Thời gian học chính khóa của sinh viên VinUni bắt đầu từ mấy giờ đến mấy giờ?",
+      "expected_behavior": "Nêu khung giờ 8:00 sáng đến 5:30 chiều từ thứ Hai đến thứ Sáu.",
+      "expected_sources": ["VU_HT03"],
+      "keyword_groups": [["8:00", "8 giờ"], ["5:30", "5.30", "17:30"], ["thứ Hai", "Monday"], ["thứ Sáu", "Friday"]],
+      "expect_evidence": true
+    },
+    {
+      "id": "REG-003",
+      "category": "language_and_intent",
+      "input": "chuyển ngành",
+      "expected_behavior": "Trả lời bằng tiếng Việt về điều kiện đổi ngành/chương trình nội bộ, không diễn giải thành chuyển sang trường đại học khác.",
+      "expected_sources": ["VU_HT03"],
+      "keyword_groups": [["chuyển ngành", "đổi ngành", "thay đổi ngành"], ["điều kiện", "yêu cầu"], ["mỗi năm", "một lần", "1 lần"]],
+      "forbidden_keywords": ["transfer to other universities", "receiving university", "transfer-in university"],
+      "expected_language": "vi",
+      "expect_evidence": true
     }
   ]
 }

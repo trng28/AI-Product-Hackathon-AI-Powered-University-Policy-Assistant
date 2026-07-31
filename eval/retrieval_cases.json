@@ -355,6 +355,18 @@
       "category": "acronym",
       "query": "Quy định về DOA (Delegation of Authority) và TOR (Terms of Reference) trong khung quản trị",
       "expected_reference": "GDL-VINO-001-V1.0"
+    },
+    {
+      "id": "R60",
+      "category": "regression",
+      "query": "Học phí thạc sĩ Computer Science ở VinUni một năm?",
+      "expected_reference": "VUNI_TS03_Student"
+    },
+    {
+      "id": "R61",
+      "category": "regression",
+      "query": "Thời gian học chính khóa của sinh viên VinUni bắt đầu từ mấy giờ đến mấy giờ?",
+      "expected_reference": "VU_HT03"
     }
   ]
 }

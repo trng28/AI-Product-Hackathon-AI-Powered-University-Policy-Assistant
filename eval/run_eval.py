@@ -27,10 +27,31 @@ def normalize(text: str) -> str:
 
 
 def score_result(case: dict, result: dict) -> dict:
-    answer = normalize(result.get("answer", ""))
+    raw_answer = result.get("answer", "")
+    answer = normalize(raw_answer)
     citations = result.get("citations", [])
     expected_evidence = case["expect_evidence"]
     evidence_ok = result.get("evidence_sufficient") is expected_evidence
+    forbidden_ok = not any(
+        normalize(value) in answer for value in case.get("forbidden_keywords", [])
+    )
+    expected_language = case.get("expected_language")
+    if expected_language == "vi":
+        language_ok = bool(
+            re.search(
+                r"[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệ"
+                r"íìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]",
+                raw_answer.casefold(),
+            )
+            or re.search(
+                r"\b(và|là|của|được|sinh viên|ngành|điều kiện|học)\b",
+                raw_answer.casefold(),
+            )
+        )
+    elif expected_language == "en":
+        language_ok = not bool(re.search(r"[ăâđêôơư]", raw_answer.casefold()))
+    else:
+        language_ok = True
 
     groups = case.get("keyword_groups", [])
     group_hits = [
@@ -79,7 +100,15 @@ def score_result(case: dict, result: dict) -> dict:
         "citation_ok": citation_ok,
         "evidence_ok": evidence_ok,
         "score": round(score, 3),
-        "passed": score >= 0.75 and citation_ok and evidence_ok,
+        "forbidden_ok": forbidden_ok,
+        "language_ok": language_ok,
+        "passed": (
+            score >= 0.75
+            and citation_ok
+            and evidence_ok
+            and forbidden_ok
+            and language_ok
+        ),
     }
 
 
@@ -128,7 +157,11 @@ def write_report(payload: dict, path: Path) -> None:
                 "",
             ]
         )
-    path.write_text("\n".join(lines), encoding="utf-8")
+    report = "\n".join(lines)
+    path.write_text(
+        "\n".join(line.rstrip() for line in report.splitlines()),
+        encoding="utf-8",
+    )
 
 
 def summarize(results: list[dict]) -> dict:
