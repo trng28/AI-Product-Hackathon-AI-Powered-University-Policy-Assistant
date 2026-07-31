@@ -1,5 +1,5 @@
 {
-  "embedding_model": "intfloat/multilingual-e5-base",
+  "embedding_model": "intfloat/multilingual-e5-small",
   "sources": [
     "D:\\vinuni-lab\\AI-Product-Hackathon-AI-Powered-University-Policy-Assistant\\src\\data\\vinuni-policies\\processed\\chunks.jsonl"
   ],

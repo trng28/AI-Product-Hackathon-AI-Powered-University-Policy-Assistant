@@ -140,7 +140,7 @@ data/policy-index/
 
 | Thuộc tính | Giá trị |
 |---|---|
-| Model | `intfloat/multilingual-e5-base` |
+| Model | `intfloat/multilingual-e5-small` |
 | Framework | Sentence Transformers |
 | Input passage prefix | `passage:` |
 | Input query prefix | `query:` |
@@ -200,7 +200,7 @@ Runtime hiện tại:
 | Chat model | `gpt-4o-mini` |
 | Temperature | `0` |
 | OpenAI mode | Responses API |
-| Embedding model | `intfloat/multilingual-e5-base` |
+| Embedding model | `intfloat/multilingual-e5-small` |
 | Top K | `6` mặc định |
 
 API key không được ghi trong tài liệu hoặc source control.

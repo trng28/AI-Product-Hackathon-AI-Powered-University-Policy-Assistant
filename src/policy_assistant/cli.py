@@ -138,7 +138,7 @@ def main() -> None:
         "--output", type=Path, default=PROJECT_ROOT / "data" / "policy-index"
     )
     index.add_argument(
-        "--embedding-model", default="intfloat/multilingual-e5-base"
+        "--embedding-model", default="intfloat/multilingual-e5-small"
     )
     ask = commands.add_parser("ask", help="Ask a policy question")
     ask.add_argument("question")

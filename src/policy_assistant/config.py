@@ -54,7 +54,7 @@ class Settings:
             provider=provider,
             model=os.getenv("LLM_MODEL", default_model),
             embedding_model=os.getenv(
-                "EMBEDDING_MODEL", "intfloat/multilingual-e5-base"
+                "EMBEDDING_MODEL", "intfloat/multilingual-e5-small"
             ),
             index_dir=index_dir.resolve(),
             top_k=int(os.getenv("TOP_K", "6")),
