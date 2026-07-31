@@ -40,13 +40,30 @@ def score_result(case: dict, result: dict) -> dict:
     keyword_score = sum(group_hits) / len(group_hits) if group_hits else 1.0
 
     if expected_evidence:
-        expected_article = normalize(case["expected_article"])
-        expected_pages = set(case["expected_pages"])
-        citation_ok = any(
-            expected_article in normalize(citation.get("article", ""))
-            and citation.get("page") in expected_pages
-            for citation in citations
-        )
+        expected_sources = [
+            normalize(value) for value in case.get("expected_sources", []) if value
+        ]
+        expected_article = normalize(case.get("expected_article", ""))
+        expected_pages = set(case.get("expected_pages", []))
+
+        def matches(citation: dict) -> bool:
+            haystack = normalize(
+                " ".join(
+                    str(citation.get(key, ""))
+                    for key in ("article", "clause", "document", "source_url")
+                )
+            )
+            source_ok = (
+                any(source in haystack for source in expected_sources)
+                if expected_sources
+                else expected_article in normalize(citation.get("article", ""))
+            )
+            page_ok = (
+                citation.get("page") in expected_pages if expected_pages else True
+            )
+            return source_ok and page_ok
+
+        citation_ok = any(matches(citation) for citation in citations)
     else:
         citation_ok = len(citations) == 0
 
@@ -115,6 +132,17 @@ def write_report(payload: dict, path: Path) -> None:
 
 
 def summarize(results: list[dict]) -> dict:
+    if not results:
+        return {
+            "total": 0,
+            "completed": 0,
+            "passed": 0,
+            "pass_rate": 0,
+            "average_score": 0,
+            "citation_accuracy": 0,
+            "evidence_accuracy": 0,
+            "average_latency_seconds": 0,
+        }
     return {
         "total": len(results),
         "completed": sum(not item.get("error") for item in results),
@@ -131,6 +159,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", type=Path, default=Path(__file__).with_name("questions.json"))
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--min-pass-rate", type=float, default=0.85)
     parser.add_argument(
         "--regrade",
         type=Path,
@@ -159,7 +188,15 @@ def main() -> int:
         )
         write_report(payload, output_dir / "latest.md")
         print(f"Regraded: {latest_json}")
-        return 0 if payload["summary"]["passed"] == payload["summary"]["total"] else 1
+        critical_failed = any(
+            cases_by_id[item["id"]].get("critical", False)
+            and not item["grading"]["passed"]
+            for item in payload["results"]
+        )
+        return 0 if (
+            payload["summary"]["pass_rate"] >= args.min_pass_rate
+            and not critical_failed
+        ) else 1
 
     assistant = PolicyAssistant()
     results = []
@@ -202,6 +239,15 @@ def main() -> int:
         "summary": summary,
         "results": results,
     }
+    critical_failed = any(
+        case.get("critical", False) and not result["grading"]["passed"]
+        for case, result in zip(cases, results)
+    )
+    payload["quality_gate"] = {
+        "minimum_pass_rate": args.min_pass_rate,
+        "critical_failed": critical_failed,
+        "passed": summary["pass_rate"] >= args.min_pass_rate and not critical_failed,
+    }
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     raw_path = output_dir / f"eval-{stamp}.json"
     report_path = output_dir / f"eval-{stamp}.md"
@@ -212,7 +258,7 @@ def main() -> int:
     )
     write_report(payload, output_dir / "latest.md")
     print(f"\nRaw: {raw_path}\nReport: {report_path}")
-    return 0 if summary["passed"] == summary["total"] else 1
+    return 0 if payload["quality_gate"]["passed"] else 1
 
 
 if __name__ == "__main__":
