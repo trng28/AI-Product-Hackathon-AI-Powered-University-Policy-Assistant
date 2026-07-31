@@ -9,6 +9,7 @@ from threading import Lock
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from src.policy_assistant.config import Settings
@@ -23,6 +24,7 @@ DEFAULT_PUBLIC_CHUNKS = (
     PROJECT_ROOT / "src" / "data" / "vinuni-policies"
     / "processed" / "chunks.jsonl"
 )
+FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
 
 
 class AskRequest(BaseModel):
@@ -202,3 +204,9 @@ async def ask(request: AskRequest) -> AskResponse:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Agent execution failed: {exc}") from exc
+
+
+# Register this catch-all mount after every API route so /api/* keeps taking
+# precedence while the Render service can serve the compiled React frontend.
+if FRONTEND_DIST.is_dir():
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")

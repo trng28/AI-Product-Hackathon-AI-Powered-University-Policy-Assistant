@@ -15,7 +15,6 @@ services:
       HF_HOME: /home/app/.cache/huggingface
       CORS_ORIGINS: http://localhost:8080
     volumes:
-      - policy_index:/app/data/policy-index
       - huggingface_cache:/home/app/.cache/huggingface
     ports:
       - "${BACKEND_PORT:-8000}:8000"
@@ -45,5 +44,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  policy_index:
   huggingface_cache:
