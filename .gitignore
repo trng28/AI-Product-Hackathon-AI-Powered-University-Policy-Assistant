@@ -5,5 +5,4 @@ data/vinuni-policies/
 .firecrawl/
 __pycache__/
 *.pyc
-data/policy-index/
 frontend/dist/
