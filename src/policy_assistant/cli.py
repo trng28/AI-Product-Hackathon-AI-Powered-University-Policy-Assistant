@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 from .config import PROJECT_ROOT, Settings
 from .indexing import build_index
 from .service import PolicyAssistant
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 PUBLIC_CHUNKS = (
     PROJECT_ROOT / "src" / "data" / "vinuni-policies" / "processed" / "chunks.jsonl"

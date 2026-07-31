@@ -35,8 +35,15 @@ class QueryUnderstandingAgent:
             [
                 SystemMessage(
                     content=(
-                        "Bạn phân tích câu hỏi về quy chế đại học. Không bịa số Điều. "
-                        "Trích target_articles chỉ khi người dùng nêu rõ."
+                        "Bạn phân tích câu hỏi về quy chế đại học VinUni. Giữ lại "
+                        "các từ khóa quan trọng từ câu gốc khi viết rewritten_query; "
+                        "không đổi chủ đề và không suy diễn ý định. Tạo keywords gồm "
+                        "cụm từ gốc và từ đồng nghĩa Việt/Anh hữu ích cho retrieval. "
+                        "Chỉ trích target_articles khi người dùng nêu rõ tên, mã hoặc "
+                        "số Điều. Câu hỏi về khung giờ học/lớp nói chung thuộc policy "
+                        "và phải được tìm theo Class Meeting Times. Chỉ xem thời khóa "
+                        "biểu của một lớp/ngày cụ thể, thực đơn hoặc thời tiết là dữ "
+                        "liệu vận hành out_of_scope. Không bịa số Điều hay chi tiết."
                     )
                 ),
                 HumanMessage(content=f"Phân tích câu hỏi:\n{question}"),
@@ -51,9 +58,15 @@ class RetrievalAgent:
     def __init__(self, retriever: HybridRetriever, top_k: int) -> None:
         self.retriever, self.top_k = retriever, top_k
 
-    def run(self, query: QueryUnderstanding) -> list[SearchResult]:
+    def run(
+        self, original_question: str, query: QueryUnderstanding
+    ) -> list[SearchResult]:
         return self.retriever.search(
-            query.rewritten_query, query.keywords, query.target_articles, self.top_k
+            query.rewritten_query,
+            query.keywords,
+            query.target_articles,
+            self.top_k,
+            original_query=original_question,
         )
 
 
@@ -74,9 +87,24 @@ class PolicyAnalysisAgent:
                 SystemMessage(
                     content=(
                         "Bạn là chuyên viên phân tích quy chế VinUni. Chỉ dùng "
-                        "EVIDENCE được cung cấp; không dùng kiến thức ngoài. Nếu thiếu "
-                        "căn cứ, đặt evidence_sufficient=false. Mọi khẳng định phải "
-                        "tham chiếu chunk_id có thật."
+                        "EVIDENCE được cung cấp; không dùng kiến thức ngoài. Evidence "
+                        "phải trả lời trực tiếp câu hỏi, không chỉ có vài từ liên quan. "
+                        "Không được suy ra giờ học, deadline, số tiền, đầu mối liên hệ "
+                        "hoặc quy trình cụ thể từ một quy định trách nhiệm chung. Nếu "
+                        "câu hỏi là out-of-scope, evidence không nêu chi tiết được hỏi, "
+                        "hoặc các nguồn mâu thuẫn, đặt evidence_sufficient=false và "
+                        "không tạo citation. Nếu đủ căn cứ, mọi khẳng định thực tế phải "
+                        "được hỗ trợ bởi citation chunk_id có thật trong EVIDENCE. Chỉ "
+                        "nêu tên/mã tài liệu thực sự được citation. BẮT BUỘC trả lời "
+                        "bằng cùng ngôn ngữ với QUESTION: câu hỏi tiếng Việt thì toàn "
+                        "bộ câu trả lời bằng tiếng Việt; câu hỏi tiếng Anh thì trả lời "
+                        "bằng tiếng Anh. Dịch nội dung evidence sang ngôn ngữ câu hỏi, "
+                        "nhưng giữ nguyên tên riêng, mã tài liệu, con số và thuật ngữ "
+                        "cần thiết. Không được chọn ngôn ngữ theo ngôn ngữ của EVIDENCE. "
+                        "Phân biệt 'chuyển ngành' hoặc 'đổi ngành' (Program Change nội "
+                        "bộ VinUni) với 'chuyển trường' (Institutional Transfer sang "
+                        "một trường đại học khác). Không trả lời về chuyển trường khi "
+                        "QUESTION chỉ hỏi chuyển ngành."
                     )
                 ),
                 HumanMessage(
@@ -135,10 +163,15 @@ class ResponseAgent:
                 "Chưa tìm thấy đủ căn cứ trong tài liệu được lập chỉ mục để trả lời "
                 "chính xác. Vui lòng cung cấp thêm ngữ cảnh hoặc liên hệ đơn vị phụ trách."
             )
+            citations = []
+            confidence = 0.0
+        else:
+            citations = validated["citations"]
+            confidence = validated["confidence"]
         return Answer(
             answer=text,
-            citations=validated["citations"],
-            confidence=validated["confidence"],
+            citations=citations,
+            confidence=confidence,
             evidence_sufficient=validated["evidence_sufficient"],
             query_understanding=query.__dict__,
         )
@@ -176,7 +209,11 @@ class OrchestratorAgent:
         return {"query": self.query_agent.run(state["question"])}
 
     def _retrieve(self, state: AgentState) -> dict:
-        return {"retrieved": self.retrieval_agent.run(state["query"])}
+        return {
+            "retrieved": self.retrieval_agent.run(
+                state["question"], state["query"]
+            )
+        }
 
     def _analyze(self, state: AgentState) -> dict:
         return {

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 import numpy as np
@@ -21,23 +22,148 @@ class HybridRetriever:
         self.model = SentenceTransformer(config["embedding_model"])
 
     def search(
-        self, query: str, keywords: list[str], target_articles: list[str], top_k: int
+        self,
+        query: str,
+        keywords: list[str],
+        target_articles: list[str],
+        top_k: int,
+        original_query: str = "",
     ) -> list[SearchResult]:
-        vector = self.model.encode(
-            [f"query: {query}"], normalize_embeddings=True
+        def normalize(value: str) -> str:
+            value = unicodedata.normalize("NFKD", value.casefold())
+            value = "".join(
+                char for char in value if not unicodedata.combining(char)
+            )
+            return re.sub(r"\s+", " ", value).strip()
+
+        normalized_query = normalize(f"{original_query} {query}")
+        domain_expansions = {
+            "chuyen doi tin chi credit transfer recognition": (
+                "cong nhan mon",
+                "cong nhan tin chi",
+                "hoc o truong khac",
+                "mien tru hoc phan",
+            ),
+            "residential life dormitory ky tuc xa": (
+                "ky tuc xa",
+                "noi tru",
+                "dormitory",
+            ),
+            "academic warning gpa canh bao hoc tap": (
+                "canh bao hoc tap",
+                "academic warning",
+                "gpa thap",
+            ),
+            "grade appeal khieu nai diem phuc khao": (
+                "khieu nai diem",
+                "phuc khao",
+                "grade appeal",
+            ),
+            "leave of absence tam nghi bao luu": (
+                "tam nghi",
+                "bao luu",
+                "leave of absence",
+            ),
+            "postgraduate master tuition listed tuition fee financial regulations": (
+                "hoc phi thac si",
+                "hoc phi cao hoc",
+                "master tuition",
+                "postgraduate tuition",
+            ),
+            "class meeting times class schedule academic regulations 8:00 5:30": (
+                "thoi gian hoc",
+                "gio hoc",
+                "bat dau tu may gio",
+                "class meeting time",
+                "class hours",
+            ),
+            "Article 20 Program Change internal transfer changing Major Degree College Faculty": (
+                "chuyen nganh",
+                "doi nganh",
+                "thay doi nganh",
+                "change major",
+                "change of major",
+                "program change",
+            ),
+        }
+        expansions = [
+            expansion
+            for expansion, triggers in domain_expansions.items()
+            if any(trigger in normalized_query for trigger in triggers)
+        ]
+        queries = list(
+            dict.fromkeys(
+                item.strip()
+                for item in (
+                    original_query,
+                    query,
+                    *(
+                        f"{original_query or query} {expansion}"
+                        for expansion in expansions
+                    ),
+                )
+                if item.strip()
+            )
+        )
+        vectors = self.model.encode(
+            [f"query: {item}" for item in queries], normalize_embeddings=True
         ).astype("float32")
         limit = min(max(top_k * 4, 20), len(self.chunks))
-        scores, ids = self.index.search(np.asarray(vector), limit)
-        terms = {term.lower() for term in keywords if len(term) > 1}
-        article_targets = {item.lower() for item in target_articles}
+        scores, ids = self.index.search(np.asarray(vectors), limit)
+
+        terms = {
+            normalize(term)
+            for term in keywords
+            if len(term.strip()) > 1
+        }
+        terms.update(
+            token
+            for expansion in expansions
+            for token in expansion.split()
+            if len(token) > 3
+        )
+        article_targets = {normalize(item) for item in target_articles}
+        query_tokens = {
+            token
+            for token in re.findall(
+                r"[\w.-]+",
+                normalize(f"{original_query or query} {' '.join(expansions)}"),
+            )
+            if len(token) > 2
+        }
+        candidates: dict[int, tuple[float, float]] = {}
+        for query_scores, query_ids in zip(scores, ids):
+            for rank, (semantic, idx) in enumerate(
+                zip(query_scores, query_ids), start=1
+            ):
+                if idx < 0:
+                    continue
+                old_semantic, old_rrf = candidates.get(int(idx), (-1.0, 0.0))
+                candidates[int(idx)] = (
+                    max(old_semantic, float(semantic)),
+                    old_rrf + 1.0 / (60 + rank),
+                )
+
         ranked: list[SearchResult] = []
-        for semantic, idx in zip(scores[0], ids[0]):
-            if idx < 0:
-                continue
-            chunk = self.chunks[int(idx)]
-            haystack = f"{chunk.article} {chunk.text}".lower()
+        for idx, (semantic, rrf) in candidates.items():
+            chunk = self.chunks[idx]
+            article = normalize(chunk.article)
+            reference = normalize(chunk.clause)
+            haystack = normalize(f"{chunk.article} {chunk.clause} {chunk.text}")
             keyword_score = sum(term in haystack for term in terms) / max(len(terms), 1)
-            article_bonus = 0.15 if any(a in chunk.article.lower() for a in article_targets) else 0
-            score = 0.75 * float(semantic) + 0.25 * keyword_score + article_bonus
+            article_bonus = (
+                0.15
+                if any(target in article or target in reference for target in article_targets)
+                else 0
+            )
+            title_tokens = set(re.findall(r"[\w.-]+", article))
+            title_overlap = len(query_tokens & title_tokens) / max(len(query_tokens), 1)
+            score = (
+                0.68 * semantic
+                + 0.20 * keyword_score
+                + 0.07 * title_overlap
+                + 0.05 * min(rrf * 30, 1.0)
+                + article_bonus
+            )
             ranked.append(SearchResult(chunk=chunk, score=score))
         return sorted(ranked, key=lambda item: item.score, reverse=True)[:top_k]
