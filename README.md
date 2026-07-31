@@ -26,6 +26,10 @@ Hệ thống được xây dựng nhằm giải quyết bài toán **Legal Retri
 
 Giải pháp kết hợp **Retrieval-Augmented Generation (RAG)** và kiến trúc **Multi-Agent** để tăng khả năng truy xuất chính xác, phân tích ngữ cảnh và kiểm chứng câu trả lời trước khi phản hồi cho người dùng.
 
+### Kiến trúc hệ thống
+
+![Kiến trúc workflow của AI-Powered University Policy Assistant](./assets/workflow-hackathon.png)
+
 ### Kết quả đầu ra
 
 Hệ thống cung cấp:
