@@ -179,7 +179,7 @@ function App() {
           <span>V</span>
           <div>
             <b>VinUni</b>
-            <small>Policy Assistant</small>
+            <small>AI-Powered University Policy Assistant</small>
           </div>
         </div>
         <button className="new-chat" onClick={newChat}>
@@ -211,8 +211,7 @@ function App() {
             <Menu />
           </button>
           <div>
-            <b>Trợ lý chính sách</b>
-            <span><i /> Multi-Agent RAG</span>
+            <b>AI-Powered University Policy Assistant</b>
           </div>
           <button className="header-new" onClick={newChat}>
             <MessageSquarePlus size={17} /> <span>Chat mới</span>
@@ -223,7 +222,7 @@ function App() {
           {!turns.length && (
             <div className="welcome">
               <div className="welcome-icon"><Bot /></div>
-              <div className="welcome-tag"><Sparkles size={14} /> AI Policy Assistant</div>
+              <div className="welcome-tag"><Sparkles size={14} /> AI-Powered University Policy Assistant</div>
               <h1>Xin chào, mình có thể<br />giúp gì cho bạn?</h1>
               <p>
                 Hỏi về quy chế và chính sách VinUniversity. Mỗi câu trả lời
@@ -251,7 +250,7 @@ function App() {
               <div className="message assistant-message">
                 <div className="avatar bot-avatar"><Bot /></div>
                 <div className="message-body">
-                  <span className="speaker">Trợ lý chính sách</span>
+                  <span className="speaker">AI-Powered University Policy Assistant</span>
                   {turn.pending && (
                     <div className="agent-thinking">
                       <LoaderCircle className="spin" />
