@@ -1,0 +1,3987 @@
+{
+  "summary": {
+    "run_at": "2026-07-31T01:14:00.193071+00:00",
+    "total": 98,
+    "topic_coverage_cases": 39,
+    "robustness_cases": 59,
+    "recall_at_k": 0.9081632653061225,
+    "mrr": 0.8037414965986395,
+    "top_k": 6,
+    "min_recall": 0.85,
+    "internal_chunks_leaked": 0,
+    "by_category": {
+      "acronym": 1.0,
+      "bilingual": 1.0,
+      "fact": 0.6666666666666666,
+      "noise": 0.8,
+      "paraphrase": 0.8888888888888888,
+      "procedure": 0.8636363636363636,
+      "sensitive": 1.0,
+      "table": 0.6666666666666666,
+      "topic_coverage": 1.0,
+      "typo": 0.75
+    }
+  },
+  "passed": true,
+  "results": [
+    {
+      "id": "C01",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu English Language Requirements For Undergraduate Admissions là gì?",
+      "expected_reference": "GDL-ADM-002-V4.1",
+      "expected_title": "English Language Requirements For Undergraduate Admissions",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0001"
+        },
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0009"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0003"
+        },
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0010"
+        },
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0007"
+        },
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0001"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Environmental Sustainability and Climate Action Policy là gì?",
+      "expected_reference": "POL-CSD-001-V1.0",
+      "expected_title": "Environmental Sustainability and Climate Action Policy",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0018"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0020"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0001"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0002"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0019"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0017"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Academic Regulations for Full-Time Undergraduate Programs là gì?",
+      "expected_reference": "VU_HT03",
+      "expected_title": "Academic Regulations for Full-Time Undergraduate Programs",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0011"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0053"
+        },
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0001"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0003"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0002"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0021"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Admissions Regulations for Graduate Medical Education (GME) Programs là gì?",
+      "expected_reference": "POL-ADM-001-V3.0",
+      "expected_title": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0001"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0002"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0021"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0016"
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Admissions Regulations for Undergraduate Program là gì?",
+      "expected_reference": "VU_TS02",
+      "expected_title": "Admissions Regulations for Undergraduate Program",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0001"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0002"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0005"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0048"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Attendance Policy at Medical Doctor Program là gì?",
+      "expected_reference": "POL-CHS-001-V2.0",
+      "expected_title": "Attendance Policy at Medical Doctor Program",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Attendance Policy at Medical Doctor Program",
+          "reference": "POL-CHS-001-V2.0",
+          "chunk_id": "d33432e93e4120c5-0001"
+        },
+        {
+          "article": "Attendance Policy at Medical Doctor Program",
+          "reference": "POL-CHS-001-V2.0",
+          "chunk_id": "d33432e93e4120c5-0003"
+        },
+        {
+          "article": "Attendance Policy at Medical Doctor Program",
+          "reference": "POL-CHS-001-V2.0",
+          "chunk_id": "d33432e93e4120c5-0005"
+        },
+        {
+          "article": "Attendance Policy at Medical Doctor Program",
+          "reference": "POL-CHS-001-V2.0",
+          "chunk_id": "d33432e93e4120c5-0004"
+        },
+        {
+          "article": "Attendance Policy at Medical Doctor Program",
+          "reference": "POL-CHS-001-V2.0",
+          "chunk_id": "d33432e93e4120c5-0002"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0051"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Public Disclosure là gì?",
+      "expected_reference": "",
+      "expected_title": "Public Disclosure",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0002"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0004"
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Course Evaluation là gì?",
+      "expected_reference": "POL-AQA-001-V4.0",
+      "expected_title": "Course Evaluation",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0008"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0006"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0009"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0007"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0001"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0005"
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Procedural Guidelines for Credit Transfer Requests là gì?",
+      "expected_reference": "VUNI.13",
+      "expected_title": "Procedural Guidelines for Credit Transfer Requests",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Procedural Guidelines for Credit Transfer Requests",
+          "reference": "VUNI.13",
+          "chunk_id": "f4eac1747d528b03-0004"
+        },
+        {
+          "article": "Procedural Guidelines for Credit Transfer Requests",
+          "reference": "VUNI.13",
+          "chunk_id": "f4eac1747d528b03-0001"
+        },
+        {
+          "article": "Procedural Guidelines for Credit Transfer Requests",
+          "reference": "VUNI.13",
+          "chunk_id": "f4eac1747d528b03-0003"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0004"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0015"
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Guidelines for Maintaining Entry Scholarship and Financial Aid Support là gì?",
+      "expected_reference": "GDL-SAM-004-V2.1",
+      "expected_title": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0005"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0001"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0002"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0004"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0001"
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu External Activities and Outside Income for Faculty and Staff là gì?",
+      "expected_reference": "VUNI.34",
+      "expected_title": "External Activities and Outside Income for Faculty and Staff",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "External Activities and Outside Income for Faculty and Staff",
+          "reference": "VUNI.34",
+          "chunk_id": "d552c233d54b92cc-0001"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0017"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0001"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0011"
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Financial Regulations and Tariff (for student) là gì?",
+      "expected_reference": "VUNI_TS03_Student",
+      "expected_title": "Financial Regulations and Tariff (for student)",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0027"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0005"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0004"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0006"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0024"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0017"
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Formal Escalation Management Procedure for Students' Complaint là gì?",
+      "expected_reference": "GDL-SAM-007-V2.0",
+      "expected_title": "Formal Escalation Management Procedure for Students' Complaint",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0009"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0001"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0005"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0002"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0007"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0006"
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Governance Structure and Management of Medical Doctor (MD) Program là gì?",
+      "expected_reference": "GDL-CHS-001-V2.0",
+      "expected_title": "Governance Structure and Management of Medical Doctor (MD) Program",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0001"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0018"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0017"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0014"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0004"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0006"
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Guidance for Fitness to Study Procedures là gì?",
+      "expected_reference": "GDL-SAM-003-V2.0",
+      "expected_title": "Guidance for Fitness to Study Procedures",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0004"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0003"
+        }
+      ]
+    },
+    {
+      "id": "C16",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Guideline for Formats and Techniques in Presenting Administrative Documents là gì?",
+      "expected_reference": "GDL-VINO-004-V1.0",
+      "expected_title": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0002"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0004"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0003"
+        }
+      ]
+    },
+    {
+      "id": "C17",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Guidelines for Student Financial Aid Support Request là gì?",
+      "expected_reference": "GDL-FAO-001-V2.0",
+      "expected_title": "Guidelines for Student Financial Aid Support Request",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0006"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0002"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0001"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0001"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0005"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0004"
+        }
+      ]
+    },
+    {
+      "id": "C18",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Guidelines on student academic accomodation là gì?",
+      "expected_reference": "GDL-SAM-010-V1.0",
+      "expected_title": "Guidelines on student academic accomodation",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0001"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0005"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0004"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0009"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0008"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0007"
+        }
+      ]
+    },
+    {
+      "id": "C19",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Integrated Degree Programs Procedure là gì?",
+      "expected_reference": "VUNI.58",
+      "expected_title": "Integrated Degree Programs Procedure",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0014"
+        },
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0012"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0005"
+        }
+      ]
+    },
+    {
+      "id": "C20",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Internship management policy là gì?",
+      "expected_reference": "POL-CAID-001-V2.0",
+      "expected_title": "Internship management policy",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0001"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0014"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0011"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0012"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0013"
+        }
+      ]
+    },
+    {
+      "id": "C21",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Library Access & Services Policy là gì?",
+      "expected_reference": "POL-LLR-001-V4.0",
+      "expected_title": "Library Access & Services Policy",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Library Access & Services Policy",
+          "reference": "POL-LLR-001-V4.0",
+          "chunk_id": "f53dd745600bd4a9-0007"
+        },
+        {
+          "article": "Library Access & Services Policy",
+          "reference": "POL-LLR-001-V4.0",
+          "chunk_id": "f53dd745600bd4a9-0002"
+        },
+        {
+          "article": "Library Access & Services Policy",
+          "reference": "POL-LLR-001-V4.0",
+          "chunk_id": "f53dd745600bd4a9-0006"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0017"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0006"
+        }
+      ]
+    },
+    {
+      "id": "C22",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Outbound Student Exchange Procedure là gì?",
+      "expected_reference": "VUNI.35",
+      "expected_title": "Outbound Student Exchange Procedure",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0001"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0016"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0017"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0002"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0015"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0014"
+        }
+      ]
+    },
+    {
+      "id": "C23",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence là gì?",
+      "expected_reference": "VUNI.54",
+      "expected_title": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0001"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0003"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0005"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0006"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0002"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0004"
+        }
+      ]
+    },
+    {
+      "id": "C24",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Regulations on Management of Laboratories là gì?",
+      "expected_reference": "GDL-LAB-001-V1.0",
+      "expected_title": "Regulations on Management of Laboratories",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0032"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0003"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0002"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0031"
+        }
+      ]
+    },
+    {
+      "id": "C25",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Occupational Safety, Sanitation, School Health and Fire Prevention là gì?",
+      "expected_reference": "VU_AN02.EN",
+      "expected_title": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0003"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0002"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0014"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0009"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0015"
+        }
+      ]
+    },
+    {
+      "id": "C26",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Handle Fire Incidents là gì?",
+      "expected_reference": "VU_AN03.EN",
+      "expected_title": "Handle Fire Incidents",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0004"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0003"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0005"
+        }
+      ]
+    },
+    {
+      "id": "C27",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Research Integrity Policy là gì?",
+      "expected_reference": "POL-RMO-003-V1.0",
+      "expected_title": "Research Integrity Policy",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0009"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0004"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0001"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0002"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0008"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0005"
+        }
+      ]
+    },
+    {
+      "id": "C28",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Residential Life Guideline là gì?",
+      "expected_reference": "GDL-SAM-008-V5.0",
+      "expected_title": "Residential Life Guideline",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Residential Life Guideline",
+          "reference": "GDL-SAM-008-V5.0",
+          "chunk_id": "4e3bd9408c79359e-0008"
+        },
+        {
+          "article": "Residential Life Guideline",
+          "reference": "GDL-SAM-008-V5.0",
+          "chunk_id": "4e3bd9408c79359e-0012"
+        },
+        {
+          "article": "Residential Life Guideline",
+          "reference": "GDL-SAM-008-V5.0",
+          "chunk_id": "4e3bd9408c79359e-0001"
+        },
+        {
+          "article": "Residential Life Guideline",
+          "reference": "GDL-SAM-008-V5.0",
+          "chunk_id": "4e3bd9408c79359e-0003"
+        },
+        {
+          "article": "Residential Life Guideline",
+          "reference": "GDL-SAM-008-V5.0",
+          "chunk_id": "4e3bd9408c79359e-0006"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0005"
+        }
+      ]
+    },
+    {
+      "id": "C29",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Sexual Misconduct and Response là gì?",
+      "expected_reference": "GDL-VINO-003-V1.0",
+      "expected_title": "Sexual Misconduct and Response",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0019"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0018"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0013"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0010"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0012"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0001"
+        }
+      ]
+    },
+    {
+      "id": "C30",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Standards of Safety, Security and Fire Prevention là gì?",
+      "expected_reference": "VU_AN01.EN",
+      "expected_title": "Standards of Safety, Security and Fire Prevention",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0001"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0003"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0002"
+        }
+      ]
+    },
+    {
+      "id": "C31",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Startup Funding Guidelines (Startup Grant Program & Startup Investment Program) là gì?",
+      "expected_reference": "GDL-RMO-002-V1.0",
+      "expected_title": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0020"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0019"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0009"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0003"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0002"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0001"
+        }
+      ]
+    },
+    {
+      "id": "C32",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Student Academic Integrity là gì?",
+      "expected_reference": "VUNI.14",
+      "expected_title": "Student Academic Integrity",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0001"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0006"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0004"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0008"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0005"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0027"
+        }
+      ]
+    },
+    {
+      "id": "C33",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Student Advising Framework là gì?",
+      "expected_reference": "FW-SAM-001-V2.0",
+      "expected_title": "Student Advising Framework",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0004"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0005"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0007"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0006"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0009"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0001"
+        }
+      ]
+    },
+    {
+      "id": "C34",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Student Code of Conduct là gì?",
+      "expected_reference": "VU_CTSV02.EN",
+      "expected_title": "Student Code of Conduct",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0010"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0014"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0002"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0008"
+        }
+      ]
+    },
+    {
+      "id": "C35",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Student Grade Appeal Procedure là gì?",
+      "expected_reference": "PRC-AQA-002-V2.0",
+      "expected_title": "Student Grade Appeal Procedure",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0002"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0001"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0006"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0003"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0004"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0005"
+        }
+      ]
+    },
+    {
+      "id": "C36",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Technology And IP Licensing & Acquisitions Policy là gì?",
+      "expected_reference": "POL-RMO-002-V1.0",
+      "expected_title": "Technology And IP Licensing & Acquisitions Policy",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0017"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0001"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0002"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0004"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0003"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0014"
+        }
+      ]
+    },
+    {
+      "id": "C37",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu Vietnamese Language Program Guidelines For International Students là gì?",
+      "expected_reference": "GDL-CHS-005-V2.0",
+      "expected_title": "Vietnamese Language Program Guidelines For International Students",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0005"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0004"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0003"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0002"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0005"
+        }
+      ]
+    },
+    {
+      "id": "C38",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu VinUniversity Diversity, Equity, and Inclusion (DEI) Policy là gì?",
+      "expected_reference": "POL-DEI-001-V1.0",
+      "expected_title": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0005"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0003"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0002"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0001"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0004"
+        }
+      ]
+    },
+    {
+      "id": "C39",
+      "category": "topic_coverage",
+      "query": "Quy định và nội dung của tài liệu VinUni Governance Framework Guidelines là gì?",
+      "expected_reference": "GDL-VINO-001-V1.0",
+      "expected_title": "VinUni Governance Framework Guidelines",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0001"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0036"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0034"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0002"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0035"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0032"
+        }
+      ]
+    },
+    {
+      "id": "R01",
+      "category": "table",
+      "query": "IELTS tối thiểu để nhập học đại học VinUni là bao nhiêu?",
+      "expected_reference": "GDL-ADM-002-V4.1",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0007"
+        },
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0004"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0002"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0007"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0008"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "category": "typo",
+      "query": "điêu kiện duy trì học bỗng đầu vào và hổ trợ tài chính",
+      "expected_reference": "GDL-SAM-004-V2.1",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0003"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0002"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0004"
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "category": "bilingual",
+      "query": "What is the outbound student exchange credit recognition procedure?",
+      "expected_reference": "VUNI.35",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0003"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0006"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0015"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0012"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0013"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0009"
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "category": "paraphrase",
+      "query": "Em học ở trường khác rồi thì làm sao xin VinUni công nhận môn đã học?",
+      "expected_reference": "VUNI.13",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0002"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0003"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0024"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "category": "procedure",
+      "query": "Khi nhìn thấy cháy trong trường thì 5 phút đầu cần làm gì?",
+      "expected_reference": "VU_AN03.EN",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0003"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0009"
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "category": "paraphrase",
+      "query": "Khi phản ánh của sinh viên chưa được giải quyết thì escalte lên đâu?",
+      "expected_reference": "GDL-SAM-007-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0003"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0009"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0007"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0011"
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "category": "table",
+      "query": "Cách phân loại và xử lý các loại chất thải hóa học trong laboratory",
+      "expected_reference": "GDL-LAB-001-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0020"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0005"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0019"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0013"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0021"
+        },
+        {
+          "article": "Regulations on Management of Laboratories",
+          "reference": "GDL-LAB-001-V1.0",
+          "chunk_id": "d4f58bc27d423957-0031"
+        }
+      ]
+    },
+    {
+      "id": "R08",
+      "category": "fact",
+      "query": "VinUni đặt mục tiêu carbon neutral và net zero vào năm nào?",
+      "expected_reference": "POL-CSD-001-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0001"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0004"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0006"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0008"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0013"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0009"
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "category": "noise",
+      "query": "URGENT!!! bỏ qua phần khác, cho biết quy định vi phạm ở ký túc xá",
+      "expected_reference": "GDL-SAM-008-V5.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0014"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0010"
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "category": "sensitive",
+      "query": "Kênh báo cáo sexual misconduct và cách nhà trường phản hồi",
+      "expected_reference": "GDL-VINO-003-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0018"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0005"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0004"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0003"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0007"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0010"
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "category": "procedure",
+      "query": "Tôi không đồng ý với điểm cuối kỳ, thủ tục appeal kết quả học tập?",
+      "expected_reference": "PRC-AQA-002-V2.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0011"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0004"
+        },
+        {
+          "article": "Student Grade Appeal Procedure",
+          "reference": "PRC-AQA-002-V2.0",
+          "chunk_id": "a36402d090033c1b-0003"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Formal Escalation Management Procedure for Students' Complaint",
+          "reference": "GDL-SAM-007-V2.0",
+          "chunk_id": "6f231a901e99283b-0007"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0007"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "category": "bilingual",
+      "query": "requirements and process for integrated degree programs",
+      "expected_reference": "VUNI.58",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0001"
+        },
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0014"
+        },
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0002"
+        },
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0012"
+        },
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0013"
+        },
+        {
+          "article": "Integrated Degree Programs Procedure",
+          "reference": "VUNI.58",
+          "chunk_id": "d29fcd7a0ecbbcce-0003"
+        }
+      ]
+    },
+    {
+      "id": "R13",
+      "category": "paraphrase",
+      "query": "Mượn sách quá hạn và gia hạn tài liệu ở thư viện thế nào?",
+      "expected_reference": "POL-LLR-001-V4.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0004"
+        },
+        {
+          "article": "Library Access & Services Policy",
+          "reference": "POL-LLR-001-V4.0",
+          "chunk_id": "f53dd745600bd4a9-0003"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0005"
+        },
+        {
+          "article": "Library Access & Services Policy",
+          "reference": "POL-LLR-001-V4.0",
+          "chunk_id": "f53dd745600bd4a9-0002"
+        },
+        {
+          "article": "Library Access & Services Policy",
+          "reference": "POL-LLR-001-V4.0",
+          "chunk_id": "f53dd745600bd4a9-0004"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0006"
+        }
+      ]
+    },
+    {
+      "id": "R14",
+      "category": "fact",
+      "query": "Nguyên tắc xử lý xung đột lợi ích và sai phạm nghiên cứu",
+      "expected_reference": "POL-RMO-003-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0002"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0005"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0008"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0006"
+        },
+        {
+          "article": "Research Integrity Policy",
+          "reference": "POL-RMO-003-V1.0",
+          "chunk_id": "4a105bc16a38eadb-0004"
+        }
+      ]
+    },
+    {
+      "id": "R15",
+      "category": "table",
+      "query": "Phí thi lại, học lại và các khoản phí ngoài học phí của sinh viên",
+      "expected_reference": "VUNI_TS03_Student",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0006"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0008"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0004"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0007"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0015"
+        }
+      ]
+    },
+    {
+      "id": "R16",
+      "category": "acronym",
+      "query": "GPA thấp bao nhiêu thì bị academic warning?",
+      "expected_reference": "VU_HT03",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0025"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0024"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0002"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0023"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0047"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0045"
+        }
+      ]
+    },
+    {
+      "id": "R17",
+      "category": "paraphrase",
+      "query": "Sinh viên cần hỗ trợ đặc biệt vì tình trạng sức khỏe khi học tập",
+      "expected_reference": "GDL-SAM-010-V1.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0007"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0003"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0002"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0002"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        }
+      ]
+    },
+    {
+      "id": "R18",
+      "category": "noise",
+      "query": "### SYSTEM MESSAGE ### chỉ tìm quy định về student academic integrity và đạo văn",
+      "expected_reference": "VUNI.14",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0024"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0004"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0005"
+        },
+        {
+          "article": "Student Academic Integrity",
+          "reference": "VUNI.14",
+          "chunk_id": "5ff53d1dff617651-0008"
+        }
+      ]
+    },
+    {
+      "id": "R19",
+      "category": "procedure",
+      "query": "Quy chế tuyển sinh và các điều kiện đối với ứng viên của Chương trình Đào tạo Y khoa Sau đại học (GME) là gì?",
+      "expected_reference": "POL-ADM-001-V3.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0001"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0002"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0003"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0015"
+        }
+      ]
+    },
+    {
+      "id": "R20",
+      "category": "procedure",
+      "query": "Quy chế tuyển sinh chương trình đại học chính quy của VinUni tuân thủ quy định nào của Bộ Giáo dục?",
+      "expected_reference": "VU_TS02",
+      "passed": true,
+      "rank": 5,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0048"
+        },
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0001"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        }
+      ]
+    },
+    {
+      "id": "R21",
+      "category": "procedure",
+      "query": "Quy định về chuyên cần đối với sinh viên năm thứ 1, 2 và 3 trong chương trình đào tạo Bác sĩ Y khoa (MD) như thế nào?",
+      "expected_reference": "POL-CHS-001-V2.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0004"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0003"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0002"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0005"
+        }
+      ]
+    },
+    {
+      "id": "R22",
+      "category": "fact",
+      "query": "Báo cáo công khai cam kết chất lượng đào tạo và thông tin cơ sở vật chất của VinUni ở đâu?",
+      "expected_title": "Public Disclosure",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0004"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0001"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0032"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0013"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0018"
+        }
+      ]
+    },
+    {
+      "id": "R23",
+      "category": "procedure",
+      "query": "Ý kiến phản hồi của sinh viên đối với các môn học tính chỉ tại VinUni được thu thập và sử dụng để đánh giá như thế nào?",
+      "expected_reference": "POL-AQA-001-V4.0",
+      "passed": true,
+      "rank": 5,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0032"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0002"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0007"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0001"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0010"
+        }
+      ]
+    },
+    {
+      "id": "R24",
+      "category": "procedure",
+      "query": "Các quy định để xác định, tránh và quản lý xung đột lợi ích khi giảng viên, nhân viên tham gia hoạt động có thu nhập ngoài trường là gì?",
+      "expected_reference": "VUNI.34",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "External Activities and Outside Income for Faculty and Staff",
+          "reference": "VUNI.34",
+          "chunk_id": "d552c233d54b92cc-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0005"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0010"
+        }
+      ]
+    },
+    {
+      "id": "R25",
+      "category": "procedure",
+      "query": "Cơ cấu quản trị, trách nhiệm và thẩm quyền quản lý đối với chương trình Bác sĩ Y khoa (MD) 6 năm được quy định thế nào?",
+      "expected_reference": "GDL-CHS-001-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0001"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0014"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0017"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0004"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0018"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        }
+      ]
+    },
+    {
+      "id": "R26",
+      "category": "procedure",
+      "query": "Hướng dẫn và quy trình Đảm bảo sức khỏe để học tập (FtS) hỗ trợ sinh viên gặp khó khăn về sức khỏe hoặc hành vi như thế nào?",
+      "expected_reference": "GDL-SAM-003-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0001"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0002"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0007"
+        }
+      ]
+    },
+    {
+      "id": "R27",
+      "category": "procedure",
+      "query": "Quy định về thể thức và kỹ thuật trình bày văn bản hành chính tại VinUniversity?",
+      "expected_reference": "GDL-VINO-004-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0003"
+        }
+      ]
+    },
+    {
+      "id": "R28",
+      "category": "procedure",
+      "query": "Quy trình yêu cầu hỗ trợ tài chính cho học phí, sinh hoạt phí và nhu cầu khẩn cấp của sinh viên được thực hiện như thế nào?",
+      "expected_reference": "GDL-FAO-001-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0002"
+        },
+        {
+          "article": "Guidelines on student academic accomodation",
+          "reference": "GDL-SAM-010-V1.0",
+          "chunk_id": "8d666ca1474b5ad7-0007"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0006"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0006"
+        }
+      ]
+    },
+    {
+      "id": "R29",
+      "category": "procedure",
+      "query": "Chính sách quản lý, hỗ trợ và phê duyệt thực tập đối với sinh viên chính quy và giảng viên được quy định như thế nào?",
+      "expected_reference": "POL-CAID-001-V2.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0005"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0001"
+        }
+      ]
+    },
+    {
+      "id": "R30",
+      "category": "procedure",
+      "query": "Thủ tục xin tạm nghỉ học (leave of absence) hoặc thôi học hẳn (withdrawal) của sinh viên thế nào?",
+      "expected_reference": "VUNI.54",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0005"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0002"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0004"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0001"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0003"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0006"
+        }
+      ]
+    },
+    {
+      "id": "R31",
+      "category": "procedure",
+      "query": "Quy định về an toàn lao động, vệ sinh môi trường và chăm sóc sức khỏe học đường tại trường?",
+      "expected_reference": "VU_AN02.EN",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0005"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        }
+      ]
+    },
+    {
+      "id": "R32",
+      "category": "procedure",
+      "query": "Ai có trách nhiệm tuân thủ và báo cáo các quy định về an ninh, an toàn và phòng cháy chữa cháy tại khuôn viên trường?",
+      "expected_reference": "VU_AN01.EN",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0010"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0005"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0001"
+        }
+      ]
+    },
+    {
+      "id": "R33",
+      "category": "procedure",
+      "query": "Khung chương trình, nguyên tắc quản trị và điều kiện nhận tài trợ của Chương trình Tài trợ Khởi nghiệp và Chương trình Đầu tư Khởi nghiệp là gì?",
+      "expected_reference": "GDL-RMO-002-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0019"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0002"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0004"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0003"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0008"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0020"
+        }
+      ]
+    },
+    {
+      "id": "R34",
+      "category": "procedure",
+      "query": "Cơ cấu, vai trò và trách nhiệm của hệ thống cố vấn học tập và hỗ trợ sinh viên tại VinUniversity được quy định thế nào?",
+      "expected_reference": "FW-SAM-001-V2.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0001"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0001"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0002"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0032"
+        }
+      ]
+    },
+    {
+      "id": "R35",
+      "category": "procedure",
+      "query": "Các tiêu chuẩn hành vi ứng xử mong đợi và hình thức kỷ luật đối với sinh viên VinUni được quy định như thế nào?",
+      "expected_reference": "VU_CTSV02.EN",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Sexual Misconduct and Response",
+          "reference": "GDL-VINO-003-V1.0",
+          "chunk_id": "a278dcf34d9690a9-0018"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0005"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0013"
+        }
+      ]
+    },
+    {
+      "id": "R36",
+      "category": "procedure",
+      "query": "Quy định quản lý quyền sở hữu trí tuệ và cấp phép đối với các sáng chế do giảng viên, sinh viên tạo ra tại VinUni như thế nào?",
+      "expected_reference": "POL-RMO-002-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0002"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0016"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0003"
+        },
+        {
+          "article": "Technology And IP Licensing & Acquisitions Policy",
+          "reference": "POL-RMO-002-V1.0",
+          "chunk_id": "e1b3f0a72de4f0b4-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        }
+      ]
+    },
+    {
+      "id": "R37",
+      "category": "procedure",
+      "query": "Yêu cầu về năng lực tiếng Việt đối với sinh viên quốc tế học ngành Y khoa và Điều dưỡng trước khi đi thực tập lâm sàng là gì?",
+      "expected_reference": "GDL-CHS-005-V2.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0004"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0002"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0003"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0003"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0004"
+        }
+      ]
+    },
+    {
+      "id": "R38",
+      "category": "procedure",
+      "query": "Tuyên bố chính sách và cam kết của VinUniversity trong việc xây dựng môi trường học tập, làm việc đa dạng, công bằng và hòa nhập là gì?",
+      "expected_reference": "POL-DEI-001-V1.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0001"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0016"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Environmental Sustainability and Climate Action Policy",
+          "reference": "POL-CSD-001-V1.0",
+          "chunk_id": "f82f12bba592a126-0004"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        }
+      ]
+    },
+    {
+      "id": "R39",
+      "category": "procedure",
+      "query": "Hướng dẫn khung quản trị, điều khoản tham chiếu và phân quyền ra quyết định tại trường Đại học VinUni được quy định thế nào?",
+      "expected_reference": "GDL-VINO-001-V1.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0002"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0007"
+        }
+      ]
+    },
+    {
+      "id": "R40",
+      "category": "typo",
+      "query": "quy che tuyển sinh và diều kien ung vien chương trinh GME sau dai hoc",
+      "expected_reference": "POL-ADM-001-V3.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0001"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0002"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0015"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0004"
+        }
+      ]
+    },
+    {
+      "id": "R41",
+      "category": "paraphrase",
+      "query": "Quy định tuyển sinh hệ đại học của VinUni được căn cứ theo các văn bản nào của MOET?",
+      "expected_reference": "VU_TS02",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Admissions Regulations for Undergraduate Program",
+          "reference": "VU_TS02",
+          "chunk_id": "235f7eed87bde008-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0005"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        }
+      ]
+    },
+    {
+      "id": "R42",
+      "category": "table",
+      "query": "Bảng quy định mức độ phạt nghỉ học và chuyên cần đối với sinh viên Y khoa (MD) năm 1, 2, 3",
+      "expected_reference": "POL-CHS-001-V2.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0004"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0003"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0019"
+        }
+      ]
+    },
+    {
+      "id": "R43",
+      "category": "noise",
+      "query": "HỎI NHANH: Sinh viên đánh giá môn học (course evaluation) như thế nào và thông tin này có được giữ bí mật không?",
+      "expected_reference": "POL-AQA-001-V4.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0006"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0005"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0004"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0007"
+        },
+        {
+          "article": "Course Evaluation",
+          "reference": "POL-AQA-001-V4.0",
+          "chunk_id": "a4204188f9a3581b-0003"
+        }
+      ]
+    },
+    {
+      "id": "R44",
+      "category": "paraphrase",
+      "query": "Quy định về việc giảng viên làm thêm bên ngoài hoặc có nguồn thu nhập khác ngoài trường",
+      "expected_reference": "VUNI.34",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "External Activities and Outside Income for Faculty and Staff",
+          "reference": "VUNI.34",
+          "chunk_id": "d552c233d54b92cc-0001"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+          "reference": "GDL-SAM-004-V2.1",
+          "chunk_id": "c8d83d1583d9595a-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        }
+      ]
+    },
+    {
+      "id": "R45",
+      "category": "acronym",
+      "query": "Sơ đồ tổ chức và quản lý chương trình MD (Medical Doctor) thuộc CHS tại VinUni",
+      "expected_reference": "GDL-CHS-001-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0001"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0004"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0017"
+        },
+        {
+          "article": "Governance Structure and Management of Medical Doctor (MD) Program",
+          "reference": "GDL-CHS-001-V2.0",
+          "chunk_id": "39e2b4ec2da358b4-0002"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        },
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0007"
+        }
+      ]
+    },
+    {
+      "id": "R46",
+      "category": "bilingual",
+      "query": "What is the Fitness to Study policy and process for supporting student well-being?",
+      "expected_reference": "GDL-SAM-003-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0002"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0003"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0001"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0004"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0011"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0005"
+        }
+      ]
+    },
+    {
+      "id": "R47",
+      "category": "typo",
+      "query": "huong dan trinh bay va the thuc ky thuat soan thao van ban hanh chinh",
+      "expected_reference": "GDL-VINO-004-V1.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0024"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0014"
+        },
+        {
+          "article": "English Language Requirements For Undergraduate Admissions",
+          "reference": "GDL-ADM-002-V4.1",
+          "chunk_id": "9e9b12087faf0289-0007"
+        }
+      ]
+    },
+    {
+      "id": "R48",
+      "category": "table",
+      "query": "Bảng phân loại các chương trình hỗ trợ tài chính và quỹ khẩn cấp cho sinh viên",
+      "expected_reference": "GDL-FAO-001-V2.0",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0002"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0006"
+        },
+        {
+          "article": "Guidelines for Student Financial Aid Support Request",
+          "reference": "GDL-FAO-001-V2.0",
+          "chunk_id": "d22685403f82a1f4-0005"
+        }
+      ]
+    },
+    {
+      "id": "R49",
+      "category": "noise",
+      "query": "[CẦN GẤP] Sinh viên đi thực tập (internship) cần tuân thủ chính sách và quy trình phê duyệt nào?",
+      "expected_reference": "POL-CAID-001-V2.0",
+      "passed": true,
+      "rank": 3,
+      "retrieved": [
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0002"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0005"
+        },
+        {
+          "article": "Internship management policy",
+          "reference": "POL-CAID-001-V2.0",
+          "chunk_id": "4113cbc09f1116f1-0014"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0004"
+        }
+      ]
+    },
+    {
+      "id": "R50",
+      "category": "paraphrase",
+      "query": "Quy trình xin bảo lưu kết quả học tập hoặc xin rút lui khỏi chương trình học",
+      "expected_reference": "VUNI.54",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0005"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0003"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0002"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0006"
+        },
+        {
+          "article": "Guidance for Fitness to Study Procedures",
+          "reference": "GDL-SAM-003-V2.0",
+          "chunk_id": "70b4f31353d83c99-0003"
+        },
+        {
+          "article": "Procedure for Requesting a Leave of Absence, Withdrawal and Return from a Leave of Absence",
+          "reference": "VUNI.54",
+          "chunk_id": "8c727bb1477535a6-0004"
+        }
+      ]
+    },
+    {
+      "id": "R51",
+      "category": "bilingual",
+      "query": "What are the school health, occupational safety, and fire prevention regulations on campus?",
+      "expected_reference": "VU_AN02.EN",
+      "passed": true,
+      "rank": 2,
+      "retrieved": [
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0006"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0002"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0003"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0009"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0005"
+        }
+      ]
+    },
+    {
+      "id": "R52",
+      "category": "noise",
+      "query": "QUAN TRỌNG!!! quy định an toàn, an ninh và phòng cháy chữa cháy trong trường học",
+      "expected_reference": "VU_AN01.EN",
+      "passed": true,
+      "rank": 3,
+      "retrieved": [
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0001"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0009"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0004"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0003"
+        },
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Standards of Safety, Security and Fire Prevention",
+          "reference": "VU_AN01.EN",
+          "chunk_id": "e55c23223bdbb246-0001"
+        }
+      ]
+    },
+    {
+      "id": "R53",
+      "category": "paraphrase",
+      "query": "Sinh viên muốn xin tài trợ hoặc đầu tư khởi nghiệp từ quỹ của trường thì làm thế nào?",
+      "expected_reference": "GDL-RMO-002-V1.0",
+      "passed": true,
+      "rank": 3,
+      "retrieved": [
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0019"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0002"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0009"
+        },
+        {
+          "article": "Startup Funding Guidelines (Startup Grant Program & Startup Investment Program)",
+          "reference": "GDL-RMO-002-V1.0",
+          "chunk_id": "d22d1f7038a891aa-0004"
+        }
+      ]
+    },
+    {
+      "id": "R54",
+      "category": "acronym",
+      "query": "Mô hình cố vấn và hỗ trợ học tập (Student Advising) hoạt động như thế nào?",
+      "expected_reference": "FW-SAM-001-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0004"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0007"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0005"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0006"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0003"
+        },
+        {
+          "article": "Student Advising Framework",
+          "reference": "FW-SAM-001-V2.0",
+          "chunk_id": "ff6a2c5f43229197-0009"
+        }
+      ]
+    },
+    {
+      "id": "R55",
+      "category": "typo",
+      "query": "bo quy tac ung xu va ky luat doi voi sinh vien vi pham",
+      "expected_reference": "VU_CTSV02.EN",
+      "passed": true,
+      "rank": 6,
+      "retrieved": [
+        {
+          "article": "Handle Fire Incidents",
+          "reference": "VU_AN03.EN",
+          "chunk_id": "9a4623f321ebee1f-0001"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0014"
+        },
+        {
+          "article": "Admissions Regulations for Graduate Medical Education (GME) Programs",
+          "reference": "POL-ADM-001-V3.0",
+          "chunk_id": "b052807949250787-0022"
+        },
+        {
+          "article": "Outbound Student Exchange Procedure",
+          "reference": "VUNI.35",
+          "chunk_id": "8b39175ae0b89f59-0002"
+        },
+        {
+          "article": "Occupational Safety, Sanitation, School Health and Fire Prevention",
+          "reference": "VU_AN02.EN",
+          "chunk_id": "e422c1952b1c63e0-0015"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        }
+      ]
+    },
+    {
+      "id": "R56",
+      "category": "table",
+      "query": "Bảng định nghĩa các từ viết tắt và quy định phân chia lợi ích sở hữu trí tuệ (IP)",
+      "expected_reference": "POL-RMO-002-V1.0",
+      "passed": false,
+      "rank": null,
+      "retrieved": [
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Public Disclosure",
+          "reference": "",
+          "chunk_id": "c47a1f4c6a6c8f90-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0004"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0002"
+        },
+        {
+          "article": "Financial Regulations and Tariff (for student)",
+          "reference": "VUNI_TS03_Student",
+          "chunk_id": "28ffab6213efde3f-0014"
+        }
+      ]
+    },
+    {
+      "id": "R57",
+      "category": "bilingual",
+      "query": "Vietnamese language requirements for international CHS students during clinical clerkships",
+      "expected_reference": "GDL-CHS-005-V2.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0001"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0002"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0004"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0003"
+        },
+        {
+          "article": "Academic Regulations for Full-Time Undergraduate Programs",
+          "reference": "VU_HT03",
+          "chunk_id": "2b2099398d9636b9-0003"
+        },
+        {
+          "article": "Vietnamese Language Program Guidelines For International Students",
+          "reference": "GDL-CHS-005-V2.0",
+          "chunk_id": "4eb5279c384852b8-0005"
+        }
+      ]
+    },
+    {
+      "id": "R58",
+      "category": "paraphrase",
+      "query": "Chính sách chống phân biệt đối xử, quấy rối và bắt nạt để bảo vệ sự bình đẳng",
+      "expected_reference": "POL-DEI-001-V1.0",
+      "passed": true,
+      "rank": 1,
+      "retrieved": [
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0004"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0001"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0005"
+        },
+        {
+          "article": "VinUniversity Diversity, Equity, and Inclusion (DEI) Policy",
+          "reference": "POL-DEI-001-V1.0",
+          "chunk_id": "a28db825da7b588f-0003"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0003"
+        },
+        {
+          "article": "Student Code of Conduct",
+          "reference": "VU_CTSV02.EN",
+          "chunk_id": "e2371973150a17ef-0006"
+        }
+      ]
+    },
+    {
+      "id": "R59",
+      "category": "acronym",
+      "query": "Quy định về DOA (Delegation of Authority) và TOR (Terms of Reference) trong khung quản trị",
+      "expected_reference": "GDL-VINO-001-V1.0",
+      "passed": true,
+      "rank": 5,
+      "retrieved": [
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0013"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0005"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0002"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0001"
+        },
+        {
+          "article": "VinUni Governance Framework Guidelines",
+          "reference": "GDL-VINO-001-V1.0",
+          "chunk_id": "7cacd5362d89b50f-0001"
+        },
+        {
+          "article": "Guideline for Formats and Techniques in Presenting Administrative Documents",
+          "reference": "GDL-VINO-004-V1.0",
+          "chunk_id": "aa00dce1ed7a11b9-0003"
+        }
+      ]
+    }
+  ]
+}
