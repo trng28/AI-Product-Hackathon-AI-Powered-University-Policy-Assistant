@@ -48,7 +48,7 @@ Giải pháp kết hợp **Retrieval-Augmented Generation (RAG)** và kiến tr�
 #### Cấu hình triển khai
 
 - Frontend production được build bằng Node.js 22 và phục vụ qua Nginx.
-- Backend chạy bằng Uvicorn trên cổng `8000`; frontend mặc định sử dụng cổng `8080`.
+- Backend chạy bằng Uvicorn trên cổng `8000`; frontend mặc định sử dụng cổng `5173`.
 - Docker Compose quản lý backend, frontend, FAISS index volume và Hugging Face model cache.
 - LLM provider, model, embedding model, `TOP_K`, CORS và cổng dịch vụ được cấu hình qua `.env`.
 
