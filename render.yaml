@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: vinuni-policy-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: INDEX_DIR
+        value: /app/data/policy-index
+      - key: HF_HOME
+        value: /home/app/.cache/huggingface
+      - key: LLM_PROVIDER
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GROQ_API
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+
+  - type: web
+    name: vinuni-policy-frontend
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    envVars:
+      - key: BACKEND_HOST
+        fromService:
+          name: vinuni-policy-backend
+          type: web
+          property: hostport
