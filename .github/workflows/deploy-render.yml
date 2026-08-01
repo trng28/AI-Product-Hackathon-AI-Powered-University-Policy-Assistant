@@ -29,6 +29,7 @@ jobs:
       - name: Validate Python syntax
         run: python -m compileall -q backend
 
+
       - name: Verify packaged policy index
         shell: bash
         run: |
