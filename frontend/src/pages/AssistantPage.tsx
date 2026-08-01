@@ -12,13 +12,15 @@ export function AssistantPage({ health }: { health: Health | null }) {
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [turns]);
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [turns]);
 
   async function submit(event?: FormEvent) {
     event?.preventDefault();
     const value = question.trim();
-    if (!value || health?.status !== "ready") return;
-    const id = crypto.randomUUID();
+    if (!value || busy || health?.status !== "ready") return;
+    const id = crypto.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
     setQuestion("");
     setTurns((items) => [...items, { id, question: value, pending: true }]);
     try {
