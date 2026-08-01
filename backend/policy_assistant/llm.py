@@ -40,7 +40,9 @@ class DirectOpenAIChat:
     def __init__(self, model: str, api_key: str) -> None:
         from openai import OpenAI
 
-        self.client = OpenAI(api_key=api_key)
+        # Bound model calls so a stalled upstream connection cannot leave the
+        # chat request spinning indefinitely on Render.
+        self.client = OpenAI(api_key=api_key, timeout=75.0, max_retries=1)
         self.model = model
 
     def with_structured_output(self, schema: type) -> _OpenAIStructuredModel:
