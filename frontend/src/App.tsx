@@ -21,16 +21,20 @@ function App() {
     });
   }, []);
 
-  let page = <AssistantPage health={health} />;
-  if (route.name === "library") page = <PolicyLibraryPage navigate={navigate} />;
-  if (route.name === "document") {
-    page = <DocumentPage policyId={route.id} navigate={navigate} />;
-  }
-  if (route.name === "how") page = <HowItWorksPage navigate={navigate} />;
-
   return (
     <AppShell route={route} health={health} navigate={navigate}>
-      {page}
+      <div className="route-panel" hidden={route.name !== "assistant"}>
+        <AssistantPage health={health} />
+      </div>
+      <div className="route-panel" hidden={route.name !== "library"}>
+        <PolicyLibraryPage navigate={navigate} />
+      </div>
+      {route.name === "document" && (
+        <DocumentPage policyId={route.id} navigate={navigate} />
+      )}
+      <div className="route-panel" hidden={route.name !== "how"}>
+        <HowItWorksPage navigate={navigate} />
+      </div>
     </AppShell>
   );
 }
