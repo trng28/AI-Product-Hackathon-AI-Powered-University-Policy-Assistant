@@ -54,6 +54,11 @@ class QuerySchema(BaseModel):
     rewritten_query: str
 
 
+class DecompositionSchema(BaseModel):
+    is_compound: bool = False
+    subquestions: list[str] = Field(default_factory=list, max_length=4)
+
+
 class CitationSchema(BaseModel):
     chunk_id: str
     support: str

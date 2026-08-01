@@ -86,6 +86,23 @@ class HybridRetriever:
                 "master tuition",
                 "postgraduate tuition",
             ),
+            "listed tuition fee per academic year undergraduate program annual tuition": (
+                "hoc phi trung binh",
+                "hoc phi vinuni",
+                "trung binh bao nhieu",
+                "bao nhieu mot nam",
+                "hoc phi mot nam",
+                "hoc phi moi nam",
+                "tuition per year",
+                "annual tuition",
+            ),
+            "academic programs majors disciplines undergraduate degree programs": (
+                "bao nhieu nganh",
+                "so nganh dao tao",
+                "cac nganh dao tao",
+                "how many majors",
+                "academic programs",
+            ),
             "class meeting times class schedule academic regulations 8:00 5:30": (
                 "thoi gian hoc",
                 "gio hoc",

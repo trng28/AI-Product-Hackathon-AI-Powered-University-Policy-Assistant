@@ -9,6 +9,7 @@ from typing_extensions import TypedDict
 from .models import (
     AnalysisSchema,
     Answer,
+    DecompositionSchema,
     QuerySchema,
     QueryUnderstanding,
     SearchResult,
@@ -18,7 +19,9 @@ from .retrieval import HybridRetriever
 
 class AgentState(TypedDict, total=False):
     question: str
+    history: list[dict[str, str]]
     query: QueryUnderstanding
+    subquestions: list[str]
     retrieved: list[SearchResult]
     analysis: dict[str, Any]
     validated: dict[str, Any]
@@ -29,9 +32,23 @@ class QueryUnderstandingAgent:
     def __init__(self, model: Any) -> None:
         self.model = model.with_structured_output(QuerySchema)
 
-    def run(self, question: str) -> QueryUnderstanding:
+    def run(
+        self, question: str, history: list[dict[str, str]] | None = None
+    ) -> QueryUnderstanding:
+        recent_history = "\n".join(
+            f"{item['role'].upper()}: {item['content']}"
+            for item in (history or [])[-12:]
+        )
         result = self.model.invoke(
             [
+                SystemMessage(
+                    content=(
+                        f"CHAT HISTORY:\n{recent_history or '(empty)'}\n\n"
+                        "Dùng history chỉ để giải quyết đại từ và tham chiếu như 'ngành đó', "
+                        "'mức này' hoặc 'còn cái kia'. rewritten_query phải là câu hỏi độc lập "
+                        "và đầy đủ ngữ cảnh. Không xem câu trả lời cũ là policy evidence."
+                    )
+                ),
                 SystemMessage(
                     content=(
                         "Bạn phân tích câu hỏi về quy chế đại học VinUni. Giữ lại "
@@ -58,22 +75,65 @@ class RetrievalAgent:
         self.retriever, self.top_k = retriever, top_k
 
     def run(
-        self, original_question: str, query: QueryUnderstanding
+        self,
+        original_question: str,
+        query: QueryUnderstanding,
+        subquestions: list[str] | None = None,
     ) -> list[SearchResult]:
-        return self.retriever.search(
-            query.rewritten_query,
-            query.keywords,
-            query.target_articles,
-            self.top_k,
-            original_query=original_question,
+        questions = subquestions or [original_question]
+        merged: dict[str, SearchResult] = {}
+        for item in dict.fromkeys([original_question, *questions]):
+            results = self.retriever.search(
+                item,
+                query.keywords,
+                query.target_articles,
+                self.top_k,
+                original_query=item,
+            )
+            for result in results:
+                previous = merged.get(result.chunk.id)
+                if previous is None or result.score > previous.score:
+                    merged[result.chunk.id] = result
+        limit = self.top_k if len(questions) == 1 else self.top_k * 2
+        return sorted(merged.values(), key=lambda item: item.score, reverse=True)[:limit]
+
+
+class QuestionDecompositionAgent:
+    """Splits compound questions so every requested fact gets retrieval coverage."""
+
+    def __init__(self, model: Any) -> None:
+        self.model = model.with_structured_output(DecompositionSchema)
+
+    def run(self, question: str) -> list[str]:
+        result = self.model.invoke(
+            [
+                SystemMessage(
+                    content=(
+                        "Phân rã câu hỏi VinUni có nhiều ý thành tối đa 4 câu hỏi độc lập. "
+                        "Giữ nguyên ngôn ngữ và điều kiện quan trọng, không tự thêm dữ kiện. "
+                        "Ví dụ câu hỏi vừa hỏi số ngành vừa hỏi học phí phải thành hai câu. "
+                        "Nếu chỉ có một ý, trả lại đúng một câu hỏi gốc."
+                    )
+                ),
+                HumanMessage(content=question),
+            ]
         )
+        if isinstance(result, dict):
+            result = DecompositionSchema.model_validate(result)
+        questions = [item.strip() for item in result.subquestions if item.strip()]
+        return questions or [question]
 
 
 class PolicyAnalysisAgent:
     def __init__(self, model: Any) -> None:
         self.model = model.with_structured_output(AnalysisSchema)
 
-    def run(self, question: str, results: list[SearchResult]) -> dict[str, Any]:
+    def run(
+        self,
+        question: str,
+        results: list[SearchResult],
+        subquestions: list[str] | None = None,
+    ) -> dict[str, Any]:
         evidence = "\n\n".join(
             f"[{r.chunk.id}] {r.chunk.document}, {r.chunk.article}, "
             f"{r.chunk.clause}"
@@ -106,8 +166,24 @@ class PolicyAnalysisAgent:
                         "QUESTION chỉ hỏi chuyển ngành."
                     )
                 ),
+                SystemMessage(
+                    content=(
+                        "Với câu hỏi nhiều ý, trả lời từng SUBQUESTION riêng. Nếu evidence "
+                        "chỉ đủ cho một số ý, vẫn trả lời các ý có căn cứ, nói rõ ý nào chưa "
+                        "có dữ liệu, đặt evidence_sufficient=true và chỉ citation các phần "
+                        "được hỗ trợ. Chỉ đặt false khi không có ý nào được trả lời trực tiếp. "
+                        "Không tự tính học phí trung bình nếu tài liệu không nêu cách tính "
+                        "hoặc cơ cấu sinh viên."
+                    )
+                ),
                 HumanMessage(
-                    content=f"QUESTION:\n{question}\n\nEVIDENCE:\n{evidence}"
+                    content=(
+                        f"QUESTION:\n{question}\n\nSUBQUESTIONS:\n"
+                        + "\n".join(
+                            f"- {item}" for item in (subquestions or [question])
+                        )
+                        + f"\n\nEVIDENCE:\n{evidence}"
+                    )
                 ),
             ]
         )
@@ -183,6 +259,7 @@ class OrchestratorAgent:
         self, model: Any, retriever: HybridRetriever, top_k: int
     ) -> None:
         self.query_agent = QueryUnderstandingAgent(model)
+        self.decomposition_agent = QuestionDecompositionAgent(model)
         self.retrieval_agent = RetrievalAgent(retriever, top_k)
         self.analysis_agent = PolicyAnalysisAgent(model)
         self.validation_agent = CitationValidationAgent()
@@ -192,12 +269,14 @@ class OrchestratorAgent:
     def _build_graph(self):
         builder = StateGraph(AgentState)
         builder.add_node("query_understanding", self._understand)
+        builder.add_node("question_decomposition", self._decompose)
         builder.add_node("retrieval", self._retrieve)
         builder.add_node("policy_analysis", self._analyze)
         builder.add_node("citation_validation", self._validate)
         builder.add_node("response", self._respond)
         builder.add_edge(START, "query_understanding")
-        builder.add_edge("query_understanding", "retrieval")
+        builder.add_edge("query_understanding", "question_decomposition")
+        builder.add_edge("question_decomposition", "retrieval")
         builder.add_edge("retrieval", "policy_analysis")
         builder.add_edge("policy_analysis", "citation_validation")
         builder.add_edge("citation_validation", "response")
@@ -205,19 +284,30 @@ class OrchestratorAgent:
         return builder.compile()
 
     def _understand(self, state: AgentState) -> dict:
-        return {"query": self.query_agent.run(state["question"])}
+        return {
+            "query": self.query_agent.run(
+                state["question"], state.get("history", [])
+            )
+        }
 
     def _retrieve(self, state: AgentState) -> dict:
         return {
             "retrieved": self.retrieval_agent.run(
-                state["question"], state["query"]
+                state["question"], state["query"], state["subquestions"]
+            )
+        }
+
+    def _decompose(self, state: AgentState) -> dict:
+        return {
+            "subquestions": self.decomposition_agent.run(
+                state["query"].rewritten_query
             )
         }
 
     def _analyze(self, state: AgentState) -> dict:
         return {
             "analysis": self.analysis_agent.run(
-                state["question"], state["retrieved"]
+                state["question"], state["retrieved"], state["subquestions"]
             )
         }
 
@@ -233,5 +323,9 @@ class OrchestratorAgent:
             "answer": self.response_agent.run(state["validated"], state["query"])
         }
 
-    def run(self, question: str) -> Answer:
-        return self.graph.invoke({"question": question})["answer"]
+    def run(
+        self, question: str, history: list[dict[str, str]] | None = None
+    ) -> Answer:
+        return self.graph.invoke(
+            {"question": question, "history": history or []}
+        )["answer"]

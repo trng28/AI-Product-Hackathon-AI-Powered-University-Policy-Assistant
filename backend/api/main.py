@@ -6,6 +6,7 @@ import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 from threading import Lock
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -26,8 +27,14 @@ DEFAULT_PUBLIC_CHUNKS = (
 FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
 
 
+class ChatMessageRequest(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str = Field(min_length=1, max_length=4000)
+
+
 class AskRequest(BaseModel):
     question: str = Field(min_length=2, max_length=2000)
+    history: list[ChatMessageRequest] = Field(default_factory=list, max_length=12)
 
 
 class CitationResponse(BaseModel):
@@ -80,8 +87,8 @@ class Runtime:
 runtime = Runtime()
 
 
-def _ask_sync(question: str):
-    return runtime.get_assistant().ask(question)
+def _ask_sync(question: str, history: list[dict[str, str]]):
+    return runtime.get_assistant().ask(question, history)
 
 
 def _cors_origins() -> list[str]:
@@ -198,7 +205,8 @@ async def create_index(request: IndexRequest) -> IndexResponse:
 @app.post("/api/ask", response_model=AskResponse)
 async def ask(request: AskRequest) -> AskResponse:
     try:
-        answer = await asyncio.to_thread(_ask_sync, request.question)
+        history = [message.model_dump() for message in request.history]
+        answer = await asyncio.to_thread(_ask_sync, request.question, history)
         return AskResponse(**answer.to_dict())
     except FileNotFoundError as exc:
         raise HTTPException(

@@ -3,9 +3,17 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Answer } from "../../api";
 
+export function normalizeAnswerMarkdown(value: string): string {
+  return value
+    .replace(/\\r\\n|\\n|\\r/g, "\n")
+    .replace(/\s*\(Nguồn:\s*\[[a-f0-9]{8,}\](?:,\s*trang\s*\d+)?\)\s*/gi, "\n")
+    .replace(/\[([a-f0-9]{8,})\]/gi, "")
+    .trim();
+}
+
 export function AssistantAnswer({ answer }: { answer: Answer }) {
   const confidence = Math.round(answer.confidence * 100);
-  const content = answer.answer.replace(/\s*\(Nguồn:\s*\[[a-f0-9]{8,}\](?:,\s*trang\s*\d+)?\)\s*/gi, "\n").replace(/\[([a-f0-9]{8,})\]/gi, "").trim();
+  const content = normalizeAnswerMarkdown(answer.answer);
   return <div className="assistant-answer">
     <div className="markdown-answer"><ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown></div>
     <div className="answer-proof"><span className={answer.evidence_sufficient ? "verified" : "insufficient"}><ShieldCheck />{answer.evidence_sufficient ? "Đã kiểm chứng" : "Chưa đủ căn cứ"}</span><span>{confidence}% tin cậy</span></div>

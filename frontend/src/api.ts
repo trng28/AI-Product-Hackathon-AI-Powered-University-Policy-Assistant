@@ -29,6 +29,11 @@ export type Answer = {
   };
 };
 
+export type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
+
 const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/$/, "");
 const DEFAULT_TIMEOUT_MS = 90_000;
 
@@ -62,10 +67,10 @@ async function request<T>(path: string, init?: RequestInit, timeoutMs = DEFAULT_
 
 export const api = {
   health: () => request<Health>("/api/health", undefined, 15_000),
-  ask: (question: string) =>
+  ask: (question: string, history: ChatMessage[] = []) =>
     request<Answer>("/api/ask", {
       method: "POST",
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ question, history: history.slice(-12) }),
     }),
   buildIndex: () =>
     request<{ chunks: number }>("/api/index", {

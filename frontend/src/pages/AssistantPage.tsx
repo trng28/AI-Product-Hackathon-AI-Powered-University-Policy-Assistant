@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Bot, LoaderCircle, Sparkles, UserRound } from "lucide-react";
-import { Health, api } from "../api";
+import { ChatMessage, Health, api } from "../api";
 import { AssistantAnswer } from "../components/chat/AssistantAnswer";
 import { ChatComposer } from "../components/chat/ChatComposer";
 import { ChatTurn } from "../types";
@@ -21,10 +21,17 @@ export function AssistantPage({ health }: { health: Health | null }) {
     const value = question.trim();
     if (!value || busy || health?.status !== "ready") return;
     const id = crypto.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
+    const history: ChatMessage[] = turns
+      .filter((turn) => turn.answer)
+      .slice(-6)
+      .flatMap((turn) => [
+        { role: "user" as const, content: turn.question },
+        { role: "assistant" as const, content: turn.answer!.answer },
+      ]);
     setQuestion("");
     setTurns((items) => [...items, { id, question: value, pending: true }]);
     try {
-      const answer = await api.ask(value);
+      const answer = await api.ask(value, history);
       setTurns((items) => items.map((item) => item.id === id ? { ...item, answer, pending: false } : item));
     } catch (error) {
       setTurns((items) => items.map((item) => item.id === id ? { ...item, pending: false, error: error instanceof Error ? error.message : "Không thể xử lý câu hỏi." } : item));

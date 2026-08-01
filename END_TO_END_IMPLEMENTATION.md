@@ -20,7 +20,7 @@ RAG-ready JSONL Chunks
         ↓
 Multilingual E5 Embeddings + FAISS
         ↓
-LangGraph 5-agent Workflow
+LangGraph 6-agent Workflow
         ↓
 FastAPI
         ↓
@@ -226,20 +226,22 @@ Implementation:
 backend/policy_assistant/agents.py
 ```
 
-LangGraph có **5 agent/node chức năng**, chạy tuần tự:
+LangGraph có **6 agent/node chức năng**, chạy tuần tự:
 
 ```text
 START
   ↓
 1. Query Understanding Agent
   ↓
-2. Retrieval Agent
+2. Question Decomposition Agent
   ↓
-3. Policy Analysis Agent
+3. Retrieval Agent
   ↓
-4. Citation Validation Agent
+4. Policy Analysis Agent
   ↓
-5. Response Agent
+5. Citation Validation Agent
+  ↓
+6. Response Agent
   ↓
 END
 ```
@@ -255,20 +257,26 @@ END
   - rewritten query
 - Không được tự bịa số Điều.
 
-### 2. Retrieval Agent
+### 2. Question Decomposition Agent
+
+- Có gọi LLM.
+- Phân rã câu hỏi nhiều ý thành các sub-query độc lập.
+- Giúp retrieval bao phủ từng phần và cho phép trả lời partial evidence.
+
+### 3. Retrieval Agent
 
 - Không gọi chat LLM.
 - Dùng multilingual E5, FAISS và keyword reranking.
 - Trả về top 6 evidence chunks.
 
-### 3. Policy Analysis Agent
+### 4. Policy Analysis Agent
 
 - Có gọi LLM.
 - Chỉ được sử dụng evidence đã retrieve.
 - Trả structured output gồm answer, evidence decision, citations và confidence.
 - Citation do LLM đề xuất phải dùng chunk ID có trong evidence.
 
-### 4. Citation Validation Agent
+### 5. Citation Validation Agent
 
 - Deterministic, không gọi LLM.
 - Loại mọi citation có chunk ID không tồn tại trong retrieved results.
@@ -276,7 +284,7 @@ END
 - Tạo `source_url` khi document là URL public.
 - Không cho LLM tự xác nhận citation của chính nó.
 
-### 5. Response Agent
+### 6. Response Agent
 
 - Deterministic, không gọi LLM.
 - Trả response cuối cùng.
@@ -285,13 +293,21 @@ END
 
 ### Số lần gọi LLM
 
-Mỗi câu hỏi thông thường gọi chat LLM **2 lần**:
+Mỗi câu hỏi thông thường gọi chat LLM **3 lần**:
 
 1. Query understanding.
-2. Policy analysis.
+2. Question decomposition.
+3. Policy analysis.
 
 Ba node còn lại không gọi chat LLM. Embedding query là một model call local
 riêng, không phải chat LLM API.
+
+### Conversation memory
+
+- Frontend gửi tối đa 6 lượt hoàn chỉnh gần nhất (12 messages) trong mỗi request.
+- History chỉ dùng để giải quyết câu hỏi nối tiếp như "ngành đó" hoặc "mức này".
+- Backend không lưu memory dùng chung giữa người dùng hoặc phụ thuộc RAM của Render.
+- Policy chunks được retrieve vẫn là nguồn evidence duy nhất cho câu trả lời.
 
 ## 8. Citation
 
