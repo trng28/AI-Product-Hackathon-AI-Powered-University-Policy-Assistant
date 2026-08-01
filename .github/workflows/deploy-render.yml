@@ -27,7 +27,8 @@ jobs:
           python-version: "3.12"
 
       - name: Validate Python syntax
-        run: python -m compileall -q src
+        run: python -m compileall -q backend
+
 
       - name: Verify packaged policy index
         shell: bash

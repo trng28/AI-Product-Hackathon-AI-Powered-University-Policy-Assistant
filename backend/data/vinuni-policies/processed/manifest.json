@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-07-30T21:30:52.513686+00:00",
+  "input_manifest": "D:\\vinuni-lab\\AI-Product-Hackathon-AI-Powered-University-Policy-Assistant\\backend\\data\\vinuni-policies\\raw\\manifest.json",
+  "pages": 131,
+  "policies": 39,
+  "internal_policies_excluded": 76,
+  "internal_urls_detected": 76,
+  "chunks": 527,
+  "failures": []
+}

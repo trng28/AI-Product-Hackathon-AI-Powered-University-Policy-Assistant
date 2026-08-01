@@ -1,0 +1,66 @@
+import { PolicyDocument } from "../types";
+
+export const policies: PolicyDocument[] = [
+  {
+    id: "academic-regulations",
+    title: "Academic Regulations for Full-Time Undergraduate Programs",
+    reference: "VU_HT03",
+    category: "Academic",
+    description: "Quy định về chương trình, tín chỉ, đánh giá, cảnh báo học tập, chuyển ngành và tốt nghiệp.",
+    updated: "2026",
+    sourceUrl: "https://policy.vinuni.edu.vn/all-policies/academic-regulations-for-full-time-undergraduate-programs/",
+    highlights: ["Khung giờ học và tải học tập", "Cảnh báo, probation và dismissal", "Chuyển ngành và chuyển trường"],
+  },
+  {
+    id: "financial-regulations",
+    title: "Financial Regulations and Tariff for Students",
+    reference: "VUNI_TS03_Student",
+    category: "Finance",
+    description: "Học phí, biểu phí, thời hạn thanh toán và các nghĩa vụ tài chính áp dụng cho sinh viên.",
+    updated: "2026",
+    sourceUrl: "https://policy.vinuni.edu.vn/all-policies/financial-regulations-and-tariff-for-student-2/",
+    highlights: ["Học phí đại học và sau đại học", "Biểu phí theo tín chỉ", "Hoàn phí và nghĩa vụ thanh toán"],
+  },
+  {
+    id: "student-conduct",
+    title: "Student Affairs Regulations – Code of Conduct",
+    reference: "VU_CTSV02.EN",
+    category: "Student Affairs",
+    description: "Quyền, trách nhiệm, chuẩn mực ứng xử và xử lý vi phạm dành cho người học tại VinUniversity.",
+    updated: "2026",
+    sourceUrl: "https://policy.vinuni.edu.vn/all-policies/student-affairs-regulations-code-of-conduct/",
+    highlights: ["Quyền và trách nhiệm sinh viên", "Chuẩn mực ứng xử", "Kỷ luật và khiếu nại"],
+  },
+  {
+    id: "academic-integrity",
+    title: "Student Academic Integrity",
+    reference: "VUNI.14",
+    category: "Academic",
+    description: "Nguyên tắc liêm chính học thuật, nhận diện đạo văn, gian lận và quy trình xử lý.",
+    updated: "2025",
+    sourceUrl: "https://policy.vinuni.edu.vn/all-policies/student-academic-integrity/",
+    highlights: ["Đạo văn và gian lận", "Trách nhiệm của người học", "Quy trình xem xét vi phạm"],
+  },
+  {
+    id: "residential-life",
+    title: "Residential Life Guideline",
+    reference: "GDL-SAM-008-V5.0",
+    category: "Student Affairs",
+    description: "Hướng dẫn đời sống nội trú, phân bổ phòng, an toàn và trách nhiệm trong ký túc xá.",
+    updated: "2026",
+    sourceUrl: "https://policy.vinuni.edu.vn/all-policies/residential-life-guideline/",
+    highlights: ["Quy tắc nội trú", "An toàn và khách ra vào", "Trách nhiệm sử dụng cơ sở vật chất"],
+  },
+  {
+    id: "fire-safety",
+    title: "Regulations to Handle Fire Incidents",
+    reference: "VU_AN03.EN",
+    category: "Safety",
+    description: "Quy trình cảnh báo, phản ứng ban đầu và sơ tán khi phát hiện sự cố cháy trong trường.",
+    updated: "2025",
+    sourceUrl: "https://policy.vinuni.edu.vn/all-policies/regulations-to-handle-fire-incidents/",
+    highlights: ["Báo động và liên hệ khẩn cấp", "Sơ tán an toàn", "Vai trò của các đơn vị"],
+  },
+];
+
+export const policyCategories = ["All", ...new Set(policies.map((item) => item.category))];

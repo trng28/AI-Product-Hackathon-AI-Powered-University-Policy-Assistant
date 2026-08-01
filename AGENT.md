@@ -25,14 +25,14 @@ from `OPENAI_API_KEY`, `GROQ_API`, and `GEMINI_API_KEY`.
 ## Build the knowledge index
 
 ```powershell
-python -m src.policy_assistant.cli index `
-  "src/data/VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf"
+python -m backend.policy_assistant.cli index `
+  "backend/data/VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf"
 ```
 
 ## Ask a question
 
 ```powershell
-python -m src.policy_assistant.cli ask "Điều kiện bị cảnh báo học tập là gì?"
+python -m backend.policy_assistant.cli ask "Điều kiện bị cảnh báo học tập là gì?"
 ```
 
 The output contains the grounded answer, validated article/page citations,
@@ -55,7 +55,7 @@ explicitly marked as insufficient evidence.
 ### Interactive CLI chat
 
 ```powershell
-python -m src.policy_assistant.cli chat
+python -m backend.policy_assistant.cli chat
 ```
 
 Commands available in a chat session: `/help`, `/clear`, and `/exit`.
@@ -66,7 +66,7 @@ Terminal 1 — FastAPI:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
-uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
+uvicorn backend.api.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 API documentation is available at `http://127.0.0.1:8000/docs`.

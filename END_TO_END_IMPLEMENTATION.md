@@ -44,13 +44,13 @@ React/Vite Chat UI + Clickable Citations
 Script:
 
 ```text
-src/crawl/crawl_vinuni_policies.py
+backend/crawl/crawl_vinuni_policies.py
 ```
 
 ### Raw data hiện tại
 
 ```text
-src/data/vinuni-policies/raw/
+backend/data/vinuni-policies/raw/
 ├── manifest.json
 └── pages/*.html
 ```
@@ -71,7 +71,7 @@ Raw data là nguồn audit. Không dùng raw HTML trực tiếp để tạo câu
 Script:
 
 ```text
-src/crawl/process_vinuni_raw.py
+backend/crawl/process_vinuni_raw.py
 ```
 
 Pipeline xử lý:
@@ -99,7 +99,7 @@ Pipeline xử lý:
 ### Processed data hiện tại
 
 ```text
-src/data/vinuni-policies/processed/
+backend/data/vinuni-policies/processed/
 ├── manifest.json
 ├── pages.jsonl
 ├── policies.jsonl
@@ -152,13 +152,13 @@ data/policy-index/
 Nguồn đang được index:
 
 ```text
-src/data/vinuni-policies/processed/chunks.jsonl
+backend/data/vinuni-policies/processed/chunks.jsonl
 ```
 
 Build/rebuild index:
 
 ```powershell
-python -m src.policy_assistant.cli index
+python -m backend.policy_assistant.cli index
 ```
 
 Indexer vẫn hỗ trợ PDF và JSONL để tương thích pipeline cũ, nhưng nguồn mặc định
@@ -169,7 +169,7 @@ hiện tại là public `chunks.jsonl`.
 Implementation:
 
 ```text
-src/policy_assistant/retrieval.py
+backend/policy_assistant/retrieval.py
 ```
 
 Retriever là hybrid retrieval:
@@ -192,7 +192,7 @@ Runtime hiện tại:
 
 ### Cấu hình đang chạy
 
-Được đọc từ `src/.env`:
+Được đọc từ `backend/.env`:
 
 | Thuộc tính | Giá trị |
 |---|---|
@@ -223,7 +223,7 @@ OpenAI `gpt-4o-mini`.
 Implementation:
 
 ```text
-src/policy_assistant/agents.py
+backend/policy_assistant/agents.py
 ```
 
 LangGraph có **5 agent/node chức năng**, chạy tuần tự:
@@ -324,7 +324,7 @@ Framework: FastAPI.
 Implementation:
 
 ```text
-src/api/main.py
+backend/api/main.py
 ```
 
 Endpoints:
@@ -450,13 +450,13 @@ python crawl/process_vinuni_raw.py
 Từ project root:
 
 ```powershell
-python -m src.policy_assistant.cli index
+python -m backend.policy_assistant.cli index
 ```
 
 ### 4. Start backend
 
 ```powershell
-uvicorn src.api.main:app --reload --host 127.0.0.1 --port 8000
+uvicorn backend.api.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ### 5. Start frontend
@@ -499,7 +499,7 @@ volume mới chưa có index, cần gọi `/api/index` hoặc có bước seed i
 3. Crawler là link crawler, nên độ phủ phụ thuộc graph liên kết public tại thời
    điểm crawl.
 4. Dữ liệu cần được recrawl và rebuild index khi website cập nhật.
-5. `gpt-4o-mini` là model runtime do `src/.env` override; môi trường khác có thể
+5. `gpt-4o-mini` là model runtime do `backend/.env` override; môi trường khác có thể
    chạy model khác.
 6. FAISS `IndexFlatIP` phù hợp quy mô 527 chunks hiện tại; nếu dữ liệu tăng lớn,
    cần đánh giá index khác hoặc vector database.
@@ -509,16 +509,16 @@ volume mới chưa có index, cần gọi `/api/index` hoặc có bước seed i
 
 | Thành phần | File/thư mục |
 |---|---|
-| Raw crawler | `src/crawl/crawl_vinuni_policies.py` |
-| Data processor | `src/crawl/process_vinuni_raw.py` |
-| Raw data | `src/data/vinuni-policies/raw/` |
-| Processed public data | `src/data/vinuni-policies/processed/` |
-| Index builder | `src/policy_assistant/indexing.py` |
-| Hybrid retriever | `src/policy_assistant/retrieval.py` |
-| Agents/LangGraph | `src/policy_assistant/agents.py` |
-| LLM provider factory | `src/policy_assistant/llm.py` |
-| Service | `src/policy_assistant/service.py` |
-| FastAPI | `src/api/main.py` |
+| Raw crawler | `backend/crawl/crawl_vinuni_policies.py` |
+| Data processor | `backend/crawl/process_vinuni_raw.py` |
+| Raw data | `backend/data/vinuni-policies/raw/` |
+| Processed public data | `backend/data/vinuni-policies/processed/` |
+| Index builder | `backend/policy_assistant/indexing.py` |
+| Hybrid retriever | `backend/policy_assistant/retrieval.py` |
+| Agents/LangGraph | `backend/policy_assistant/agents.py` |
+| LLM provider factory | `backend/policy_assistant/llm.py` |
+| Service | `backend/policy_assistant/service.py` |
+| FastAPI | `backend/api/main.py` |
 | Frontend | `frontend/src/` |
 | FAISS index | `data/policy-index/` |
 | Retrieval eval | `eval/run_retrieval_eval.py` |
