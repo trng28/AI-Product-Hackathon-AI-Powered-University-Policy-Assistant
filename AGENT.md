@@ -43,6 +43,7 @@ confidence score, evidence status, and interpreted query.
 ```text
 Question
   -> Query Understanding Agent
+  -> Question Decomposition Agent (compound-query planning)
   -> Hybrid Retrieval Agent (FAISS semantic + keyword + article filter)
   -> Policy Analysis Agent
   -> Citation Validation Agent
@@ -51,6 +52,10 @@ Question
 
 If analysis has no valid citation to a retrieved chunk, the response is
 explicitly marked as insufficient evidence.
+
+The chat client carries a bounded memory of the latest 6 completed turns
+(12 user/assistant messages). History is used only to resolve follow-up
+references; retrieved policy chunks remain the sole source of evidence.
 
 ### Interactive CLI chat
 

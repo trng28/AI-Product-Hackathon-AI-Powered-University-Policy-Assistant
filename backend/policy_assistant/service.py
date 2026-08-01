@@ -27,7 +27,9 @@ class PolicyAssistant:
 
         return build_index(source_paths, index_dir, embedding_model)
 
-    def ask(self, question: str) -> Answer:
+    def ask(
+        self, question: str, history: list[dict[str, str]] | None = None
+    ) -> Answer:
         if not question.strip():
             raise ValueError("Question cannot be empty")
-        return self.orchestrator.run(question.strip())
+        return self.orchestrator.run(question.strip(), history or [])
