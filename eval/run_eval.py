@@ -17,7 +17,7 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-from src.policy_assistant.service import PolicyAssistant  # noqa: E402
+from backend.policy_assistant.service import PolicyAssistant  # noqa: E402
 
 
 def normalize(text: str) -> str:

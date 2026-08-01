@@ -5,9 +5,9 @@ HTML as immutable raw input. Processing is a separate mode that reads only the
 local HTML, extracts public attachments, and downloads them.
 
 Examples:
-    python src/crawl/crawl_vinuni_policies.py
-    python src/crawl/crawl_vinuni_policies.py --max-pages 20
-    python src/crawl/crawl_vinuni_policies.py --process-raw
+    python backend/crawl/crawl_vinuni_policies.py
+    python backend/crawl/crawl_vinuni_policies.py --max-pages 20
+    python backend/crawl/crawl_vinuni_policies.py --process-raw
 """
 
 from __future__ import annotations

@@ -12,15 +12,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from src.policy_assistant.config import Settings
-from src.policy_assistant.service import PolicyAssistant
+from backend.policy_assistant.config import Settings
+from backend.policy_assistant.service import PolicyAssistant
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_PDF = PROJECT_ROOT / "src" / "data" / (
+DEFAULT_PDF = PROJECT_ROOT / "backend" / "data" / (
     "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-theo-he-thong-tin-chi.pdf"
 )
 DEFAULT_PUBLIC_CHUNKS = (
-    PROJECT_ROOT / "src" / "data" / "vinuni-policies"
+    PROJECT_ROOT / "backend" / "data" / "vinuni-policies"
     / "processed" / "chunks.jsonl"
 )
 FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
@@ -151,7 +151,7 @@ def health() -> dict:
 
 @app.post("/api/index", response_model=IndexResponse)
 async def create_index(request: IndexRequest) -> IndexResponse:
-    from src.policy_assistant.indexing import build_index
+    from backend.policy_assistant.indexing import build_index
 
     try:
         settings = Settings.from_env()

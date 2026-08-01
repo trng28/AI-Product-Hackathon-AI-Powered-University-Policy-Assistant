@@ -1,5 +1,5 @@
-from src.policy_assistant.agents import CitationValidationAgent
-from src.policy_assistant.models import LegalChunk, SearchResult
+from backend.policy_assistant.agents import CitationValidationAgent
+from backend.policy_assistant.models import LegalChunk, SearchResult
 
 
 def test_citation_validator_rejects_unknown_chunk() -> None:

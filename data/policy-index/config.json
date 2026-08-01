@@ -1,7 +1,7 @@
 {
   "embedding_model": "intfloat/multilingual-e5-small",
   "sources": [
-    "D:\\vinuni-lab\\AI-Product-Hackathon-AI-Powered-University-Policy-Assistant\\src\\data\\vinuni-policies\\processed\\chunks.jsonl"
+    "D:\\vinuni-lab\\AI-Product-Hackathon-AI-Powered-University-Policy-Assistant\\backend\\data\\vinuni-policies\\processed\\chunks.jsonl"
   ],
   "chunk_count": 527
 }

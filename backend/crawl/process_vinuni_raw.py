@@ -52,7 +52,7 @@ def _default_input() -> Path:
     candidates = [
         Path.cwd() / "data" / "vinuni-policies",
         PROJECT_ROOT / "data" / "vinuni-policies",
-        PROJECT_ROOT / "src" / "data" / "vinuni-policies",
+        PROJECT_ROOT / "backend" / "data" / "vinuni-policies",
     ]
     for candidate in candidates:
         if (candidate / "raw" / "manifest.json").exists():

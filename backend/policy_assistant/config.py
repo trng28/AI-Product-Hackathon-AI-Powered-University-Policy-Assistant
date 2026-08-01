@@ -9,7 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 def _load_dotenv(path: Path | None = None) -> None:
     if path is None:
-        candidates = (PROJECT_ROOT / ".env", PROJECT_ROOT / "src" / ".env")
+        candidates = (PROJECT_ROOT / ".env", PROJECT_ROOT / "backend" / ".env")
         for candidate in candidates:
             _load_dotenv(candidate)
         return

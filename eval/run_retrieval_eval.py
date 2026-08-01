@@ -42,7 +42,7 @@ def main() -> int:
     parser.add_argument(
         "--processed",
         type=Path,
-        default=PROJECT_ROOT / "src/data/vinuni-policies/processed",
+        default=PROJECT_ROOT / "backend/data/vinuni-policies/processed",
     )
     parser.add_argument(
         "--cases", type=Path, default=Path(__file__).with_name("retrieval_cases.json")

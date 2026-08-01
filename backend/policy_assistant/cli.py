@@ -15,7 +15,7 @@ if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 PUBLIC_CHUNKS = (
-    PROJECT_ROOT / "src" / "data" / "vinuni-policies" / "processed" / "chunks.jsonl"
+    PROJECT_ROOT / "backend" / "data" / "vinuni-policies" / "processed" / "chunks.jsonl"
 )
 
 
@@ -75,7 +75,7 @@ def _chat() -> None:
         if not all(path.is_file() for path in required_files) or (
             index_model != settings.embedding_model
         ):
-            pdf_path = PROJECT_ROOT / "src" / "data" / (
+            pdf_path = PROJECT_ROOT / "backend" / "data" / (
                 "VU_HT03.VN_QC-dao-tao-dai-hoc-he-chinh-quy-"
                 "theo-he-thong-tin-chi.pdf"
             )
